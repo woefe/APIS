@@ -1,0 +1,391 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-22 12:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data_to_external_disk.sh:2
+msgid "Editing /etc/fstab"
+msgstr ""
+
+#: data_to_external_disk.sh:13
+msgid "|  Storage   |"
+msgstr ""
+
+#: data_to_external_disk.sh:15
+msgid ""
+"You have got three options here:\\n1. Move datadirectories to external "
+"Storage (HDD, USB; you can select a single partition or an entire disk)\\n2. "
+"Enter the datadirectory manually\\n3. Leave the datadirectory on the SD-Card"
+"\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
+"format the Drive."
+msgstr ""
+
+#: data_to_external_disk.sh:16
+msgid "What's your choice? (1/2/3): "
+msgstr ""
+
+#: data_to_external_disk.sh:24
+msgid "Enter the path of your choice: "
+msgstr ""
+
+#: data_to_external_disk.sh:26
+msgid "Path doesn't exist."
+msgstr ""
+
+#: data_to_external_disk.sh:27
+msgid "Try again? (y/n): "
+msgstr ""
+
+#: data_to_external_disk.sh:28 owncloud_installer.sh:352
+#: owncloud_installer.sh:354
+msgid "n"
+msgstr ""
+
+#: data_to_external_disk.sh:36
+msgid "If you haven't connected the USB device yet, do it now."
+msgstr ""
+
+#: data_to_external_disk.sh:37
+msgid "Hit Enter to continue"
+msgstr ""
+
+#: data_to_external_disk.sh:39
+msgid "Available devices and partitions:"
+msgstr ""
+
+#: data_to_external_disk.sh:49
+msgid "mounted on '$mountpoint'\\t"
+msgstr ""
+
+#: data_to_external_disk.sh:58
+msgid ""
+"If you select an entire disk, all partitions will be deleted and one single "
+"partition with maximum size will be created"
+msgstr ""
+
+#: data_to_external_disk.sh:59
+msgid "Choose a partition or a disk (1-$length): "
+msgstr ""
+
+#: data_to_external_disk.sh:63
+msgid "Your choice is invalid."
+msgstr ""
+
+#: data_to_external_disk.sh:67
+msgid "         |    WARNING   |"
+msgstr ""
+
+#: data_to_external_disk.sh:69
+msgid "Formating the disk/partition will erase all data stored on the it."
+msgstr ""
+
+#: data_to_external_disk.sh:70
+msgid ""
+"The disk will be formated now. Are you sure you want to continue? (y/n): "
+msgstr ""
+
+#: data_to_external_disk.sh:71 owncloud_installer.sh:342
+#: owncloud_installer.sh:347 owncloud_installer.sh:350 samba_installer.sh:19
+#: samba_installer.sh:20 samba_installer.sh:65 samba_installer.sh:66
+#: samba_installer.sh:111
+msgid "y"
+msgstr ""
+
+#: data_to_external_disk.sh:80 data_to_external_disk.sh:94
+msgid "The device is still mounted, trying umount..."
+msgstr ""
+
+#: data_to_external_disk.sh:81 data_to_external_disk.sh:95
+msgid "Datadirectories will remain on the SD-Card"
+msgstr ""
+
+#: data_to_external_disk.sh:82 data_to_external_disk.sh:96
+msgid "Unmmounted successfully."
+msgstr ""
+
+#: main.sh:8
+msgid "ERROR"
+msgstr ""
+
+#: main.sh:17 main.sh:39 main.sh:54 main.sh:70
+msgid "Select"
+msgstr ""
+
+#: main.sh:17 main.sh:39 main.sh:54
+msgid "Back"
+msgstr ""
+
+#: main.sh:17
+msgid "Install ownCloud"
+msgstr ""
+
+#: main.sh:17
+msgid ""
+"\\nInstall latest version of ownCloud\\nThe installer tries to find out the "
+"hostname via DNS. This may not work depending on your router. If you aren't "
+"shure if that works select 'use_ip'"
+msgstr ""
+
+#: main.sh:17
+msgid "Enable verbose mode"
+msgstr ""
+
+#: main.sh:17
+msgid "Use IP address instead of hostname"
+msgstr ""
+
+#: main.sh:25
+msgid ""
+"In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
+"going to reboot now.\\nAfter that open a web browser and navigate to your "
+"ownCloud instance. Enter a username and a password. The advanced settings "
+"are preconfigured by this script, so don't change them."
+msgstr ""
+
+#: main.sh:33
+msgid "Installed version: $INSTALLED_VERSION, Latest version: $LATEST_VERSION"
+msgstr ""
+
+#: main.sh:36
+msgid "latest version is installed. DO NOT UPDATE"
+msgstr ""
+
+#: main.sh:39
+msgid "Update/remove ownCloud"
+msgstr ""
+
+#: main.sh:39
+msgid ""
+"\\nUpdate to latest version of ownCloud\\nUse the update function only for "
+"updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
+"admin_manual/maintenance/update.html for more details."
+msgstr ""
+
+#: main.sh:39
+msgid "Remove ownCloud"
+msgstr ""
+
+#: main.sh:54
+msgid "Change/remove Samba"
+msgstr ""
+
+#: main.sh:54
+msgid ""
+"\\nUpdates for Samba are done by the system's package management.\\nYou can "
+"either add more Samba shares or remove Samba."
+msgstr ""
+
+#: main.sh:54
+msgid "Add more shares and users"
+msgstr ""
+
+#: main.sh:54
+msgid "Remove samba"
+msgstr ""
+
+#: main.sh:70
+msgid "Exit"
+msgstr ""
+
+#: main.sh:70
+msgid ""
+"\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
+"Raspberry Pi\\n"
+msgstr ""
+
+#: main.sh:70
+msgid "Install/update/remove ownCloud"
+msgstr ""
+
+#: main.sh:70
+msgid "Install/remove Samba Server"
+msgstr ""
+
+#: main.sh:97
+msgid "I need root permissions."
+msgstr ""
+
+#: main.sh:98 owncloud_installer.sh:284
+msgid "Bye..."
+msgstr ""
+
+#: main.sh:106
+msgid ""
+"This setup can install and configure a whole bunge of different software eg. "
+"Samba, ownCloud...\\nDo you want to use a external disk to store "
+"datadirectories of ownCloud and Samba on it?"
+msgstr ""
+
+#: owncloud_installer.sh:15
+msgid "Installing dependencies..."
+msgstr ""
+
+#: owncloud_installer.sh:17
+msgid "Installing nginx and php..."
+msgstr ""
+
+#: owncloud_installer.sh:19
+msgid "Searching for packages that are no longer needed..."
+msgstr ""
+
+#: owncloud_installer.sh:23
+msgid ""
+"The next step will create a ssl certificate.\\nDon't leave the field 'Common "
+"Name' blank.\\nHit Enter to continue."
+msgstr ""
+
+#: owncloud_installer.sh:34
+msgid "An error occurred during the last Step. Repeating"
+msgstr ""
+
+#: owncloud_installer.sh:42
+msgid "Creating /etc/nginx/nginx.conf..."
+msgstr ""
+
+#: owncloud_installer.sh:45
+msgid "Editing /etc/php5/fpm/php.ini..."
+msgstr ""
+
+#: owncloud_installer.sh:49
+msgid "Creating files in /etc/dhcp/dhclient-exit-hooks.d/..."
+msgstr ""
+
+#: owncloud_installer.sh:53
+msgid "Editing /etc/dphys-swapfile"
+msgstr ""
+
+#: owncloud_installer.sh:58
+msgid "Checking for locale en_US.UTF-8..."
+msgstr ""
+
+#: owncloud_installer.sh:63 owncloud_installer.sh:317
+msgid "Decompressing owncloud-$VERSION.tar.bz2..."
+msgstr ""
+
+#: owncloud_installer.sh:68 owncloud_installer.sh:320
+msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
+msgstr ""
+
+#: owncloud_installer.sh:71 owncloud_installer.sh:323
+msgid "Setting permissions for '$PATH_TO_WEBSERVER'..."
+msgstr ""
+
+#: owncloud_installer.sh:78
+msgid "Creating conf.php..."
+msgstr ""
+
+#: owncloud_installer.sh:84 owncloud_installer.sh:329
+msgid "Cleaning up..."
+msgstr ""
+
+#: owncloud_installer.sh:262
+msgid "Downloading owncloud-$VERSION.tar.bz2..."
+msgstr ""
+
+#: owncloud_installer.sh:263 owncloud_installer.sh:266
+msgid "Download failed"
+msgstr ""
+
+#: owncloud_installer.sh:265
+msgid "Checking download..."
+msgstr ""
+
+#: owncloud_installer.sh:274
+msgid "An error occurred while checking version."
+msgstr ""
+
+#: owncloud_installer.sh:279 samba_installer.sh:9
+msgid "Updating the operating systems's software (might take a while)..."
+msgstr ""
+
+#: owncloud_installer.sh:283
+msgid "Update failed."
+msgstr ""
+
+#: owncloud_installer.sh:293
+msgid "Installing ownCloud version: $VERSION"
+msgstr ""
+
+#: owncloud_installer.sh:297
+msgid ""
+"This name/IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will "
+"be the name/IP you have to enter in your webbrowser after the script has "
+"finished.\\nIs the name correct? If not, restart the script now and select "
+"'use_ip'."
+msgstr ""
+
+#: owncloud_installer.sh:298
+msgid "Hit Enter to continue or crtl+c to cancel"
+msgstr ""
+
+#: owncloud_installer.sh:310
+msgid ""
+"ownCloud is not installed properly or wasn't installed by this script and "
+"thus can't be updated"
+msgstr ""
+
+#: owncloud_installer.sh:338
+msgid ""
+"ownCloud is not installed properly or wasn't installed by this script and "
+"thus can't be removed"
+msgstr ""
+
+#: owncloud_installer.sh:341 samba_installer.sh:110
+msgid "Are you sure you want to continue? (y/n): "
+msgstr ""
+
+#: owncloud_installer.sh:343
+msgid "Do you want to remove ownCloud's datadirectory? (y/n)"
+msgstr ""
+
+#: owncloud_installer.sh:364
+msgid "Reboot is recommended"
+msgstr ""
+
+#: samba_installer.sh:13
+msgid "Installing samba packages..."
+msgstr ""
+
+#: samba_installer.sh:18
+msgid ""
+"This setup will create samba shares that are protected by a username and "
+"password."
+msgstr ""
+
+#: samba_installer.sh:24 samba_installer.sh:70
+msgid "Enter a username: "
+msgstr ""
+
+#: samba_installer.sh:34 samba_installer.sh:80
+msgid "Enter a name for this share: "
+msgstr ""
+
+#: samba_installer.sh:36 samba_installer.sh:82
+msgid "This share already exists"
+msgstr ""
+
+#: samba_installer.sh:44 samba_installer.sh:90
+msgid "Enter a short description of this share: "
+msgstr ""
+
+#: samba_installer.sh:58 samba_installer.sh:104
+msgid "Create more shares? (y/n)"
+msgstr ""
+
+#: samba_installer.sh:64
+msgid "Add more shares"
+msgstr ""

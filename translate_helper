@@ -1,0 +1,78 @@
+#!/bin/bash
+
+lang=$2
+
+function init_po_file(){
+   if [ -d po/$lang ];then
+      echo 'Use po function to update po-files!'
+      exit 1
+   fi
+   echo > all.pot
+   mkdir -p po/$lang
+   for f in *.sh; do
+      bash --dump-po-strings $f >> all.pot ;
+   done
+   xgettext -L PO -o po/$lang/apis.pot all.pot
+   rm all.pot
+
+   msginit -i po/$lang/apis.pot -o po/$lang/apis.po -l $lang
+   sed -i 's/"Content-Type: .*/"Content-Type: text\/plain; charset=UTF-8\\n"/' po/$lang/apis.po
+}
+
+function update_po_file(){
+   if [ ! -d po/$lang ];then
+      echo 'Use init function first!'
+      exit 1
+   fi
+   echo > all.pot
+   for f in *.sh; do
+      bash --dump-po-strings $f >> all.pot ;
+   done
+   xgettext -L PO -o po/$lang/apis.pot all.pot
+   rm all.pot
+
+   msgmerge --update po/$lang/apis.po po/$lang/apis.pot
+}
+
+function create_mo_file(){
+   if [ ! -d po/$lang ];then
+      echo 'Use init function first!'
+      exit 1
+   fi
+   mkdir -p locale/$lang/LC_MESSAGES
+   msgfmt -o locale/$lang/LC_MESSAGES/apis.mo po/$lang/apis.po
+}
+
+function usage(){
+   cat << EOF
+USAGE: translate_helper [OPTION] [LANGUAGE]
+
+OPTIONS:
+   mo 	Creates .mo file (compiles .po file).
+   po	Updates .po file.
+   init	Only needed if the language does not yet exist. Creates a .po file.
+   
+EXAMPLE:
+   ./translate_helper po de
+EOF
+}
+
+if [ -z $1 ]; then
+   usage
+fi
+
+case $1 in
+   mo)
+      create_mo_file
+      ;;
+   po)
+      update_po_file
+      ;;
+   init)
+      init_po_file
+      ;;
+   help|-h|--help)
+      usage
+      ;;
+esac
+
