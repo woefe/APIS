@@ -12,8 +12,6 @@ DO_MAIN_UPDATE=false
 DO_UNINSTALL=false
 
 function install_nginx_and_other_stuff(){
-   echo $"Installing dependencies..." &&
-   apt-get $APT_GET_FLAG install dhcp3-client hostname bind9-host coreutils wget 
    echo $"Installing nginx and php..."
    apt-get $APT_GET_FLAG install nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite curl libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache smbclient openssl ssl-cert varnish dphys-swapfile
    echo $"Searching for packages that are no longer needed..."
@@ -61,6 +59,11 @@ EOF
    echo $"Checking for locale en_US.UTF-8..."
    grep -Eq "^# en_US.UTF-8 UTF-8$" /etc/locale.gen && sed -i -e "s/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen && locale-gen
    return 0
+}
+
+function install_dependencies(){
+   echo $"Installing dependencies..." &&
+   apt-get $APT_GET_FLAG install dhcp3-client hostname bind9-host coreutils wget 
 }
 
 function install_oc(){
@@ -276,6 +279,7 @@ function main_install(){
    pre_check_version
    echo $"Installing ownCloud version: $VERSION"
    sys_update
+   install_dependencies
    [ "x$SERVER_NAME" == "x" ] && SERVER_NAME=$(host $(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1) | cut -d ' ' -f 5 | sed -e 's/\.$//')
    [ "x$SERVER_NAME" == "xip" ] && SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
    echo -e $"This name/IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the name/IP you have to enter in your webbrowser after the script has finished.\nIs the name correct? If not, restart the script now and select 'use_ip'."
