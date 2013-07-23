@@ -3,6 +3,16 @@ HOW TO USE:
 1. Clone this repo: git clone https://github.com/popeye123/APIS
 2. Change directory: cd APIS
 3. Run the script: sudo ./main.sh
+4. Update the script (optional): git pull
+
+
+HOW TO TRANSLATE:
+
+1. Change directory: cd APIS
+2. Run following command if APIS is not yet translated into your language: ./translate_helper init "yourLanguage"
+   If APIS has been translated already run the following command to update .po files: ./translate_helper po "yourLanguage"
+3. translate the po file (./po/yourLanguage/apis.po)
+4. Create the .mo file (compile .po file): ./translate_helper mo "yourLanguage"
 
 
 -------------------------
