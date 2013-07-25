@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-22 12:34+0200\n"
+"POT-Creation-Date: 2013-07-25 15:58+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -16,6 +16,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: btsync_installer.sh:6
+msgid "Installing BitTorrent Sync..."
+msgstr "Installiere BitTorrent Sync..."
+
+#: btsync_installer.sh:8
+msgid "Downloading BitTorrent Sync..."
+msgstr "Lade BitTorrent Sync herunter..."
+
+#: btsync_installer.sh:10
+msgid "Unpacking .tar file..."
+msgstr "Entpacke Archiv..."
+
+#: btsync_installer.sh:14
+msgid "Removing temporary files..."
+msgstr "Lösche temporäre Dateien"
+
+#: btsync_installer.sh:17
+msgid "Create username and password"
+msgstr "Erstelle Benuter und Passwort"
+
+#: btsync_installer.sh:17
+msgid ""
+"The BitTorrent Sync webinterface can be protected by a dialog that asks for "
+"username and password."
+msgstr ""
+"Die Weboberfläche von BitTorrent Sync kann durch einen Passwortdialog "
+"geschützt werden."
+
+#: btsync_installer.sh:20
+msgid "Username"
+msgstr "Benutzername"
+
+#: btsync_installer.sh:20
+msgid ""
+"Enter a username or leave it blank, if you don't want to install a password "
+"dialog:"
+msgstr ""
+"Gib einen Benutzernamen ein oder lass die Zeile leer, wenn du auf den "
+"Passwortdialog verzichten willst."
+
+#: btsync_installer.sh:27 btsync_installer.sh:32
+msgid "Password"
+msgstr "Passwort"
+
+#: btsync_installer.sh:27
+msgid "Enter a password for user $users_name:"
+msgstr "Passwort für den Benutzer $users_name: "
+
+#: btsync_installer.sh:32
+msgid "Retype your password for user $users_name:"
+msgstr "Wiederhole das Passwort für den Benutzer $users_name: "
+
+#: btsync_installer.sh:118
+msgid "Remove BitTorrent Sync"
+msgstr "Deinstalliere BitTorrent Sync"
+
+#: btsync_installer.sh:118
+msgid ""
+"Are you sure that you want to uninstall BitTorrent Sync? Datadirectories "
+"won't be deleted."
+msgstr ""
+"Bist du dir sicher, dass du BitTorrent Sync deinstallieren willst? Die "
+"synchronisierten Ordner werden nicht gelöscht."
 
 #: data_to_external_disk.sh:2
 msgid "Editing /etc/fstab"
@@ -56,8 +120,8 @@ msgstr "Verzeichnis nicht gefunden."
 msgid "Try again? (y/n): "
 msgstr "Erneut versuchen? (j/n): "
 
-#: data_to_external_disk.sh:28 owncloud_installer.sh:352
-#: owncloud_installer.sh:354
+#: data_to_external_disk.sh:28 owncloud_installer.sh:341
+#: owncloud_installer.sh:343
 msgid "n"
 msgstr "n"
 
@@ -113,8 +177,8 @@ msgstr ""
 "Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten Schritt "
 "formatiert! (j/n): "
 
-#: data_to_external_disk.sh:71 owncloud_installer.sh:342
-#: owncloud_installer.sh:347 owncloud_installer.sh:350 samba_installer.sh:19
+#: data_to_external_disk.sh:71 owncloud_installer.sh:331
+#: owncloud_installer.sh:336 owncloud_installer.sh:339 samba_installer.sh:19
 #: samba_installer.sh:20 samba_installer.sh:65 samba_installer.sh:66
 #: samba_installer.sh:111
 msgid "y"
@@ -132,23 +196,27 @@ msgstr "Daten bleiben auf der Speicherkarte"
 msgid "Unmmounted successfully."
 msgstr "Gerät erfolgreich ungemountet."
 
-#: main.sh:8
+#: main.sh:12
+msgid "HINT"
+msgstr "HINWEIS"
+
+#: main.sh:16
 msgid "ERROR"
 msgstr "FEHLER"
 
-#: main.sh:17 main.sh:39 main.sh:54 main.sh:70
+#: main.sh:37 main.sh:63 main.sh:78 main.sh:94
 msgid "Select"
 msgstr "Auswählen"
 
-#: main.sh:17 main.sh:39 main.sh:54
+#: main.sh:37 main.sh:63 main.sh:78
 msgid "Back"
 msgstr "Zurück"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Install ownCloud"
 msgstr "Installiere ownCloud"
 
-#: main.sh:17
+#: main.sh:37
 msgid ""
 "\\nInstall latest version of ownCloud\\nThe installer tries to find out the "
 "hostname via DNS. This may not work depending on your router. If you aren't "
@@ -158,15 +226,15 @@ msgstr ""
 "mittels DNS herauszufinden. Je nach Router kann das scheitern. Wenn du dir "
 "nicht sicher bist, ob dein Router die Namen richtig vergibt, wähle 'use_ip'"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Enable verbose mode"
 msgstr "Aktiviere ausführliche Anzeige"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Use IP address instead of hostname"
 msgstr "Benutze die IP Adresse und nicht den DNS Namen"
 
-#: main.sh:25
+#: main.sh:49
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
 "going to reboot now.\\nAfter that open a web browser and navigate to your "
@@ -178,20 +246,20 @@ msgstr ""
 "anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht bearbeiten.\\nNoch "
 "ein kleiner Tipp: ownCloud funktioniert am besten mit Firefox"
 
-#: main.sh:33
+#: main.sh:57
 msgid "Installed version: $INSTALLED_VERSION, Latest version: $LATEST_VERSION"
 msgstr ""
 "Installierte Version: $INSTALLED_VERSION, Neueste Version $LATEST_VERSION"
 
-#: main.sh:36
+#: main.sh:60
 msgid "latest version is installed. DO NOT UPDATE"
 msgstr "Die neueste Version ist bereits installiert."
 
-#: main.sh:39
+#: main.sh:63
 msgid "Update/remove ownCloud"
 msgstr "Update/deinstalliere ownCloud"
 
-#: main.sh:39
+#: main.sh:63
 msgid ""
 "\\nUpdate to latest version of ownCloud\\nUse the update function only for "
 "updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
@@ -201,15 +269,15 @@ msgstr ""
 "sollte nur für Updates, nicht aber für Upgrades verwendet werden. Mehr Infos "
 "hier: http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html"
 
-#: main.sh:39
+#: main.sh:63
 msgid "Remove ownCloud"
 msgstr "Deinstalliere ownCloud"
 
-#: main.sh:54
+#: main.sh:78
 msgid "Change/remove Samba"
 msgstr "Ändere/entferne Samba"
 
-#: main.sh:54
+#: main.sh:78
 msgid ""
 "\\nUpdates for Samba are done by the system's package management.\\nYou can "
 "either add more Samba shares or remove Samba."
@@ -217,19 +285,19 @@ msgstr ""
 "\\nUpdates werden von der Paketverwaltung übernommen.\\nHier kannst du "
 "entweder mehrere Samba Freigaben hinzufügen oder Samba entfernen."
 
-#: main.sh:54
+#: main.sh:78
 msgid "Add more shares and users"
 msgstr "Füge weitere Freigaben und Benutzer hinzu"
 
-#: main.sh:54
+#: main.sh:78
 msgid "Remove samba"
 msgstr "Entferne Samba"
 
-#: main.sh:70
+#: main.sh:94
 msgid "Exit"
 msgstr "Beenden"
 
-#: main.sh:70
+#: main.sh:94
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi\\n"
@@ -237,23 +305,27 @@ msgstr ""
 "\\nAwesome Pi Installation Script\\n\\nInstalliere Cooles Zeug auf deinem "
 "RaspberryPi\\n"
 
-#: main.sh:70
+#: main.sh:94
 msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
-#: main.sh:70
+#: main.sh:94
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
-#: main.sh:97
+#: main.sh:94
+msgid "Install/Uninstall BitTorrent Sync"
+msgstr "Installiere/Deinstalliere BitTorrent Sync"
+
+#: main.sh:128
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:98 owncloud_installer.sh:284
+#: main.sh:129 owncloud_installer.sh:272
 msgid "Bye..."
 msgstr "Beende"
 
-#: main.sh:106
+#: main.sh:137
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -264,18 +336,14 @@ msgstr ""
 "als Datenspeicher für ownCloud und Samba verwenden?"
 
 #: owncloud_installer.sh:15
-msgid "Installing dependencies..."
-msgstr "Installiere für das Script benötigte Pakete"
-
-#: owncloud_installer.sh:17
 msgid "Installing nginx and php..."
 msgstr "Installiere nginx und php..."
 
-#: owncloud_installer.sh:19
+#: owncloud_installer.sh:17
 msgid "Searching for packages that are no longer needed..."
 msgstr "Nicht mehr benötigte Pakete werden gesucht..."
 
-#: owncloud_installer.sh:23
+#: owncloud_installer.sh:21
 msgid ""
 "The next step will create a ssl certificate.\\nDon't leave the field 'Common "
 "Name' blank.\\nHit Enter to continue."
@@ -285,80 +353,84 @@ msgstr ""
 "Weitermachen? Enter zum Weitermachen (empfohlen); STRG+c zum Abbrechen der "
 "Installation"
 
-#: owncloud_installer.sh:34
+#: owncloud_installer.sh:32
 msgid "An error occurred during the last Step. Repeating"
 msgstr "Dieser Schritt ist fehlgeschlagen. Wiederhole"
 
-#: owncloud_installer.sh:42
+#: owncloud_installer.sh:40
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr "Erstelle /etc/nginx/nginx.conf.."
 
-#: owncloud_installer.sh:45
+#: owncloud_installer.sh:43
 msgid "Editing /etc/php5/fpm/php.ini..."
 msgstr "Bearbeite /etc/php5/fpm/php.ini.."
 
-#: owncloud_installer.sh:49
+#: owncloud_installer.sh:47
 msgid "Creating files in /etc/dhcp/dhclient-exit-hooks.d/..."
 msgstr "Erstelle Dateien in /etc/dhcp/dhclient-exit-hooks.d/..."
 
-#: owncloud_installer.sh:53
+#: owncloud_installer.sh:51
 msgid "Editing /etc/dphys-swapfile"
 msgstr "Bearbeite /etc/dphys-swapfile"
 
-#: owncloud_installer.sh:58
+#: owncloud_installer.sh:59
 msgid "Checking for locale en_US.UTF-8..."
 msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: owncloud_installer.sh:63 owncloud_installer.sh:317
+#: owncloud_installer.sh:65
+msgid "Installing dependencies..."
+msgstr "Installiere für das Script benötigte Pakete"
+
+#: owncloud_installer.sh:71 owncloud_installer.sh:306
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr "Entpacke ownCloud-Archiv..."
 
-#: owncloud_installer.sh:68 owncloud_installer.sh:320
+#: owncloud_installer.sh:76 owncloud_installer.sh:309
 msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
 msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."
 
-#: owncloud_installer.sh:71 owncloud_installer.sh:323
+#: owncloud_installer.sh:79 owncloud_installer.sh:312
 msgid "Setting permissions for '$PATH_TO_WEBSERVER'..."
 msgstr "Setze Dateiberechtigungen für '$PATH_TO_WEBSERVER'..."
 
-#: owncloud_installer.sh:78
+#: owncloud_installer.sh:86
 msgid "Creating conf.php..."
 msgstr "Erstelle conf.php"
 
-#: owncloud_installer.sh:84 owncloud_installer.sh:329
+#: owncloud_installer.sh:92 owncloud_installer.sh:318
 msgid "Cleaning up..."
 msgstr "Räume auf..."
 
-#: owncloud_installer.sh:262
+#: owncloud_installer.sh:250
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr "Lade ownCloud Archiv herunter..."
 
-#: owncloud_installer.sh:263 owncloud_installer.sh:266
+#: owncloud_installer.sh:251 owncloud_installer.sh:254
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: owncloud_installer.sh:265
+#: owncloud_installer.sh:253
 msgid "Checking download..."
 msgstr "Überprüfe Download..."
 
-#: owncloud_installer.sh:274
+#: owncloud_installer.sh:262
 msgid "An error occurred while checking version."
 msgstr "Beim Überprüfen der Version trat ein Fehler auf"
 
-#: owncloud_installer.sh:279 samba_installer.sh:9
+#: owncloud_installer.sh:267 samba_installer.sh:9
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 "Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
 
-#: owncloud_installer.sh:283
+#: owncloud_installer.sh:271
 msgid "Update failed."
 msgstr "Update fehlgeschlagen."
 
-#: owncloud_installer.sh:293
+#: owncloud_installer.sh:281
 msgid "Installing ownCloud version: $VERSION"
 msgstr "Installiere ownCloud version: $VERSION"
 
-#: owncloud_installer.sh:297
+#: owncloud_installer.sh:286
 msgid ""
 "This name/IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will "
 "be the name/IP you have to enter in your webbrowser after the script has "
@@ -369,11 +441,11 @@ msgstr ""
 "dieser Name korrekt? Wenn nicht, dann solltest du das Script jetzt erneut "
 "starten und 'use_ip' auswählen."
 
-#: owncloud_installer.sh:298
+#: owncloud_installer.sh:287
 msgid "Hit Enter to continue or crtl+c to cancel"
 msgstr "Enter: weitermachen; Strg+c: abbrechen"
 
-#: owncloud_installer.sh:310
+#: owncloud_installer.sh:299
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated"
@@ -381,7 +453,7 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden"
 
-#: owncloud_installer.sh:338
+#: owncloud_installer.sh:327
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed"
@@ -389,15 +461,15 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden"
 
-#: owncloud_installer.sh:341 samba_installer.sh:110
+#: owncloud_installer.sh:330 samba_installer.sh:110
 msgid "Are you sure you want to continue? (y/n): "
 msgstr "Wirklich weitermachen? (j/n): "
 
-#: owncloud_installer.sh:343
+#: owncloud_installer.sh:332
 msgid "Do you want to remove ownCloud's datadirectory? (y/n)"
 msgstr "Datenverzeichnis löschen? (j/n): "
 
-#: owncloud_installer.sh:364
+#: owncloud_installer.sh:353
 msgid "Reboot is recommended"
 msgstr "Neustart empfohlen"
 
@@ -436,33 +508,3 @@ msgstr "Weitere Freigaben erstellen? (j/n): "
 #: samba_installer.sh:64
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
-
-#~ msgid ""
-#~ "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi "
-#~ "is going to reboot now.\\nAfter that open a web browser and navigate to "
-#~ "your ownCloud instance. Enter a username and a password.\\nThe advanced "
-#~ "settings are preconfigured by this script, so don't change them."
-#~ msgstr ""
-#~ "Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry "
-#~ "Pi, ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit "
-#~ "Passwort anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht "
-#~ "bearbeiten.\\nNoch ein kleiner Tipp: ownCloud funktioniert am besten mit "
-#~ "Firefox"
-
-#~ msgid "Reboot in 20 seconds"
-#~ msgstr "Neustart in 20 Sekunden"
-
-#~ msgid "...15 seconds"
-#~ msgstr "...15 Sekunden"
-
-#~ msgid "...10 seconds"
-#~ msgstr "...10 Sekunden"
-
-#~ msgid "...$i seconds"
-#~ msgstr "...$i Sekunden"
-
-#~ msgid "...one second"
-#~ msgstr "...eine Sekunden"
-
-#~ msgid "This user already exists"
-#~ msgstr "Der Benutzer existiert bereits"

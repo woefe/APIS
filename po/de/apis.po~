@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-22 11:50+0200\n"
+"POT-Creation-Date: 2013-07-22 12:34+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -167,7 +167,6 @@ msgid "Use IP address instead of hostname"
 msgstr "Benutze die IP Adresse und nicht den DNS Namen"
 
 #: main.sh:25
-#, fuzzy
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
 "going to reboot now.\\nAfter that open a web browser and navigate to your "
@@ -243,7 +242,6 @@ msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
 #: main.sh:70
-#, fuzzy
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
@@ -330,38 +328,6 @@ msgstr "Erstelle conf.php"
 #: owncloud_installer.sh:84 owncloud_installer.sh:329
 msgid "Cleaning up..."
 msgstr "Räume auf..."
-
-#: owncloud_installer.sh:226
-msgid ""
-"In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
-"going to reboot now.\\nAfter that open a web browser and navigate to your "
-"ownCloud instance. Enter a username and a password.\\nThe advanced settings "
-"are preconfigured by this script, so don't change them."
-msgstr ""
-"Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry Pi, "
-"ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit Passwort "
-"anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht bearbeiten.\\nNoch "
-"ein kleiner Tipp: ownCloud funktioniert am besten mit Firefox"
-
-#: owncloud_installer.sh:228
-msgid "Reboot in 20 seconds"
-msgstr "Neustart in 20 Sekunden"
-
-#: owncloud_installer.sh:232
-msgid "...15 seconds"
-msgstr "...15 Sekunden"
-
-#: owncloud_installer.sh:233
-msgid "...10 seconds"
-msgstr "...10 Sekunden"
-
-#: owncloud_installer.sh:235
-msgid "...$i seconds"
-msgstr "...$i Sekunden"
-
-#: owncloud_installer.sh:237
-msgid "...one second"
-msgstr "...eine Sekunden"
 
 #: owncloud_installer.sh:262
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
@@ -470,6 +436,33 @@ msgstr "Weitere Freigaben erstellen? (j/n): "
 #: samba_installer.sh:64
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
+
+#~ msgid ""
+#~ "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi "
+#~ "is going to reboot now.\\nAfter that open a web browser and navigate to "
+#~ "your ownCloud instance. Enter a username and a password.\\nThe advanced "
+#~ "settings are preconfigured by this script, so don't change them."
+#~ msgstr ""
+#~ "Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry "
+#~ "Pi, ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit "
+#~ "Passwort anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht "
+#~ "bearbeiten.\\nNoch ein kleiner Tipp: ownCloud funktioniert am besten mit "
+#~ "Firefox"
+
+#~ msgid "Reboot in 20 seconds"
+#~ msgstr "Neustart in 20 Sekunden"
+
+#~ msgid "...15 seconds"
+#~ msgstr "...15 Sekunden"
+
+#~ msgid "...10 seconds"
+#~ msgstr "...10 Sekunden"
+
+#~ msgid "...$i seconds"
+#~ msgstr "...$i Sekunden"
+
+#~ msgid "...one second"
+#~ msgstr "...eine Sekunden"
 
 #~ msgid "This user already exists"
 #~ msgstr "Der Benutzer existiert bereits"

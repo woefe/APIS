@@ -63,7 +63,8 @@ EOF
 
 function install_dependencies(){
    echo $"Installing dependencies..." &&
-   apt-get $APT_GET_FLAG install dhcp3-client hostname bind9-host coreutils wget 
+   apt-get $APT_GET_FLAG install dhcp3-client hostname bind9-host coreutils wget
+   clear
 }
 
 function install_oc(){

@@ -4,6 +4,10 @@
 TEXTDOMAIN=apis
 TEXTDOMAINDIR=./locale
 
+function print_message(){
+   whiptail --title "$1" --msgbox "$2" 30 80
+}
+
 function hint_msg(){
    whiptail --title $"HINT" --msgbox "$1" 30 80
 }
@@ -15,6 +19,18 @@ function error_msg(){
 function reboot_prompt(){
    whiptail --msgbox "$1" 30 80 &&
    reboot
+}
+
+function user_input(){
+   whiptail --title "$1" --inputbox "$2" 30 80 $3 3>&1 1>&2 2>&3
+}
+
+function password_box(){
+   whiptail --title "$1" --passwordbox "$2" 30 80 $3 3>&1 1>&2 2>&3
+}
+
+function yes_no(){
+   whiptail --title "$1" --yesno "$2" 30 80 3>&1 1>&2 2>&3
 }
 
 function install_owncloud(){
@@ -77,7 +93,8 @@ function main(){
    . /var/lib/apis/conf
    choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi\n" 30 80 15 \
       owncloud_setup $"Install/update/remove ownCloud"\
-      samba_setup $"Install/remove Samba Server" 3>&1 1>&2 2>&3)
+      samba_setup $"Install/remove Samba Server" \
+      btsync_setup $"Install/Uninstall BitTorrent Sync" 3>&1 1>&2 2>&3)
 
    case $choice in
       owncloud_setup)
@@ -97,6 +114,18 @@ function main(){
             return
          fi
          ;;
+      btsync_setup)
+	if $BTSYNC_INSTALLED; then
+	   . btsync_installer.sh uninstall &&
+	   sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=false/' /var/lib/apis/conf
+	   main
+            return
+	else
+	   . btsync_installer.sh install &&
+	   sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return	   
+	fi
    esac
 }
 
@@ -131,6 +160,7 @@ if [ ! -f /var/lib/apis/conf ]; then
    esac
    echo "OWNCLOUD_INSTALLED=false" >> /var/lib/apis/conf
    echo "SAMBA_INSTALLED=false" >> /var/lib/apis/conf
+   echo "BTSYNC_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
 main
