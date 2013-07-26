@@ -152,8 +152,7 @@ cat > /etc/nginx/sites-available/owncloud << EOF
 # redirect http to https.
 server {
    listen 80;
-   server_name $SERVER_NAME;
-   return https://\$server_name\$request_uri;  # enforce https
+   return https://\$host\$request_uri;  # enforce https
 }
 
 # owncloud (ssl/tls)
