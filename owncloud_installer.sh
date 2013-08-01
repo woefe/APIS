@@ -346,7 +346,7 @@ function remove_owncloud(){
    [ -e /etc/dhcp/dhclient-exit-hooks.d/01_hostname ] && rm $STANDARD_VERBOSE_FLAG /etc/dhcp/dhclient-exit-hooks.d/01_hostname
    [ -e /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf ] && rm $STANDARD_VERBOSE_FLAG /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf
    rm -r $STANDARD_VERBOSE_FLAG /srv/http/owncloud
-   apt-get $APT_GET_FLAG purge nginx-common nginx-full nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache smbclient ssl-cert varnish
+   apt-get $APT_GET_FLAG purge nginx-common nginx-full nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache ssl-cert varnish
    apt-get $APT_GET_FLAG autoremove --purge
    clear
    hint_msg $"Reboot is recommended"
