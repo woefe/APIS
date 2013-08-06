@@ -89,7 +89,7 @@ function configure_nfs(){
 
 function main(){
    . /var/lib/apis/conf
-   choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi\n" 30 80 15 \
+   choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi.\n" 30 88 15 \
       owncloud_setup $"Install/update/remove ownCloud"\
       samba_setup $"Install/remove Samba Server" \
       btsync_setup $"Install/uninstall BitTorrent Sync" \
