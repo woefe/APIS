@@ -33,45 +33,17 @@ function yes_no(){
    whiptail --title "$1" --yesno "$2" 30 80 3>&1 1>&2 2>&3
 }
 
-function install_owncloud(){
-   options=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Install ownCloud" --checklist $"\nInstall latest version of ownCloud\nThe installer tries to find out the hostname via DNS. This may not work depending on your router. If you aren't sure if that works select 'use_ip'" 30 80 15 \
-      "verbose" $"Enable verbose mode" 0\
-      "use_ip" $"Use IP address instead of hostname" 0 3>&1 1>&2 2>&3)
-
-   if [ $? -ne 0 ]; then
-      main && return
-   fi
-
-   LATEST_VERSION="$(wget -qO - http://owncloud.org/releases/Changelog | grep Release | head -n1 | tr -d 'Relas "')"
-   options=$(echo $options | tr -d \" | sed -e 's/verbose/-v/' -e 's/use_ip/-n ip/')
-   . owncloud_installer.sh -i latest $options
-   sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=true/' /var/lib/apis/conf
-   reboot_prompt $"In a few moments you can finally enjoy your ownCloud.\nThe Raspberry Pi is going to reboot now.\nAfter that open a web browser and navigate to your ownCloud instance. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
-}
-
 function update_or_remove_owncloud(){
-   LATEST_VERSION="$(wget -qO - http://owncloud.org/releases/Changelog | grep Release | head -n1 | tr -d 'Relas "')"
-   INSTALLED_VERSION="$(grep getVersionString -1 /var/www/cloud/lib/util.php | sed -n 3p | tr -d "return\ \'\;\t")"
-   if [ "$LATEST_VERSION" != "$INSTALLED_VERSION" ]; then
-      item1="update"
-      tag1=$"Installed version: $INSTALLED_VERSION, latest version: $LATEST_VERSION"
-   else
-      item1="noupdate"
-      tag1=$"Latest version is installed. DO NOT UPDATE"
-   fi
-
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --radiolist $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
-      $item1 "$tag1" 1\
-      remove $"Remove ownCloud" 0 3>&1 1>&2 2>&3)
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --menu $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
+      update $"Update your ownCloud installation"\
+      remove $"Remove ownCloud" 3>&1 1>&2 2>&3)
 
    if [ "$option" == "update" ]; then
-      . owncloud_installer.sh -u latest
+      . owncloud_installer.sh  update
    elif [ "$option" == "remove" ]; then
-      . owncloud_installer.sh -vr && sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=false/' /var/lib/apis/conf
-   elif [ "$option" == "noupdate" ]; then
-      main && return
+      . owncloud_installer.sh remove && 
+      sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=false/' /var/lib/apis/conf
    fi
-   main && return
 }
 
 function remove_or_change_samba(){
@@ -85,8 +57,6 @@ function remove_or_change_samba(){
       . samba_installer.sh remove &&
       sed -i 's/SAMBA_INSTALLED.*/SAMBA_INSTALLED=false/' /var/lib/apis/conf
    fi
-   main
-   return
 }
 
 function configure_nfs(){
@@ -129,13 +99,19 @@ function main(){
       owncloud_setup)
          if $OWNCLOUD_INSTALLED; then
             update_or_remove_owncloud
+            main
+            return
          else
-            install_owncloud
+            . owncloud_installer.sh install &&
+            sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=true/' /var/lib/apis/conf
+            reboot_prompt $"In a few moments you can finally enjoy your ownCloud.\nThe Raspberry Pi is going to reboot now.\nAfter that open a web browser and navigate to your ownCloud instance. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
          fi
          ;;
       samba_setup)
          if $SAMBA_INSTALLED; then
             remove_or_change_samba
+            main
+            return
          else
             . samba_installer.sh install
             sed -i 's/SAMBA_INSTALLED.*/SAMBA_INSTALLED=true/' /var/lib/apis/conf

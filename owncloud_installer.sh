@@ -1,25 +1,16 @@
 PATH_TO_WEBSERVER="/var/www/cloud"
-CREATE_DYNAMIC_HOST=true
 SERVER_NAME=""
 VERSION=""
-STANDARD_VERBOSE_FLAG=""
-APT_GET_FLAG="-qq"
-WGET_FLAG="-q"
 STARTPATH=$PWD
-MY_NAME="$0"
-DO_MAIN_INSTALL=false
-DO_MAIN_UPDATE=false
-DO_UNINSTALL=false
 
 function install_nginx_and_other_stuff(){
    echo $"Installing nginx and php..."
-   apt-get $APT_GET_FLAG install nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite curl libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache smbclient openssl ssl-cert varnish dphys-swapfile
+   apt-get -qq install nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite curl libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache smbclient openssl ssl-cert varnish dphys-swapfile
    echo $"Searching for packages that are no longer needed..."
-   apt-get $APT_GET_FLAG autoremove
+   apt-get -qq autoremove
 
    clear
-   echo -ne $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
-   read tmpvar
+   print_msg $"SSL-Certificate" $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
 
    mkdir -p /etc/nginx/ssl && cd /etc/nginx/ssl
    while true; do
@@ -43,11 +34,6 @@ function install_nginx_and_other_stuff(){
    echo $"Editing /etc/php5/fpm/php.ini..."
    edit_phpini
 
-   if $CREATE_DYNAMIC_HOST; then
-      echo $"Creating files in /etc/dhcp/dhclient-exit-hooks.d/..."
-      dynamic_hostname
-   fi
-
    echo $"Editing /etc/dphys-swapfile"
    cat > /etc/dphys-swapfile << EOF
 CONF_SWAPSIZE=768
@@ -61,58 +47,33 @@ EOF
    return 0
 }
 
-function install_dependencies(){
-   echo $"Installing dependencies..." &&
-   apt-get $APT_GET_FLAG install dhcp3-client hostname bind9-host coreutils wget
-   clear
-}
-
 function install_oc(){
    echo $"Decompressing owncloud-$VERSION.tar.bz2..."
    cd $STARTPATH
-   tar -xj $STANDARD_VERBOSE_FLAG -f owncloud-$VERSION.tar.bz2
-   mkdir -p $STANDARD_VERBOSE_FLAG $PATH_TO_WEBSERVER
+   tar -xj  -f owncloud-$VERSION.tar.bz2
+   mkdir -p  $PATH_TO_WEBSERVER
 
    echo $"Copying decompressed files to '$PATH_TO_WEBSERVER'..."
-   cp -R $STANDARD_VERBOSE_FLAG owncloud/* $PATH_TO_WEBSERVER
+   cp -R  owncloud/* $PATH_TO_WEBSERVER
 
    echo $"Setting permissions for '$PATH_TO_WEBSERVER'..."
    cd $PATH_TO_WEBSERVER
-   chown -R $STANDARD_VERBOSE_FLAG www-data:www-data ..
-   chmod -R $STANDARD_VERBOSE_FLAG 644 .
-   find . -type d -exec chmod $STANDARD_VERBOSE_FLAG 755  {} \;
+   chown -R  www-data:www-data ..
+   chmod -R  644 .
+   find . -type d -exec chmod  755  {} \;
 
    if $DATA_TO_EXTERNAL_DISK; then
       echo $"Creating conf.php..."
       create_minimal_php_conf
-      mkdir $STANDARD_VERBOSE_FLAG $EXTERNAL_DATA_DIR
-      chown -R $STANDARD_VERBOSE_FLAG www-data:www-data $EXTERNAL_DATA_DIR
+      mkdir  $EXTERNAL_DATA_DIR
+      chown -R  www-data:www-data $EXTERNAL_DATA_DIR
    fi
 
    echo $"Cleaning up..."
    cd $STARTPATH
-   rm -R $STANDARD_VERBOSE_FLAG owncloud{,*.tar.bz2,.md5}
+   rm -R  owncloud{,*.tar.bz2,.md5}
    service php5-fpm restart
    service nginx restart
-}
-
-function dynamic_hostname(){
-mkdir -p $STANDARD_VERBOSE_FLAG /etc/dhcp/dhclient-exit-hooks.d/
-# Die Dateien sind gezipt und mit base64 codiert um Platz zu sparen
-echo "H4sIAEt7hlEAA5VSQW7bMBC88xWTRIgdILIaFD0kgHtwlSK52EbaoIcmMGRxVRGVSYFLtTXQx3cl
-W0IbO4dSgEjuzgx3yD07SdbGJlwqdYaPpiKbbegG7Ugo5Iku8/pt+68M2RDTLxPi0rnvPNHJm6tV
-6Ti0DCEvG1873nPxyKSx3mJgcu5NHRAcmGQqCT0Xruj2vOVAG1H6dwhjk4W87DDp/BOMLZyXkHEW
-shq0kDFq734Y3R19IJTefVhOJJpSTVbzvtDOYLwrEmMuXVMJm+SUTnidcbvmkFXVxYHkYGHcFtLv
-LpF9y4y9xFG1QxV5AH0ddxYGnUNU7jw1wVS8A+WNGLYalJdOwEqZAl9xGnnK2NlTnEwxWzzOUzzj
-/Pxl5uF2fvtFMk9KhI+lZ/evMmeLxWc8K7FjVV+bp9B4qwqjVFsPjvdLfz83SLcymxz3S2Rae2LG
-FJGlnytTr/YR1cOn0bi7mxd5/O7uINYYyRcXeCeRtutiwoiTp0mUJKOLXT3R8FDvd2099O2QGCD/
-5+Cu50//UvgDCsDvxlUDAAA=" | base64 -d | gunzip - > /etc/dhcp/dhclient-exit-hooks.d/01_hostname
-chmod $STANDARD_VERBOSE_FLAG 544 /etc/dhcp/dhclient-exit-hooks.d/01_hostname
-
-echo "H4sIAF2ehlEAA1WMwQqCQBiE7/sU4ypSge4DhIeIoEt1yGMQq/7mgv0bu2vl22dERJcZPoZv4khV
-hpXvhIhRdsbjpl3A1EzUUINqxGgHB/vgdW+HBoZ90H2vg7EstodjuV/tNkUy66wPrK80F4F8QPKd
-EBWQEmkKP91lBhlBejWRu5M7v5V88Yc/97RUEopCrfhi+PnJvLbciheb0CQsuQAAAA==" | base64 -d | gunzip - > /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf
-chmod $STANDARD_VERBOSE_FLAG 544 /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf
 }
 
 function create_nginx_conf_files(){
@@ -224,8 +185,8 @@ function edit_phpini(){
    sed -i -e "s/^memory_limit.*/memory_limit = 256M/" /etc/php5/fpm/php.ini
    sed -i -e "s:.upload_tmp_dir.*:upload_tmp_dir = /srv/http/owncloud/data:" /etc/php5/fpm/php.ini
    sed -i -e "s|listen =.*|listen = 127.0.0.1:7659|g" /etc/php5/fpm/pool.d/www.conf
-   mkdir -p $STANDARD_VERBOSE_FLAG /srv/http/owncloud/data
-   chown $STANDARD_VERBOSE_FLAG www-data:www-data /srv/http/owncloud/data
+   mkdir -p  /srv/http/owncloud/data
+   chown  www-data:www-data /srv/http/owncloud/data
 }
 
 function create_minimal_php_conf(){
@@ -237,7 +198,7 @@ cat > $PATH_TO_WEBSERVER/config/config.php << EOF
   'installed' => false,
 );
 EOF
-chown $STANDARD_VERBOSE_FLAG www-data:www-data $PATH_TO_WEBSERVER/config/config.php
+chown  www-data:www-data $PATH_TO_WEBSERVER/config/config.php
 }
 
 
@@ -247,43 +208,37 @@ function download_and_check_oc(){
 
    # Download ownCloud archive
    echo $"Downloading owncloud-$VERSION.tar.bz2..."
-   wget $WGET_FLAG $OWNCLOUD_URL || (echo $"Download failed" && return 1)
+   wget -q $OWNCLOUD_URL || (echo $"Download failed" && return 1)
    wget -qO - $OWNCLOUD_CHECKSUM_URL | sed s/-/owncloud-$VERSION.tar.bz2/g > owncloud.md5
    echo -n $"Checking download..."
    md5sum -c owncloud.md5 || (error_msg $"Download failed" && return 1)
 }
 
-function pre_check_version(){
-   AVAILABLE_VERSIONS=$(wget -qO - http://owncloud.org/releases/Changelog | grep Release |  tr -d 'Relas \"' | tr "\n" ' ')
-   for versions in $AVAILABLE_VERSIONS; do
-      [ "$versions" == "$VERSION" ] && return
-   done
-   echo -e $"An error occurred while checking version." && return 1
-}
 
 # check and install dependencies
 function sys_update(){
    echo $"Updating the operating systems's software (might take a while)..."
-   apt-get $APT_GET_FLAG update &&
-   apt-get $APT_GET_FLAG upgrade &&
+   apt-get -qq update &&
+   apt-get -qq upgrade &&
    if [ $? -ne 0 ]; then
       echo $"Update failed."
       echo $"Bye..."
-      exit 1
+      return 1
    fi
    clear
 }
 
-function main_install(){
-   clear
-   pre_check_version
-   echo $"Installing ownCloud version: $VERSION"
+function get_latest_version(){
+   wget -qO - http://apps.owncloud.com/updater.php?version=5x00x10x1375797810.1234x1375797810.3456xstablex | grep versionstring | grep -Eo "[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}"
+}
+
+function install_owncloud(){
+
+   VERSION=$(get_latest_version)
+   SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+   print_msg $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION"
+   
    sys_update
-   install_dependencies
-   [ "x$SERVER_NAME" == "x" ] && SERVER_NAME=$(host $(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1) | cut -d ' ' -f 5 | sed -e 's/\.$//')
-   [ "x$SERVER_NAME" == "xip" ] && SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
-   echo -e $"This name/IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the name/IP you have to enter in your webbrowser after the script has finished.\nIs the name correct? If not, restart the script now and select 'use_ip'."
-   read -p $"Hit Enter to continue or crtl+c to cancel" tmpvar
    EXTERNAL_DATA_DIR="/mnt/data/owncloudData"
 
    download_and_check_oc &&
@@ -292,31 +247,40 @@ function main_install(){
    install_oc
 }
 
-function main_update(){
+function get_installed_version(){
+   grep getVersionString -1 $PATH_TO_WEBSERVER/lib/util.php | sed -n 3p | tr -d "return\ \'\;\t"
+}
+
+function update_owncloud(){
    clear
    if [ ! -f $PATH_TO_WEBSERVER/config/config.php ]; then
       error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be updated"
       return 1
    fi
-   pre_check_version
+   INSTALLED_VERION=$(get_installed_version)
+   LATEST_VERSION=$(get_latest_version)
+   if [ "$LATEST_VERSION" == "$INSTALLED_VERSION" ]; then
+      error_msg $"Latest version is already installed."
+      return 1
+   fi
    sys_update
    download_and_check_oc
 
    echo $"Decompressing owncloud-$VERSION.tar.bz2..."
-   tar -xj $STANDARD_VERBOSE_FLAG -f owncloud-$VERSION.tar.bz2
+   tar -xjf owncloud-$VERSION.tar.bz2
 
    echo $"Copying decompressed files to '$PATH_TO_WEBSERVER'..."
-   cp -R $STANDARD_VERBOSE_FLAG owncloud/* $PATH_TO_WEBSERVER
+   cp -R  owncloud/* $PATH_TO_WEBSERVER
 
    echo $"Setting permissions for '$PATH_TO_WEBSERVER'..."
    cd $PATH_TO_WEBSERVER
-   chown -R $STANDARD_VERBOSE_FLAG www-data:www-data ..
-   chmod -R $STANDARD_VERBOSE_FLAG 644 .
-   find . -type d -exec chmod $STANDARD_VERBOSE_FLAG 755 {} \;
+   chown -R  www-data:www-data ..
+   chmod -R  644 .
+   find . -type d -exec chmod  755 {} \;
 
    echo $"Cleaning up..."
    cd $STARTPATH
-   rm -r $STANDARD_VERBOSE_FLAG owncloud{,*.tar.bz2,.md5}
+   rm -r  owncloud{,*.tar.bz2,.md5}
    return
 }
 
@@ -326,75 +290,45 @@ function remove_owncloud(){
       error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be removed"
       return 1
    fi
-   read -p $"Are you sure you want to continue? (y/n): " choice
-   [ "$choice" != $"y" ] && return 1
-   read -p $"Do you want to remove ownCloud's datadirectory? (y/n)" choice
+   yes_no $"Are you sure you want to continue?" || return 1
+   
+   if yes_no $"Do you want to remove ownCloud's datadirectory?"; then
+      choice="y"
+   else
+      choice="n"
+   fi
 
    DATA_DIR=$(grep datadirectory $PATH_TO_WEBSERVER/config/config.php | cut -d\' -f4)
 
-   if [ "$choice" == $"y" ] && [[ $DATA_DIR != $PATH_TO_WEBSERVER/* ]]; then
-      rm -r $STANDARD_VERBOSE_FLAG $DATA_DIR
-      rm -r $STANDARD_VERBOSE_FLAG $PATH_TO_WEBSERVER
-   elif [ "$choice" == $"y" ] && [[ $DATA_DIR == $PATH_TO_WEBSERVER/* ]]; then
-      rm -r $STANDARD_VERBOSE_FLAG $PATH_TO_WEBSERVER
-   elif [ "$choice" == $"n" ] && [[ $DATA_DIR != $PATH_TO_WEBSERVER/* ]]; then
-      rm -r $STANDARD_VERBOSE_FLAG $PATH_TO_WEBSERVER
-   elif [ "$choice" == $"n" ] && [[ $DATA_DIR == $PATH_TO_WEBSERVER/* ]]; then
-      find $PATH_TO_WEBSERVER/* -maxdepth 0 ! -name data -exec rm -r $STANDARD_VERBOSE_FLAG {} \;
+   if [ "$choice" == "y" ] && [[ $DATA_DIR != $PATH_TO_WEBSERVER/* ]]; then
+      rm -r  $DATA_DIR
+      rm -r  $PATH_TO_WEBSERVER
+   elif [ "$choice" == "y" ] && [[ $DATA_DIR == $PATH_TO_WEBSERVER/* ]]; then
+      rm -r  $PATH_TO_WEBSERVER
+   elif [ "$choice" == "n" ] && [[ $DATA_DIR != $PATH_TO_WEBSERVER/* ]]; then
+      rm -r  $PATH_TO_WEBSERVER
+   elif [ "$choice" == "n" ] && [[ $DATA_DIR == $PATH_TO_WEBSERVER/* ]]; then
+      find $PATH_TO_WEBSERVER/* -maxdepth 0 ! -name data -exec rm -r  {} \;
    fi
 
-   [ -e /etc/dhcp/dhclient-exit-hooks.d/01_hostname ] && rm $STANDARD_VERBOSE_FLAG /etc/dhcp/dhclient-exit-hooks.d/01_hostname
-   [ -e /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf ] && rm $STANDARD_VERBOSE_FLAG /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf
-   rm -r $STANDARD_VERBOSE_FLAG /srv/http/owncloud
-   apt-get $APT_GET_FLAG purge nginx-common nginx-full nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite php5-curl php-pear php-apc php5-fpm memcached php5-memcache varnish
-   apt-get $APT_GET_FLAG autoremove --purge
+   [ -e /etc/dhcp/dhclient-exit-hooks.d/01_hostname ] && rm  /etc/dhcp/dhclient-exit-hooks.d/01_hostname
+   [ -e /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf ] && rm  /etc/dhcp/dhclient-exit-hooks.d/02_nginxconf
+   rm -r  /srv/http/owncloud
+   apt-get -qq purge nginx-common nginx-full nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite php5-curl php-pear php-apc php5-fpm memcached php5-memcache varnish
+   apt-get -qq autoremove --purge
    clear
    hint_msg $"Reboot is recommended"
    return
 }
 
-# parse commandline arguments
-ARGS=($(getopt -o rvi:u:n: -l "remove-oc,verbose,install:,update:,name:" -n "$MY_NAME" -- "$@" | tr -d \'))
-if [ $? -ne 0 ]; then
-   usage
-   exit 2
-fi
-i=0
-while [ "${ARGS[$i]}" != "--" ]; do
-
-   case "${ARGS[$i]}" in
-      -u|--update)
-         i=$[$i+1]
-         VERSION=${ARGS[$i]}
-         DO_MAIN_UPDATE=true
-         ;;
-      -n|--name)
-         i=$[$i+1]
-         SERVER_NAME="${ARGS[$i]}"
-         CREATE_DYNAMIC_HOST=false
-         ;;
-      -i|--install)
-         i=$[$i+1]
-         VERSION=${ARGS[$i]}
-         DO_MAIN_INSTALL=true
-         ;;
-      -v|--verbose)
-         STANDARD_VERBOSE_FLAG="-v"
-         APT_GET_FLAG=""
-         WGET_FLAG="-v"
-         ;;
-      -r|--remove-oc)
-         DO_UNINSTALL=true
-         ;;
-   esac
-   i=$[$i+1]
-done
-
-
-if [ "$VERSION" == "latest" ]; then
-   VERSION=$LATEST_VERSION
-fi
-
-$DO_MAIN_INSTALL && main_install
-$DO_MAIN_UPDATE && main_update
-$DO_UNINSTALL && remove_owncloud
+case $1 in
+   update)
+      update_owncloud
+      ;;
+   install)
+      install_owncloud
+      ;;
+   remove)
+      remove_owncloud
+      ;;
+esac
