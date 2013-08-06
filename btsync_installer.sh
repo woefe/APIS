@@ -24,12 +24,12 @@ function install_btsync(){
 	USERNAME="      \"login\" : \"$users_name\","
       fi
 
-      users_password=$(password_box $"Password" $"Enter a password for user $users_name:")
+      users_password=$(password_box $"Password" $"Enter a password for user $users_name: ")
       if [ -z $users_password ]; then
 	continue
       fi
 
-      users_password_double_check=$(password_box $"Password" $"Retype your password for user $users_name:")
+      users_password_double_check=$(password_box $"Password" $"Retype the password for user $users_name: ")
       if [ "$users_password_double_check" == "$users_password" ]; then
 	PASSWORD="      \"password\" : \"$users_password\""
 	COMMA=","
@@ -114,6 +114,8 @@ EOF
    chmod 755 /etc/init.d/btsync
    update-rc.d btsync defaults
    service btsync start
+   IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+   hint_msg $"BitTorrent Sync's webinterface is now available under $IP:8888"
    return 0
 }
 

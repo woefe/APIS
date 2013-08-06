@@ -1,7 +1,7 @@
 if $DATA_TO_EXTERNAL_DISK; then
    DIRECTORY=/mnt/data/samba
 else
-   DIRECTORY=/sambaData
+   DIRECTORY=/srv/samba
 fi
 
 function first_install(){

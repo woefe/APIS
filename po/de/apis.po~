@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-22 12:34+0200\n"
+"POT-Creation-Date: 2013-08-06 12:17+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -16,6 +16,75 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: btsync_installer.sh:6
+msgid "Installing BitTorrent Sync..."
+msgstr "Installiere BitTorrent Sync..."
+
+#: btsync_installer.sh:8
+msgid "Downloading BitTorrent Sync..."
+msgstr "Lade BitTorrent Sync herunter..."
+
+#: btsync_installer.sh:10
+msgid "Unpacking .tar file..."
+msgstr "Entpacke Archiv..."
+
+#: btsync_installer.sh:14
+msgid "Removing temporary files..."
+msgstr "Lösche temporäre Dateien"
+
+#: btsync_installer.sh:17
+msgid "Create username and password"
+msgstr "Erstelle Benuter und Passwort"
+
+#: btsync_installer.sh:17
+msgid ""
+"The BitTorrent Sync webinterface can be protected by a dialog that asks for "
+"username and password."
+msgstr ""
+"Die Weboberfläche von BitTorrent Sync kann durch einen Passwortdialog "
+"geschützt werden."
+
+#: btsync_installer.sh:20
+msgid "Username"
+msgstr "Benutzername"
+
+#: btsync_installer.sh:20
+msgid ""
+"Enter a username or leave it blank, if you don't want to install a password "
+"dialog:"
+msgstr ""
+"Gib einen Benutzernamen ein oder lass die Zeile leer, wenn du auf den "
+"Passwortdialog verzichten willst."
+
+#: btsync_installer.sh:27 btsync_installer.sh:32
+msgid "Password"
+msgstr "Passwort"
+
+#: btsync_installer.sh:27
+msgid "Enter a password for user $users_name: "
+msgstr "Passwort für den Benutzer $users_name: "
+
+#: btsync_installer.sh:32
+msgid "Retype the password for user $users_name: "
+msgstr "Wiederhole das Passwort für den Benutzer $users_name: "
+
+#: btsync_installer.sh:118
+msgid "BitTorrent Sync's webinterface is now available under $IP:8888"
+msgstr ""
+"Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar"
+
+#: btsync_installer.sh:123
+msgid "Remove BitTorrent Sync"
+msgstr "Deinstalliere BitTorrent Sync"
+
+#: btsync_installer.sh:123
+msgid ""
+"Are you sure that you want to uninstall BitTorrent Sync? Datadirectories "
+"won't be deleted."
+msgstr ""
+"Bist du dir sicher, dass du BitTorrent Sync deinstallieren willst? Die "
+"synchronisierten Ordner werden nicht gelöscht."
 
 #: data_to_external_disk.sh:2
 msgid "Editing /etc/fstab"
@@ -29,7 +98,7 @@ msgstr "|  Speicher  |"
 msgid ""
 "You have got three options here:\\n1. Move datadirectories to external "
 "Storage (HDD, USB; you can select a single partition or an entire disk)\\n2. "
-"Enter the datadirectory manually\\n3. Leave the datadirectory on the SD-Card"
+"Enter the datadirectory manually\\n3. Leave the datadirectory on the SD Card"
 "\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
 "format the Drive."
 msgstr ""
@@ -56,8 +125,8 @@ msgstr "Verzeichnis nicht gefunden."
 msgid "Try again? (y/n): "
 msgstr "Erneut versuchen? (j/n): "
 
-#: data_to_external_disk.sh:28 owncloud_installer.sh:352
-#: owncloud_installer.sh:354
+#: data_to_external_disk.sh:28 owncloud_installer.sh:340
+#: owncloud_installer.sh:342
 msgid "n"
 msgstr "n"
 
@@ -113,8 +182,8 @@ msgstr ""
 "Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten Schritt "
 "formatiert! (j/n): "
 
-#: data_to_external_disk.sh:71 owncloud_installer.sh:342
-#: owncloud_installer.sh:347 owncloud_installer.sh:350 samba_installer.sh:19
+#: data_to_external_disk.sh:71 owncloud_installer.sh:330
+#: owncloud_installer.sh:335 owncloud_installer.sh:338 samba_installer.sh:19
 #: samba_installer.sh:20 samba_installer.sh:65 samba_installer.sh:66
 #: samba_installer.sh:111
 msgid "y"
@@ -125,73 +194,77 @@ msgid "The device is still mounted, trying umount..."
 msgstr "Noch gemountet, versuche umount..."
 
 #: data_to_external_disk.sh:81 data_to_external_disk.sh:95
-msgid "Datadirectories will remain on the SD-Card"
+msgid "Datadirectories will remain on the SD Card"
 msgstr "Daten bleiben auf der Speicherkarte"
 
 #: data_to_external_disk.sh:82 data_to_external_disk.sh:96
 msgid "Unmmounted successfully."
 msgstr "Gerät erfolgreich ungemountet."
 
-#: main.sh:8
+#: main.sh:12
+msgid "HINT"
+msgstr "HINWEIS"
+
+#: main.sh:16
 msgid "ERROR"
 msgstr "FEHLER"
 
-#: main.sh:17 main.sh:39 main.sh:54 main.sh:70
+#: main.sh:37 main.sh:63 main.sh:78 main.sh:93 main.sh:122
 msgid "Select"
 msgstr "Auswählen"
 
-#: main.sh:17 main.sh:39 main.sh:54
+#: main.sh:37 main.sh:63 main.sh:78 main.sh:93
 msgid "Back"
 msgstr "Zurück"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Install ownCloud"
 msgstr "Installiere ownCloud"
 
-#: main.sh:17
+#: main.sh:37
 msgid ""
 "\\nInstall latest version of ownCloud\\nThe installer tries to find out the "
 "hostname via DNS. This may not work depending on your router. If you aren't "
-"shure if that works select 'use_ip'"
+"sure if that works select 'use_ip'"
 msgstr ""
 "\\nInstalliere neueste ownCloud Version.\\nDer Setup versucht den Hostnamen "
 "mittels DNS herauszufinden. Je nach Router kann das scheitern. Wenn du dir "
 "nicht sicher bist, ob dein Router die Namen richtig vergibt, wähle 'use_ip'"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Enable verbose mode"
 msgstr "Aktiviere ausführliche Anzeige"
 
-#: main.sh:17
+#: main.sh:37
 msgid "Use IP address instead of hostname"
 msgstr "Benutze die IP Adresse und nicht den DNS Namen"
 
-#: main.sh:25
+#: main.sh:49
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
 "going to reboot now.\\nAfter that open a web browser and navigate to your "
 "ownCloud instance. Enter a username and a password. The advanced settings "
-"are preconfigured by this script, so don't change them."
+"are preconfigured by this script, so don't change them!"
 msgstr ""
 "Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry Pi, "
 "ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit Passwort "
 "anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht bearbeiten.\\nNoch "
 "ein kleiner Tipp: ownCloud funktioniert am besten mit Firefox"
 
-#: main.sh:33
-msgid "Installed version: $INSTALLED_VERSION, Latest version: $LATEST_VERSION"
+#: main.sh:57
+msgid "Installed version: $INSTALLED_VERSION, latest version: $LATEST_VERSION"
 msgstr ""
 "Installierte Version: $INSTALLED_VERSION, Neueste Version $LATEST_VERSION"
 
-#: main.sh:36
-msgid "latest version is installed. DO NOT UPDATE"
+#: main.sh:60
+msgid "Latest version is installed. DO NOT UPDATE"
 msgstr "Die neueste Version ist bereits installiert."
 
-#: main.sh:39
+#: main.sh:63
 msgid "Update/remove ownCloud"
 msgstr "Update/deinstalliere ownCloud"
 
-#: main.sh:39
+#: main.sh:63
 msgid ""
 "\\nUpdate to latest version of ownCloud\\nUse the update function only for "
 "updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
@@ -201,15 +274,15 @@ msgstr ""
 "sollte nur für Updates, nicht aber für Upgrades verwendet werden. Mehr Infos "
 "hier: http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html"
 
-#: main.sh:39
+#: main.sh:63
 msgid "Remove ownCloud"
 msgstr "Deinstalliere ownCloud"
 
-#: main.sh:54
+#: main.sh:78
 msgid "Change/remove Samba"
 msgstr "Ändere/entferne Samba"
 
-#: main.sh:54
+#: main.sh:78
 msgid ""
 "\\nUpdates for Samba are done by the system's package management.\\nYou can "
 "either add more Samba shares or remove Samba."
@@ -217,19 +290,51 @@ msgstr ""
 "\\nUpdates werden von der Paketverwaltung übernommen.\\nHier kannst du "
 "entweder mehrere Samba Freigaben hinzufügen oder Samba entfernen."
 
-#: main.sh:54
+#: main.sh:78
 msgid "Add more shares and users"
 msgstr "Füge weitere Freigaben und Benutzer hinzu"
 
-#: main.sh:54
+#: main.sh:78
 msgid "Remove samba"
 msgstr "Entferne Samba"
 
-#: main.sh:70
+#: main.sh:93
+msgid "Configure NFS"
+msgstr "Konfigurieren von NFS"
+
+#: main.sh:93
+msgid ""
+"\\nNote: Updates are not covered by APIS since the package management system "
+"manages them."
+msgstr ""
+"\\nAnmerkung: Die Updates werden nicht von APIS übernommen, da die "
+"Paketverwaltung dafür zuständig ist."
+
+#: main.sh:93
+msgid "Add more NFS shares"
+msgstr "Weitere NFS-Freigaben hinzufügen"
+
+#: main.sh:93
+msgid "Delete NFS shares"
+msgstr "Lösche NFS-Freigaben"
+
+#: main.sh:93
+msgid "Add clients to NFS shares"
+msgstr "Weitere Clients zu NFS-Freigaben hinzufügen"
+
+#: main.sh:93
+msgid "Remove clients from configuration files"
+msgstr "Entferne Clients aus den Konfigurationsdateien"
+
+#: main.sh:93
+msgid "Uninstall NFS server"
+msgstr "Deinstalliere den NFS server"
+
+#: main.sh:122
 msgid "Exit"
 msgstr "Beenden"
 
-#: main.sh:70
+#: main.sh:122
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi\\n"
@@ -237,23 +342,31 @@ msgstr ""
 "\\nAwesome Pi Installation Script\\n\\nInstalliere Cooles Zeug auf deinem "
 "RaspberryPi\\n"
 
-#: main.sh:70
+#: main.sh:122
 msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
-#: main.sh:70
+#: main.sh:122
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
-#: main.sh:97
+#: main.sh:122
+msgid "Install/uninstall BitTorrent Sync"
+msgstr "Installiere/Deinstalliere BitTorrent Sync"
+
+#: main.sh:122
+msgid "Install/uninstall/configure Network File System Server"
+msgstr "Installiere/deinstalliere/konfiguriere den Network File System Server"
+
+#: main.sh:176
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:98 owncloud_installer.sh:284
+#: main.sh:177 owncloud_installer.sh:271
 msgid "Bye..."
 msgstr "Beende"
 
-#: main.sh:106
+#: main.sh:185
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -263,19 +376,244 @@ msgstr ""
 "konfigurieren z.B. Samba, ownCloud...\\nWillst du eine externe Festplatte "
 "als Datenspeicher für ownCloud und Samba verwenden?"
 
-#: owncloud_installer.sh:15
-msgid "Installing dependencies..."
-msgstr "Installiere für das Script benötigte Pakete"
+#: nfs_installer.sh:4
+msgid "Install NFS"
+msgstr "Installiere NFS"
 
-#: owncloud_installer.sh:17
+#: nfs_installer.sh:4
+msgid ""
+"WARNING: This installer may overwrite any existing NFS related configuration "
+"files. Ignore this warning if you haven't installed NFS yet.\\nDo you really "
+"want to install the NFS server?"
+msgstr ""
+"ACHTUNG: Dieser Setup überschreibt alle NFS Konfigurationsdateien. Du kannst "
+"diese Warnung ignorieren, wenn du NFS bisher noch nicht installiert hast."
+"\\nWillst du den NFS Server wirklich installieren?"
+
+#: nfs_installer.sh:9 nfs_installer.sh:81
+msgid ""
+"Enter the path to the directory that you want to share via NFS. Hit 'return' "
+"to use the default path."
+msgstr ""
+"Gib den Pfad zu einem Ordner an, den du mittls NFS freigeben willst. Du "
+"kanns auch einfach 'Enter' drücken um den Standardpfad zu verwenden"
+
+#: nfs_installer.sh:11 nfs_installer.sh:83
+msgid "Directory doesn't exist"
+msgstr "Verzeichnis nicht gefunden."
+
+#: nfs_installer.sh:11 nfs_installer.sh:83
+msgid "'$EXPORTPATH' doesn't exist. Do you want to create it?"
+msgstr ""
+"'$EXPORTPATH' existiert noch nicht. Soll das Verzeichnis erstellt werden?"
+
+#: nfs_installer.sh:17 nfs_installer.sh:92
+msgid "Add client $[$i+1]"
+msgstr "$[$i+1]. Client hinzufügen"
+
+#: nfs_installer.sh:17 nfs_installer.sh:92
+msgid ""
+"Whom do you want to grant access on this shared directory? Enter only one IP "
+"address, hostname or subnet."
+msgstr ""
+"Wer soll Zugriff auf diese Freigabe erhalten? Gib jeweils nur EINE IP-"
+"Adresse, einen Hostnamen oder ein Subnet in das Feld ein!"
+
+#: nfs_installer.sh:22 nfs_installer.sh:24 nfs_installer.sh:41
+#: nfs_installer.sh:97 nfs_installer.sh:99 nfs_installer.sh:116
+#: nfs_installer.sh:156 nfs_installer.sh:159 nfs_installer.sh:183
+msgid "Add more clients"
+msgstr "Weitere Clients hinzufügen"
+
+#: nfs_installer.sh:22 nfs_installer.sh:24 nfs_installer.sh:41
+#: nfs_installer.sh:116
+msgid "Do you want to add more clients to '$EXPORTPATH'?"
+msgstr "Willst du noch weitere Clients zu '$EXPORTPATH' hinzufügen?"
+
+#: nfs_installer.sh:28 nfs_installer.sh:103 nfs_installer.sh:167
+msgid "WARNING"
+msgstr "ACHTUNG"
+
+#: nfs_installer.sh:28 nfs_installer.sh:103
+msgid ""
+"'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?"
+msgstr ""
+"'${CLIENT[$i]}' ist nicht erreichbar. Willst du '${CLIENT[$i]}' trotzdem "
+"hinzufügen?"
+
+#: nfs_installer.sh:32 nfs_installer.sh:107 nfs_installer.sh:171
+msgid "Set permissions"
+msgstr "Setze Berechtigungen"
+
+#: nfs_installer.sh:32 nfs_installer.sh:107
+msgid "Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'."
+msgstr "Wähle die Berechtigungen für '${CLIENT[$i]}' auf '$EXPORTPATH'. "
+
+#: nfs_installer.sh:32 nfs_installer.sh:107
+msgid "'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'"
+msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH lesen und schreiben"
+
+#: nfs_installer.sh:32 nfs_installer.sh:107
+msgid "'${CLIENT[$i]}' can read files on '$EXPORTPATH'"
+msgstr "'${CLIENT[$i]}' kann Dateien in '$EXPORTPATH' nur lesen"
+
+#: nfs_installer.sh:36 nfs_installer.sh:111 nfs_installer.sh:175
+msgid "Nothing selected"
+msgstr "Nichts ausgewählt"
+
+#: nfs_installer.sh:36 nfs_installer.sh:111 nfs_installer.sh:175
+msgid "You have to select either 'read and write' or 'read only'!"
+msgstr "Du musst 'ro' oder 'rw' auswählen!"
+
+#: nfs_installer.sh:44
+msgid "You can add more shares later by selecting 'nfs_setup' in the main menu"
+msgstr ""
+"Du kannst später noch weitere Freigaben hinzufügen. Wähle dazu im Hauptmenü "
+"den Eintrag 'nfs_setup'"
+
+#: nfs_installer.sh:67
+msgid ""
+"NFS server is now installed. Clients can now mount NFS shares. Command to "
+"mount NFS shares on clients:\\nsudo mount IPADDRESS_OF_YOUR_NFS_SERVER:/path/"
+"to/shared/directory /path/to/dir"
+msgstr ""
+"Der NFS Server ist nun installiert. Die Clients können nun die Freigaben mit "
+"folgendem Befehl mounten: sudo mount IPADRESSE_DEINES_NFS_SERVER:/path/to/"
+"shared/directory /path/to/dir"
+
+#: nfs_installer.sh:73
+msgid "Uninstall NFS"
+msgstr "Deinstalliere NFS"
+
+#: nfs_installer.sh:73
+msgid ""
+"Do you really want to uninstall NFS server? The content of your shared "
+"directories won't be deleted."
+msgstr ""
+"Bist du dir sicher, dass du den NFS Server deinstallieren willst? Der Inhalt "
+"der freigegebenen Verzeichnisse wird nicht gelöscht."
+
+#: nfs_installer.sh:81
+msgid "Share a directory"
+msgstr "Teile ein Verzeichnis"
+
+#: nfs_installer.sh:86
+msgid "This directory is already shared via NFS."
+msgstr "Das Verzeichnis wird bereits durch NFS freigeben"
+
+#: nfs_installer.sh:97 nfs_installer.sh:99
+msgid ""
+"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the "
+"share will not be created!"
+msgstr ""
+"Willst du weitere Clients zu '$EXPORTPATH' hinzufügen? Wenn du 'Nein' "
+"wählst, wird die Freigabe nicht erstellt."
+
+#: nfs_installer.sh:128 nfs_installer.sh:146 nfs_installer.sh:192
+msgid "No NFS exports available."
+msgstr "Es sind keine NFS Freigaben eingerichtet!"
+
+#: nfs_installer.sh:134 nfs_installer.sh:136
+msgid "Remove NFS shares"
+msgstr "NFS Freigaben entfernen"
+
+#: nfs_installer.sh:134
+msgid "Select the NFS share which you want to delete."
+msgstr "Wähle die Freigabe, die du löschen willst!"
+
+#: nfs_installer.sh:136
+msgid "Do you really want to delete '$SELECTED_SHARE'?"
+msgstr "Willst du '$SELECTED_SHARE' wirklich löschen?"
+
+#: nfs_installer.sh:153
+msgid "Add clients to your NFS shares"
+msgstr "Weiter Clients hinzufügen"
+
+#: nfs_installer.sh:153
+msgid "Select the NFS share to which you want to add more clients."
+msgstr "Wähle die Freigabe zu der du weiter Clients hinzufügen willst!"
+
+#: nfs_installer.sh:156
+msgid ""
+"Whom do you want to grant access on '$SELECTED_SHARE'? Enter only one IP "
+"address, hostname or subnet."
+msgstr ""
+"Wem willst du Zugriff auf '$SELECTED_SHARE' gewähren? Gib jeweils nur EINE "
+"IP-Adresse, einen Hostnamen oder ein Subnet in das Feld ein!"
+
+#: nfs_installer.sh:159 nfs_installer.sh:183
+msgid "Do you want to add more clients to '$SELECTED_SHARE'?"
+msgstr "Willst du weitere CLients zu '$SELECTED_SHARE' hinzufügen?"
+
+#: nfs_installer.sh:162
+msgid ""
+"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-"
+"desktop' or whatever your computer's name is) or a subnet (e.g. "
+"192.168.0.0/24)."
+msgstr ""
+"Keine Engabe. Du kannst hier eine IP-Adresse (z.B. 192.168.0.5), einen "
+"Hostnamen (z.B. ubuntu-desktop.fritz.box) oder ein Subnet "
+"(z.B. 192.168.0.0/24) angeben."
+
+#: nfs_installer.sh:167
+msgid "'$CLIENT' is currently not available. Add '$CLIENT' anyways?"
+msgstr "'$CLIENT' ist nicht erreichbar. Willst du '$CLIENT' trotzdem "
+"hinzufügen?"
+
+#: nfs_installer.sh:171
+msgid "Select permissions for '$CLIENT' on '$SELECTED_SHARE'."
+msgstr ""
+
+#: nfs_installer.sh:171
+msgid "'$CLIENT' can read and write files on $SELECTED_SHARE"
+msgstr ""
+
+#: nfs_installer.sh:171
+msgid "'$CLIENT' can read files on $SELECTED_SHARE"
+msgstr ""
+
+#: nfs_installer.sh:198 nfs_installer.sh:206
+msgid "Remove clients from NFS shares"
+msgstr ""
+
+#: nfs_installer.sh:198
+msgid "Select the NFS share from which you want to delete clients."
+msgstr ""
+
+#: nfs_installer.sh:206
+msgid ""
+"Select the client which you want to delete from '$SELECTED_SHARE'.\\n   Used "
+"Syntax: 'clientname(permissions,options)'"
+msgstr ""
+
+#: nfs_installer.sh:209 nfs_installer.sh:212
+msgid "Remove clients"
+msgstr "Entferne Clients"
+
+#: nfs_installer.sh:209
+msgid "Do you really want to delete '$SELECTED_CLIENT' from '$SELECTED_SHARE'?"
+msgstr ""
+
+#: nfs_installer.sh:212
+msgid "Do you want to delete another client from '$SELECTED_SHARE'?"
+msgstr ""
+
+#: nfs_installer.sh:219
+msgid ""
+"If you changed the configuration, you have to restart NFS by issuing "
+"following command:\\nsudo service nfs-kernel-server restart\\nBefore you "
+"restart NFS make sure that all clients have unmounted the NFS exports."
+msgstr ""
+
+#: owncloud_installer.sh:15
 msgid "Installing nginx and php..."
 msgstr "Installiere nginx und php..."
 
-#: owncloud_installer.sh:19
+#: owncloud_installer.sh:17
 msgid "Searching for packages that are no longer needed..."
 msgstr "Nicht mehr benötigte Pakete werden gesucht..."
 
-#: owncloud_installer.sh:23
+#: owncloud_installer.sh:21
 msgid ""
 "The next step will create a ssl certificate.\\nDon't leave the field 'Common "
 "Name' blank.\\nHit Enter to continue."
@@ -285,80 +623,84 @@ msgstr ""
 "Weitermachen? Enter zum Weitermachen (empfohlen); STRG+c zum Abbrechen der "
 "Installation"
 
-#: owncloud_installer.sh:34
+#: owncloud_installer.sh:32
 msgid "An error occurred during the last Step. Repeating"
 msgstr "Dieser Schritt ist fehlgeschlagen. Wiederhole"
 
-#: owncloud_installer.sh:42
+#: owncloud_installer.sh:40
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr "Erstelle /etc/nginx/nginx.conf.."
 
-#: owncloud_installer.sh:45
+#: owncloud_installer.sh:43
 msgid "Editing /etc/php5/fpm/php.ini..."
 msgstr "Bearbeite /etc/php5/fpm/php.ini.."
 
-#: owncloud_installer.sh:49
+#: owncloud_installer.sh:47
 msgid "Creating files in /etc/dhcp/dhclient-exit-hooks.d/..."
 msgstr "Erstelle Dateien in /etc/dhcp/dhclient-exit-hooks.d/..."
 
-#: owncloud_installer.sh:53
+#: owncloud_installer.sh:51
 msgid "Editing /etc/dphys-swapfile"
 msgstr "Bearbeite /etc/dphys-swapfile"
 
-#: owncloud_installer.sh:58
+#: owncloud_installer.sh:59
 msgid "Checking for locale en_US.UTF-8..."
 msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: owncloud_installer.sh:63 owncloud_installer.sh:317
+#: owncloud_installer.sh:65
+msgid "Installing dependencies..."
+msgstr "Installiere für das Script benötigte Pakete"
+
+#: owncloud_installer.sh:71 owncloud_installer.sh:305
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr "Entpacke ownCloud-Archiv..."
 
-#: owncloud_installer.sh:68 owncloud_installer.sh:320
+#: owncloud_installer.sh:76 owncloud_installer.sh:308
 msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
 msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."
 
-#: owncloud_installer.sh:71 owncloud_installer.sh:323
+#: owncloud_installer.sh:79 owncloud_installer.sh:311
 msgid "Setting permissions for '$PATH_TO_WEBSERVER'..."
 msgstr "Setze Dateiberechtigungen für '$PATH_TO_WEBSERVER'..."
 
-#: owncloud_installer.sh:78
+#: owncloud_installer.sh:86
 msgid "Creating conf.php..."
 msgstr "Erstelle conf.php"
 
-#: owncloud_installer.sh:84 owncloud_installer.sh:329
+#: owncloud_installer.sh:92 owncloud_installer.sh:317
 msgid "Cleaning up..."
 msgstr "Räume auf..."
 
-#: owncloud_installer.sh:262
+#: owncloud_installer.sh:249
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr "Lade ownCloud Archiv herunter..."
 
-#: owncloud_installer.sh:263 owncloud_installer.sh:266
+#: owncloud_installer.sh:250 owncloud_installer.sh:253
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: owncloud_installer.sh:265
+#: owncloud_installer.sh:252
 msgid "Checking download..."
 msgstr "Überprüfe Download..."
 
-#: owncloud_installer.sh:274
+#: owncloud_installer.sh:261
 msgid "An error occurred while checking version."
 msgstr "Beim Überprüfen der Version trat ein Fehler auf"
 
-#: owncloud_installer.sh:279 samba_installer.sh:9
+#: owncloud_installer.sh:266 samba_installer.sh:9
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 "Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
 
-#: owncloud_installer.sh:283
+#: owncloud_installer.sh:270
 msgid "Update failed."
 msgstr "Update fehlgeschlagen."
 
-#: owncloud_installer.sh:293
+#: owncloud_installer.sh:280
 msgid "Installing ownCloud version: $VERSION"
 msgstr "Installiere ownCloud version: $VERSION"
 
-#: owncloud_installer.sh:297
+#: owncloud_installer.sh:285
 msgid ""
 "This name/IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will "
 "be the name/IP you have to enter in your webbrowser after the script has "
@@ -369,11 +711,11 @@ msgstr ""
 "dieser Name korrekt? Wenn nicht, dann solltest du das Script jetzt erneut "
 "starten und 'use_ip' auswählen."
 
-#: owncloud_installer.sh:298
+#: owncloud_installer.sh:286
 msgid "Hit Enter to continue or crtl+c to cancel"
 msgstr "Enter: weitermachen; Strg+c: abbrechen"
 
-#: owncloud_installer.sh:310
+#: owncloud_installer.sh:298
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated"
@@ -381,7 +723,7 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden"
 
-#: owncloud_installer.sh:338
+#: owncloud_installer.sh:326
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed"
@@ -389,15 +731,15 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden"
 
-#: owncloud_installer.sh:341 samba_installer.sh:110
+#: owncloud_installer.sh:329 samba_installer.sh:110
 msgid "Are you sure you want to continue? (y/n): "
 msgstr "Wirklich weitermachen? (j/n): "
 
-#: owncloud_installer.sh:343
+#: owncloud_installer.sh:331
 msgid "Do you want to remove ownCloud's datadirectory? (y/n)"
 msgstr "Datenverzeichnis löschen? (j/n): "
 
-#: owncloud_installer.sh:364
+#: owncloud_installer.sh:352
 msgid "Reboot is recommended"
 msgstr "Neustart empfohlen"
 
@@ -437,32 +779,18 @@ msgstr "Weitere Freigaben erstellen? (j/n): "
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
 
+#~ msgid "'${CLIENT[$i]}' can read and write files on $EXPORTPATH"
+#~ msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH lesen und schreiben"
+
+#~ msgid "'${CLIENT[$i]}' can read files on $EXPORTPATH"
+#~ msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH nur lesen"
+
 #~ msgid ""
-#~ "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi "
-#~ "is going to reboot now.\\nAfter that open a web browser and navigate to "
-#~ "your ownCloud instance. Enter a username and a password.\\nThe advanced "
-#~ "settings are preconfigured by this script, so don't change them."
+#~ "Enter the path to a directory that you want to share via NFS or just hit "
+#~ "'return' to use the default path."
 #~ msgstr ""
-#~ "Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry "
-#~ "Pi, ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit "
-#~ "Passwort anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht "
-#~ "bearbeiten.\\nNoch ein kleiner Tipp: ownCloud funktioniert am besten mit "
-#~ "Firefox"
+#~ "Gib den Pfad zu einem Ordner an, den du mittls NFS freigeben willst. Du "
+#~ "kanns auch einfach 'Enter' drücken um den Standardpfad zu verwenden"
 
-#~ msgid "Reboot in 20 seconds"
-#~ msgstr "Neustart in 20 Sekunden"
-
-#~ msgid "...15 seconds"
-#~ msgstr "...15 Sekunden"
-
-#~ msgid "...10 seconds"
-#~ msgstr "...10 Sekunden"
-
-#~ msgid "...$i seconds"
-#~ msgstr "...$i Sekunden"
-
-#~ msgid "...one second"
-#~ msgstr "...eine Sekunden"
-
-#~ msgid "This user already exists"
-#~ msgstr "Der Benutzer existiert bereits"
+#~ msgid "Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'"
+#~ msgstr "Wähle die Berechtigungen für '${CLIENT[$i]}' auf '$EXPORTPATH'"

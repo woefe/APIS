@@ -12,7 +12,7 @@ function data_to_external_disk(){
    echo "--------------"
    echo $"|  Storage   |"
    echo "--------------"
-   echo -e $"You have got three options here:\n1. Move datadirectories to external Storage (HDD, USB; you can select a single partition or an entire disk)\n2. Enter the datadirectory manually\n3. Leave the datadirectory on the SD-Card\n\nIMPOTRANT: If you choose the first option, this script will erase and format the Drive."
+   echo -e $"You have got three options here:\n1. Move datadirectories to external Storage (HDD, USB; you can select a single partition or an entire disk)\n2. Enter the datadirectory manually\n3. Leave the datadirectory on the SD Card\n\nIMPOTRANT: If you choose the first option, this script will erase and format the Drive."
    read -p $"What's your choice? (1/2/3): " choice
 
    if [ "$choice" == "3" ]; then
@@ -78,7 +78,7 @@ function data_to_external_disk(){
          # check if still mounted. if yes, umount
          if grep -q "$selected_disk" /proc/mounts; then
             echo $"The device is still mounted, trying umount..."
-            umount $STANDARD_VERBOSE_FLAG $(grep $selected_disk /proc/mounts | cut -d ' ' -f 1 | tr "\n" " ") || (echo $"Datadirectories will remain on the SD-Card" && return)
+            umount $STANDARD_VERBOSE_FLAG $(grep $selected_disk /proc/mounts | cut -d ' ' -f 1 | tr "\n" " ") || (echo $"Datadirectories will remain on the SD Card" && return)
             echo $"Unmmounted successfully."
          fi
          # formating und mounting
@@ -92,7 +92,7 @@ function data_to_external_disk(){
          # check if still mounted. if yes, umount
          if grep -q "$selected_disk" /proc/mounts; then
             echo $"The device is still mounted, trying umount..."
-            umount $STANDARD_VERBOSE_FLAG /dev/$selected_disk || (echo $"Datadirectories will remain on the SD-Card" && return)
+            umount $STANDARD_VERBOSE_FLAG /dev/$selected_disk || (echo $"Datadirectories will remain on the SD Card" && return)
             echo $"Unmmounted successfully."
          fi
          # formating und mounting

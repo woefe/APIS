@@ -34,7 +34,7 @@ function yes_no(){
 }
 
 function install_owncloud(){
-   options=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Install ownCloud" --checklist $"\nInstall latest version of ownCloud\nThe installer tries to find out the hostname via DNS. This may not work depending on your router. If you aren't shure if that works select 'use_ip'" 30 80 15 \
+   options=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Install ownCloud" --checklist $"\nInstall latest version of ownCloud\nThe installer tries to find out the hostname via DNS. This may not work depending on your router. If you aren't sure if that works select 'use_ip'" 30 80 15 \
       "verbose" $"Enable verbose mode" 0\
       "use_ip" $"Use IP address instead of hostname" 0 3>&1 1>&2 2>&3)
 
@@ -46,7 +46,7 @@ function install_owncloud(){
    options=$(echo $options | tr -d \" | sed -e 's/verbose/-v/' -e 's/use_ip/-n ip/')
    . owncloud_installer.sh -i latest $options
    sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=true/' /var/lib/apis/conf
-   reboot_prompt $"In a few moments you can finally enjoy your ownCloud.\nThe Raspberry Pi is going to reboot now.\nAfter that open a web browser and navigate to your ownCloud instance. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them."
+   reboot_prompt $"In a few moments you can finally enjoy your ownCloud.\nThe Raspberry Pi is going to reboot now.\nAfter that open a web browser and navigate to your ownCloud instance. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
 }
 
 function update_or_remove_owncloud(){
@@ -54,10 +54,10 @@ function update_or_remove_owncloud(){
    INSTALLED_VERSION="$(grep getVersionString -1 /var/www/cloud/lib/util.php | sed -n 3p | tr -d "return\ \'\;\t")"
    if [ "$LATEST_VERSION" != "$INSTALLED_VERSION" ]; then
       item1="update"
-      tag1=$"Installed version: $INSTALLED_VERSION, Latest version: $LATEST_VERSION"
+      tag1=$"Installed version: $INSTALLED_VERSION, latest version: $LATEST_VERSION"
    else
       item1="noupdate"
-      tag1=$"latest version is installed. DO NOT UPDATE"
+      tag1=$"Latest version is installed. DO NOT UPDATE"
    fi
 
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --radiolist $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
@@ -67,7 +67,7 @@ function update_or_remove_owncloud(){
    if [ "$option" == "update" ]; then
       . owncloud_installer.sh -u latest
    elif [ "$option" == "remove" ]; then
-      . owncloud_installer.sh -r && sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=false/' /var/lib/apis/conf
+      . owncloud_installer.sh -vr && sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=false/' /var/lib/apis/conf
    elif [ "$option" == "noupdate" ]; then
       main && return
    fi
@@ -89,12 +89,41 @@ function remove_or_change_samba(){
    return
 }
 
+function configure_nfs(){
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Configure NFS" --menu $"\nNote: Updates are not covered by APIS since the package management system manages them." 30 80 15 \
+      add-shares $"Add more NFS shares" \
+      delete-shares $"Delete NFS shares" \
+      add-clients $"Add clients to NFS shares" \
+      delete-clients $"Remove clients from configuration files" \
+      uninstall $"Uninstall NFS server" 3>&1 1>&2 2>&3)
+
+   case $option in
+      uninstall)
+	. nfs_installer.sh uninstall &&
+	sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=false/' /var/lib/apis/conf
+	;;
+      add-clients)
+	. nfs_installer.sh add-clients
+	;;
+      add-shares)
+	. nfs_installer.sh add-shares
+	;;
+      delete-shares)
+	. nfs_installer.sh delete-shares
+	;;
+      delete-clients)
+	. nfs_installer.sh delete-clients
+	;;
+   esac
+}
+
 function main(){
    . /var/lib/apis/conf
    choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi\n" 30 80 15 \
       owncloud_setup $"Install/update/remove ownCloud"\
       samba_setup $"Install/remove Samba Server" \
-      btsync_setup $"Install/Uninstall BitTorrent Sync" 3>&1 1>&2 2>&3)
+      btsync_setup $"Install/uninstall BitTorrent Sync" \
+      nfs_setup $"Install/uninstall/configure Network File System Server" 3>&1 1>&2 2>&3)
 
    case $choice in
       owncloud_setup)
@@ -126,6 +155,19 @@ function main(){
             main
             return	   
 	fi
+	;;
+      nfs_setup)
+	if $NFS_INSTALLED; then
+	   configure_nfs
+	   main
+            return
+	else
+	   . nfs_installer.sh install &&
+	   sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return	   
+	fi
+	;;
    esac
 }
 
@@ -161,6 +203,7 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo "OWNCLOUD_INSTALLED=false" >> /var/lib/apis/conf
    echo "SAMBA_INSTALLED=false" >> /var/lib/apis/conf
    echo "BTSYNC_INSTALLED=false" >> /var/lib/apis/conf
+   echo "NFS_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
 main

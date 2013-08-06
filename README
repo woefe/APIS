@@ -8,6 +8,10 @@ HOW TO USE:
 
 HOW TO TRANSLATE:
 
+0. This procedure applies to all languages ​​other than English. If you want
+   to change some of the English translations, you have to do it directly in
+   the code.
+
 1. Change directory:
 	cd APIS
 
