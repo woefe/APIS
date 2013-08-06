@@ -252,12 +252,11 @@ function get_installed_version(){
 }
 
 function update_owncloud(){
-   clear
    if [ ! -f $PATH_TO_WEBSERVER/config/config.php ]; then
       error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be updated"
       return 1
    fi
-   INSTALLED_VERION=$(get_installed_version)
+   INSTALLED_VERSION=$(get_installed_version)
    LATEST_VERSION=$(get_latest_version)
    if [ "$LATEST_VERSION" == "$INSTALLED_VERSION" ]; then
       error_msg $"Latest version is already installed."
