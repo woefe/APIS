@@ -1,6 +1,6 @@
 HOW TO USE:
 
-1. Clone this repo: git clone https://github.com/popeye123/APIS
+1. Clone this repo: git clone https://github.com/popeye123/APIS.git
 2. Change directory: cd APIS
 3. Run the script: sudo ./main.sh
 4. Update the script (optional): git pull
