@@ -10,7 +10,7 @@ function install_nginx_and_other_stuff(){
    apt-get -qq autoremove
 
    clear
-   print_msg $"SSL-Certificate" $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
+   print_message $"SSL-Certificate" $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
 
    mkdir -p /etc/nginx/ssl && cd /etc/nginx/ssl
    while true; do
@@ -236,7 +236,7 @@ function install_owncloud(){
 
    VERSION=$(get_latest_version)
    SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
-   print_msg $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION"
+   print_message $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION"
    
    sys_update
    EXTERNAL_DATA_DIR="/mnt/data/owncloudData"
