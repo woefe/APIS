@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 12:28+0200\n"
+"POT-Creation-Date: 2013-08-06 23:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,8 +112,7 @@ msgstr ""
 msgid "Try again? (y/n): "
 msgstr ""
 
-#: data_to_external_disk.sh:28 owncloud_installer.sh:340
-#: owncloud_installer.sh:342
+#: data_to_external_disk.sh:28
 msgid "n"
 msgstr ""
 
@@ -160,10 +159,8 @@ msgid ""
 "The disk will be formated now. Are you sure you want to continue? (y/n): "
 msgstr ""
 
-#: data_to_external_disk.sh:71 owncloud_installer.sh:330
-#: owncloud_installer.sh:335 owncloud_installer.sh:338 samba_installer.sh:19
-#: samba_installer.sh:20 samba_installer.sh:65 samba_installer.sh:66
-#: samba_installer.sh:111
+#: data_to_external_disk.sh:71 samba_installer.sh:19 samba_installer.sh:20
+#: samba_installer.sh:65 samba_installer.sh:66 samba_installer.sh:111
 msgid "y"
 msgstr ""
 
@@ -187,34 +184,108 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: main.sh:37 main.sh:63 main.sh:78 main.sh:93 main.sh:122
+#: main.sh:37 main.sh:50 main.sh:63 main.sh:92
 msgid "Select"
 msgstr ""
 
-#: main.sh:37 main.sh:63 main.sh:78 main.sh:93
+#: main.sh:37 main.sh:50 main.sh:63
 msgid "Back"
 msgstr ""
 
 #: main.sh:37
-msgid "Install ownCloud"
+msgid "Update/remove ownCloud"
 msgstr ""
 
 #: main.sh:37
 msgid ""
-"\\nInstall latest version of ownCloud\\nThe installer tries to find out the "
-"hostname via DNS. This may not work depending on your router. If you aren't "
-"sure if that works select 'use_ip'"
+"\\nUpdate to latest version of ownCloud\\nUse the update function only for "
+"updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
+"admin_manual/maintenance/update.html for more details."
 msgstr ""
 
 #: main.sh:37
-msgid "Enable verbose mode"
+msgid "Update your ownCloud installation"
 msgstr ""
 
 #: main.sh:37
-msgid "Use IP address instead of hostname"
+msgid "Remove ownCloud"
 msgstr ""
 
-#: main.sh:49
+#: main.sh:50
+msgid "Change/remove Samba"
+msgstr ""
+
+#: main.sh:50
+msgid ""
+"\\nUpdates for Samba are done by the system's package management.\\nYou can "
+"either add more Samba shares or remove Samba."
+msgstr ""
+
+#: main.sh:50
+msgid "Add more shares and users"
+msgstr ""
+
+#: main.sh:50
+msgid "Remove samba"
+msgstr ""
+
+#: main.sh:63
+msgid "Configure NFS"
+msgstr ""
+
+#: main.sh:63
+msgid ""
+"\\nNote: Updates are not covered by APIS since the package management system "
+"manages them."
+msgstr ""
+
+#: main.sh:63
+msgid "Add more NFS shares"
+msgstr ""
+
+#: main.sh:63
+msgid "Delete NFS shares"
+msgstr ""
+
+#: main.sh:63
+msgid "Add clients to NFS shares"
+msgstr ""
+
+#: main.sh:63
+msgid "Remove clients from configuration files"
+msgstr ""
+
+#: main.sh:63
+msgid "Uninstall NFS server"
+msgstr ""
+
+#: main.sh:92
+msgid "Exit"
+msgstr ""
+
+#: main.sh:92
+msgid ""
+"\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
+"Raspberry Pi\\n"
+msgstr ""
+
+#: main.sh:92
+msgid "Install/update/remove ownCloud"
+msgstr ""
+
+#: main.sh:92
+msgid "Install/remove Samba Server"
+msgstr ""
+
+#: main.sh:92
+msgid "Install/uninstall BitTorrent Sync"
+msgstr ""
+
+#: main.sh:92
+msgid "Install/uninstall/configure Network File System Server"
+msgstr ""
+
+#: main.sh:107
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
 "going to reboot now.\\nAfter that open a web browser and navigate to your "
@@ -222,112 +293,15 @@ msgid ""
 "are preconfigured by this script, so don't change them!"
 msgstr ""
 
-#: main.sh:57
-msgid "Installed version: $INSTALLED_VERSION, latest version: $LATEST_VERSION"
-msgstr ""
-
-#: main.sh:60
-msgid "Latest version is installed. DO NOT UPDATE"
-msgstr ""
-
-#: main.sh:63
-msgid "Update/remove ownCloud"
-msgstr ""
-
-#: main.sh:63
-msgid ""
-"\\nUpdate to latest version of ownCloud\\nUse the update function only for "
-"updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
-"admin_manual/maintenance/update.html for more details."
-msgstr ""
-
-#: main.sh:63
-msgid "Remove ownCloud"
-msgstr ""
-
-#: main.sh:78
-msgid "Change/remove Samba"
-msgstr ""
-
-#: main.sh:78
-msgid ""
-"\\nUpdates for Samba are done by the system's package management.\\nYou can "
-"either add more Samba shares or remove Samba."
-msgstr ""
-
-#: main.sh:78
-msgid "Add more shares and users"
-msgstr ""
-
-#: main.sh:78
-msgid "Remove samba"
-msgstr ""
-
-#: main.sh:93
-msgid "Configure NFS"
-msgstr ""
-
-#: main.sh:93
-msgid ""
-"\\nNote: Updates are not covered by APIS since the package management system "
-"manages them."
-msgstr ""
-
-#: main.sh:93
-msgid "Add more NFS shares"
-msgstr ""
-
-#: main.sh:93
-msgid "Delete NFS shares"
-msgstr ""
-
-#: main.sh:93
-msgid "Add clients to NFS shares"
-msgstr ""
-
-#: main.sh:93
-msgid "Remove clients from configuration files"
-msgstr ""
-
-#: main.sh:93
-msgid "Uninstall NFS server"
-msgstr ""
-
-#: main.sh:122
-msgid "Exit"
-msgstr ""
-
-#: main.sh:122
-msgid ""
-"\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
-"Raspberry Pi\\n"
-msgstr ""
-
-#: main.sh:122
-msgid "Install/update/remove ownCloud"
-msgstr ""
-
-#: main.sh:122
-msgid "Install/remove Samba Server"
-msgstr ""
-
-#: main.sh:122
-msgid "Install/uninstall BitTorrent Sync"
-msgstr ""
-
-#: main.sh:122
-msgid "Install/uninstall/configure Network File System Server"
-msgstr ""
-
-#: main.sh:176
+#: main.sh:152
 msgid "I need root permissions."
 msgstr ""
 
-#: main.sh:177 owncloud_installer.sh:271
+#: main.sh:153 owncloud_installer.sh:225
 msgid "Bye..."
 msgstr ""
 
-#: main.sh:185
+#: main.sh:161
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -538,129 +512,120 @@ msgid ""
 "restart NFS make sure that all clients have unmounted the NFS exports."
 msgstr ""
 
-#: owncloud_installer.sh:15
+#: owncloud_installer.sh:7
 msgid "Installing nginx and php..."
 msgstr ""
 
-#: owncloud_installer.sh:17
+#: owncloud_installer.sh:9
 msgid "Searching for packages that are no longer needed..."
 msgstr ""
 
-#: owncloud_installer.sh:21
+#: owncloud_installer.sh:13
+msgid "SSL-Certificate"
+msgstr ""
+
+#: owncloud_installer.sh:13
 msgid ""
 "The next step will create a ssl certificate.\\nDon't leave the field 'Common "
 "Name' blank.\\nHit Enter to continue."
 msgstr ""
 
-#: owncloud_installer.sh:32
+#: owncloud_installer.sh:23
 msgid "An error occurred during the last Step. Repeating"
 msgstr ""
 
-#: owncloud_installer.sh:40
+#: owncloud_installer.sh:31
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr ""
 
-#: owncloud_installer.sh:43
+#: owncloud_installer.sh:34
 msgid "Editing /etc/php5/fpm/php.ini..."
 msgstr ""
 
-#: owncloud_installer.sh:47
-msgid "Creating files in /etc/dhcp/dhclient-exit-hooks.d/..."
-msgstr ""
-
-#: owncloud_installer.sh:51
+#: owncloud_installer.sh:37
 msgid "Editing /etc/dphys-swapfile"
 msgstr ""
 
-#: owncloud_installer.sh:59
+#: owncloud_installer.sh:45
 msgid "Checking for locale en_US.UTF-8..."
 msgstr ""
 
-#: owncloud_installer.sh:65
-msgid "Installing dependencies..."
-msgstr ""
-
-#: owncloud_installer.sh:71 owncloud_installer.sh:305
+#: owncloud_installer.sh:51 owncloud_installer.sh:269
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr ""
 
-#: owncloud_installer.sh:76 owncloud_installer.sh:308
+#: owncloud_installer.sh:56 owncloud_installer.sh:272
 msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
 msgstr ""
 
-#: owncloud_installer.sh:79 owncloud_installer.sh:311
+#: owncloud_installer.sh:59 owncloud_installer.sh:275
 msgid "Setting permissions for '$PATH_TO_WEBSERVER'..."
 msgstr ""
 
-#: owncloud_installer.sh:86
+#: owncloud_installer.sh:66
 msgid "Creating conf.php..."
 msgstr ""
 
-#: owncloud_installer.sh:92 owncloud_installer.sh:317
+#: owncloud_installer.sh:72 owncloud_installer.sh:281
 msgid "Cleaning up..."
 msgstr ""
 
-#: owncloud_installer.sh:249
+#: owncloud_installer.sh:210
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr ""
 
-#: owncloud_installer.sh:250 owncloud_installer.sh:253
+#: owncloud_installer.sh:211 owncloud_installer.sh:214
 msgid "Download failed"
 msgstr ""
 
-#: owncloud_installer.sh:252
+#: owncloud_installer.sh:213
 msgid "Checking download..."
 msgstr ""
 
-#: owncloud_installer.sh:261
-msgid "An error occurred while checking version."
-msgstr ""
-
-#: owncloud_installer.sh:266 samba_installer.sh:9
+#: owncloud_installer.sh:220 samba_installer.sh:9
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 
-#: owncloud_installer.sh:270
+#: owncloud_installer.sh:224
 msgid "Update failed."
 msgstr ""
 
-#: owncloud_installer.sh:280
-msgid "Installing ownCloud version: $VERSION"
+#: owncloud_installer.sh:239
+msgid "IP address and version"
 msgstr ""
 
-#: owncloud_installer.sh:285
+#: owncloud_installer.sh:239
 msgid ""
-"This name/IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will "
-"be the name/IP you have to enter in your webbrowser after the script has "
-"finished.\\nIs the name correct? If not, restart the script now and select "
-"'use_ip'."
+"This IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will be "
+"the IP you have to enter in your webbrowser after the script has finished."
+"\\nThis version of ownCloud will be installed: $VERSION"
 msgstr ""
 
-#: owncloud_installer.sh:286
-msgid "Hit Enter to continue or crtl+c to cancel"
-msgstr ""
-
-#: owncloud_installer.sh:298
+#: owncloud_installer.sh:257
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated"
 msgstr ""
 
-#: owncloud_installer.sh:326
+#: owncloud_installer.sh:263
+msgid "Latest version is already installed."
+msgstr ""
+
+#: owncloud_installer.sh:290
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed"
 msgstr ""
 
-#: owncloud_installer.sh:329 samba_installer.sh:110
-msgid "Are you sure you want to continue? (y/n): "
+#: owncloud_installer.sh:293
+msgid "Are you sure you want to continue?"
 msgstr ""
 
-#: owncloud_installer.sh:331
-msgid "Do you want to remove ownCloud's datadirectory? (y/n)"
+#: owncloud_installer.sh:295
+msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr ""
 
-#: owncloud_installer.sh:352
+#: owncloud_installer.sh:320
 msgid "Reboot is recommended"
 msgstr ""
 
@@ -696,4 +661,8 @@ msgstr ""
 
 #: samba_installer.sh:64
 msgid "Add more shares"
+msgstr ""
+
+#: samba_installer.sh:110
+msgid "Are you sure you want to continue? (y/n): "
 msgstr ""

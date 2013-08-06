@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 12:17+0200\n"
+"POT-Creation-Date: 2013-08-06 12:28+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -552,39 +552,41 @@ msgid ""
 "192.168.0.0/24)."
 msgstr ""
 "Keine Engabe. Du kannst hier eine IP-Adresse (z.B. 192.168.0.5), einen "
-"Hostnamen (z.B. ubuntu-desktop.fritz.box) oder ein Subnet "
-"(z.B. 192.168.0.0/24) angeben."
+"Hostnamen (z.B. ubuntu-desktop.fritz.box) oder ein Subnet (z.B. "
+"192.168.0.0/24) angeben."
 
 #: nfs_installer.sh:167
 msgid "'$CLIENT' is currently not available. Add '$CLIENT' anyways?"
-msgstr "'$CLIENT' ist nicht erreichbar. Willst du '$CLIENT' trotzdem "
-"hinzufügen?"
+msgstr ""
+"'$CLIENT' ist nicht erreichbar. Willst du '$CLIENT' trotzdem hinzufügen?"
 
 #: nfs_installer.sh:171
 msgid "Select permissions for '$CLIENT' on '$SELECTED_SHARE'."
 msgstr ""
+"Wähle die Berechtigungen, die '$CLIENT' auf '$SELECTED_SHARE' haben soll."
 
 #: nfs_installer.sh:171
-msgid "'$CLIENT' can read and write files on $SELECTED_SHARE"
-msgstr ""
+msgid "'$CLIENT' can read and write files on '$SELECTED_SHARE'"
+msgstr "'$CLIENT' kann Dateien in '$SELECTED_SHARE' lesen und schreiben"
 
 #: nfs_installer.sh:171
-msgid "'$CLIENT' can read files on $SELECTED_SHARE"
-msgstr ""
+msgid "'$CLIENT' can read files on '$SELECTED_SHARE'"
+msgstr "'$CLIENT' kann Dateien in '$SELECTED_SHARE' nur lesen"
 
 #: nfs_installer.sh:198 nfs_installer.sh:206
 msgid "Remove clients from NFS shares"
-msgstr ""
+msgstr "Clients aus NFS-Freigaben löschen"
 
 #: nfs_installer.sh:198
 msgid "Select the NFS share from which you want to delete clients."
-msgstr ""
+msgstr "Wähle die NFS-Freigabe, von der du Clients löschen willst."
 
 #: nfs_installer.sh:206
 msgid ""
 "Select the client which you want to delete from '$SELECTED_SHARE'.\\n   Used "
 "Syntax: 'clientname(permissions,options)'"
-msgstr ""
+msgstr "Wähle den Client, den du von '$SELECTED_SHARE' entfernen willst.\\n   "
+"Hier verwendete Syntax: 'clientname(berechtigung,optionen)'"
 
 #: nfs_installer.sh:209 nfs_installer.sh:212
 msgid "Remove clients"
@@ -592,18 +594,22 @@ msgstr "Entferne Clients"
 
 #: nfs_installer.sh:209
 msgid "Do you really want to delete '$SELECTED_CLIENT' from '$SELECTED_SHARE'?"
-msgstr ""
+msgstr "Willst du '$SELECTED_CLIENT' wirklich von '$SELECTED_SHARE' löschen?"
 
 #: nfs_installer.sh:212
 msgid "Do you want to delete another client from '$SELECTED_SHARE'?"
-msgstr ""
+msgstr "Willst du noch einen Client von '$SELECTED_SHARE' löschen?"
 
 #: nfs_installer.sh:219
 msgid ""
 "If you changed the configuration, you have to restart NFS by issuing "
 "following command:\\nsudo service nfs-kernel-server restart\\nBefore you "
 "restart NFS make sure that all clients have unmounted the NFS exports."
-msgstr ""
+msgstr 
+"Wenn du die Konfiguration geändert hast, muss NFS neugestartet werden, damit "
+"die Änderungen wirksam werden. Am besten startest du den NFS-Server mit "
+"folgendem Befehl neu:\\nsudo service nfs-kernel-server restart\\nVersichere "
+"dich aber davor, dass keiner der Clients eine Freigabe gemountet hat."
 
 #: owncloud_installer.sh:15
 msgid "Installing nginx and php..."
@@ -778,19 +784,3 @@ msgstr "Weitere Freigaben erstellen? (j/n): "
 #: samba_installer.sh:64
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
-
-#~ msgid "'${CLIENT[$i]}' can read and write files on $EXPORTPATH"
-#~ msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH lesen und schreiben"
-
-#~ msgid "'${CLIENT[$i]}' can read files on $EXPORTPATH"
-#~ msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH nur lesen"
-
-#~ msgid ""
-#~ "Enter the path to a directory that you want to share via NFS or just hit "
-#~ "'return' to use the default path."
-#~ msgstr ""
-#~ "Gib den Pfad zu einem Ordner an, den du mittls NFS freigeben willst. Du "
-#~ "kanns auch einfach 'Enter' drücken um den Standardpfad zu verwenden"
-
-#~ msgid "Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'"
-#~ msgstr "Wähle die Berechtigungen für '${CLIENT[$i]}' auf '$EXPORTPATH'"
