@@ -9,7 +9,6 @@ function install_nginx_and_other_stuff(){
    echo $"Searching for packages that are no longer needed..."
    apt-get -qq autoremove
 
-   clear
    print_message $"SSL-Certificate" $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
 
    mkdir -p /etc/nginx/ssl && cd /etc/nginx/ssl
@@ -34,7 +33,7 @@ function install_nginx_and_other_stuff(){
    echo $"Editing /etc/php5/fpm/php.ini..."
    edit_phpini
 
-   echo $"Editing /etc/dphys-swapfile"
+   echo $"Editing /etc/dphys-swapfile..."
    cat > /etc/dphys-swapfile << EOF
 CONF_SWAPSIZE=768
 
@@ -236,7 +235,7 @@ function install_owncloud(){
 
    VERSION=$(get_latest_version)
    SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
-   print_message $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION"
+   yes_no $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION\nDo you want to continue?" || return 1
    
    sys_update
    EXTERNAL_DATA_DIR="/mnt/data/owncloudData"
@@ -253,7 +252,7 @@ function get_installed_version(){
 
 function update_owncloud(){
    if [ ! -f $PATH_TO_WEBSERVER/config/config.php ]; then
-      error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be updated"
+      error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be updated."
       return 1
    fi
    INSTALLED_VERSION=$(get_installed_version)
@@ -286,12 +285,12 @@ function update_owncloud(){
 function remove_owncloud(){
    clear
    if [ ! -f $PATH_TO_WEBSERVER/config/config.php ]; then
-      error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be removed"
+      error_msg $"ownCloud is not installed properly or wasn't installed by this script and thus can't be removed."
       return 1
    fi
-   yes_no $"Are you sure you want to continue?" || return 1
+   yes_no $"Starting uninstaller" $"Are you sure you want to continue?" || return 1
    
-   if yes_no $"Do you want to remove ownCloud's datadirectory?"; then
+   if yes_no $"Datadirectory" $"Do you want to remove ownCloud's datadirectory?"; then
       choice="y"
    else
       choice="n"
@@ -316,7 +315,7 @@ function remove_owncloud(){
    apt-get -qq purge nginx-common nginx-full nginx php5 php5-common php5-cgi php5-gd php-xml-parser php5-intl sqlite php5-sqlite php5-curl php-pear php-apc php5-fpm memcached php5-memcache varnish
    apt-get -qq autoremove --purge
    clear
-   hint_msg $"Reboot is recommended"
+   hint_msg $"Reboot is recommended!"
    return
 }
 

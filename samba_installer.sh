@@ -106,9 +106,7 @@ EOF
 }
 
 function remove_samba(){
-   clear
-   read -p $"Are you sure you want to continue? (y/n): " choice
-   [ "$choice" != $"y" ] && return 1
+   yes_no $"Starting uninstaller" $"Do you really want to remove Samba Server?" || return 1
    SAMBA_USER_GID=$(cat /etc/group | grep samba-user | cut -d ':' -f3)
    for username in $(cat /etc/passwd | grep $SAMBA_USER_GID | cut -d ':' -f1); do
       smbpasswd -x $username

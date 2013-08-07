@@ -47,9 +47,9 @@ function update_or_remove_owncloud(){
 }
 
 function remove_or_change_samba(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Change/remove Samba" --radiolist $"\nUpdates for Samba are done by the system's package management.\nYou can either add more Samba shares or remove Samba." 30 80 15 \
-      add $"Add more shares and users" 1\
-      remove $"Remove samba" 0 3>&1 1>&2 2>&3)
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Change/remove Samba" --menu $"\nUpdates for Samba are done by the system's package management.\nYou can either add more Samba shares or remove Samba." 30 80 15 \
+      add $"Add more shares and users" \
+      remove $"Remove samba" 3>&1 1>&2 2>&3)
 
    if [ "$option" == "add" ];then
       . samba_installer.sh add

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function install_nfs(){
-   yes_no $"Install NFS" $"WARNING: This installer may overwrite any existing NFS related configuration files. Ignore this warning if you haven't installed NFS yet.\nDo you really want to install the NFS server?"
+   yes_no $"Install NFS" $"WARNING: This installer may overwrite any existing NFS related configuration files. Ignore this warning if you haven't installed NFS yet.\nDo you really want to install the NFS server?" || return 1
    apt-get install -qq nfs-kernel-server portmap
 
    EXPORTPATH=/srv/nfs
    $DATA_TO_EXTERNAL_DISK && EXPORTPATH=/mnt/data/nfs
-   EXPORTPATH=$(user_input $"Enter the path to the directory that you want to share via NFS. Hit 'return' to use the default path." "$EXPORTPATH") || return 1
+   EXPORTPATH=$(user_input $"Choose directory" $"Enter the path to the directory that you want to share via NFS. Hit 'return' to use the default path." "$EXPORTPATH") || return 1
    if [ ! -d $EXPORTPATH ]; then
       yes_no $"Directory doesn't exist" $"'$EXPORTPATH' doesn't exist. Do you want to create it?" || return 1
       mkdir -p $EXPORTPATH
@@ -17,6 +17,7 @@ function install_nfs(){
       CLIENT[$i]=$(user_input $"Add client $[$i+1]" $"Whom do you want to grant access on this shared directory? Enter only one IP address, hostname or subnet.")
       exitstatus=$?
       if [ -z ${CLIENT[*]} ]; then
+	error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
 	continue
       elif [ -z ${CLIENT[$i]} ];then
 	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
@@ -41,7 +42,7 @@ function install_nfs(){
       yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
       i=$[$i+1]
    done
-   hint_msg $"You can add more shares later by selecting 'nfs_setup' in the main menu"
+   hint_msg $"You can add more shares later by selecting 'nfs_setup' in the main menu."
 
    cat > /etc/exports << EOF 
 # /etc/exports: the access control list for filesystems which may be exported
@@ -92,6 +93,7 @@ function add_nfs_shares(){
       CLIENT[$i]=$(user_input $"Add client $[$i+1]" $"Whom do you want to grant access on this shared directory? Enter only one IP address, hostname or subnet.")
       exitstatus=$?
       if [ -z "${CLIENT[*]}" ]; then
+	error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
 	continue
       elif [ -z ${CLIENT[$i]} ];then
 	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the share will not be created!" || return 1
