@@ -182,4 +182,11 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo "NFS_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
+if [ "$1" == "update" ]; then
+   REQIURED_VARS=(DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED)
+   for var in ${REQIURED_VARS[*]}; do
+      grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
+   done
+fi
+
 main
