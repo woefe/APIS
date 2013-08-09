@@ -1,9 +1,36 @@
 #!/bin/bash
 
+# How to add more installers:
+# 1. Add a new _installer file in APIS/ e.g: foo_installer.sh
+# 2. Adjust main() in main.sh
+# 3. Create a submenu function in main.sh, if necessary. E.g: configure_foo()
+# 4. Make sure to add a new variable to /var/lib/apis/conf and the updater. E.g FOO_INSTALLED
+# 5. Make sure to change FOO_INSTALLED in /var/lib/apis/conf if foo is installed/uninstalled
+
 # TEXTDOMAIN and TEXTDOMAINDIR are used for i18n
 TEXTDOMAIN=apis
 TEXTDOMAINDIR=./locale
 
+# Some functions to make whiptail esier to use
+# How to use these functions in foo_installer.sh:
+#
+# print_message "title" "your text"
+# hint_msg "your text"
+# error_msg "your text"
+# reboot_prompt "your text"
+# 
+# user_input and password_box write the user's input to stdout.
+# This makes it easy to write the user's input to a variable, like:
+# var=$(user_input "title" "your text" "some preset text (optional)")
+# var2=$(password_box "title" "your text" "some preset text (optional)")
+#
+# yes_no will return a zero exitstatus if the question was answered with 'yes' 
+# and will return a nonzero exitstatus if the answer was 'no'; example:
+# if yes_no "title" "your question"; then
+#    echo "Answer: yes"
+# else
+#    echo "Answer: no"
+# fi
 function print_message(){
    whiptail --title "$1" --msgbox "$2" 30 80
 }
@@ -22,7 +49,7 @@ function reboot_prompt(){
 }
 
 function user_input(){
-   whiptail --title "$1" --inputbox "$2" 30 80 $3 3>&1 1>&2 2>&3
+   whiptail --title "$1" --inputbox "$2" 30 80 "$3" 3>&1 1>&2 2>&3
 }
 
 function password_box(){
@@ -33,6 +60,7 @@ function yes_no(){
    whiptail --title "$1" --yesno "$2" 30 80 3>&1 1>&2 2>&3
 }
 
+# ownCloud submenu
 function update_or_remove_owncloud(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --menu $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
       update $"Update your ownCloud installation"\
@@ -46,6 +74,7 @@ function update_or_remove_owncloud(){
    fi
 }
 
+# Samba submenu
 function remove_or_change_samba(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Change/remove Samba" --menu $"\nUpdates for Samba are done by the system's package management.\nYou can either add more Samba shares or remove Samba." 30 80 15 \
       add $"Add more shares and users" \
@@ -59,6 +88,7 @@ function remove_or_change_samba(){
    fi
 }
 
+# NFS submenu
 function configure_nfs(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Configure NFS" --menu $"\nNote: Updates are not covered by APIS since the package management system manages them." 30 80 15 \
       add-shares $"Add more NFS shares" \
@@ -154,6 +184,9 @@ if [ "$(whoami)" != "root" ]; then
    exit 1
 fi
 
+# If APIS runs the first time '/var/lib/apis/conf' won't exist
+# Ask for external storage and write '/var/lib/apis/conf'
+# In '/var/lib/apis/conf' APIS will save which components are installed and which are not
 if [ ! -f /var/lib/apis/conf ]; then
    mkdir /var/lib/apis
    USE_EXTERNAL_SPACE=true
@@ -176,17 +209,22 @@ if [ ! -f /var/lib/apis/conf ]; then
          exit
          ;;
    esac
+   # If you add a new component like foo_installer.sh, add a variable here. 
+   # E.g: echo "FOO_INSTALLED=false" >> /var/lib/apis/conf
    echo "OWNCLOUD_INSTALLED=false" >> /var/lib/apis/conf
    echo "SAMBA_INSTALLED=false" >> /var/lib/apis/conf
    echo "BTSYNC_INSTALLED=false" >> /var/lib/apis/conf
    echo "NFS_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
+# Updater: check if '/var/lib/apis/conf' contains all required variables
+# If you add a new component like foo_installer.sh, add a new variable (FOO_INSTALLED) to REQIURED_VARS
 if [ "$1" == "update" ]; then
-   REQIURED_VARS=(DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED)
-   for var in ${REQIURED_VARS[*]}; do
+   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED"
+   for var in $REQIURED_VARS; do
       grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
    done
+   exit
 fi
 
 main

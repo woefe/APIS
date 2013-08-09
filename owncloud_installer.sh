@@ -200,7 +200,6 @@ EOF
 chown  www-data:www-data $PATH_TO_WEBSERVER/config/config.php
 }
 
-
 function download_and_check_oc(){
    OWNCLOUD_URL="http://download.owncloud.org/community/owncloud-$VERSION.tar.bz2"
    OWNCLOUD_CHECKSUM_URL="http://download.owncloud.org/community/owncloud-$VERSION.tar.bz2.md5"
@@ -213,8 +212,6 @@ function download_and_check_oc(){
    md5sum -c owncloud.md5 || (error_msg $"Download failed" && return 1)
 }
 
-
-# check and install dependencies
 function sys_update(){
    echo $"Updating the operating systems's software (might take a while)..."
    apt-get -qq update &&
@@ -227,16 +224,16 @@ function sys_update(){
    clear
 }
 
+# Get latest version from ownCloud's xml updater. This URI from check() in ownCloud's code ('owncloudroot'/lib/updater.php)
 function get_latest_version(){
    wget -qO - http://apps.owncloud.com/updater.php?version=5x00x10x1375797810.1234x1375797810.3456xstablex | grep versionstring | grep -Eo "[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}"
 }
 
 function install_owncloud(){
-
    VERSION=$(get_latest_version)
    SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
    yes_no $"IP address and version" $"This IP will be used to set up your ownCloud: $SERVER_NAME\nThis will be the IP you have to enter in your webbrowser after the script has finished.\nThis version of ownCloud will be installed: $VERSION\nDo you want to continue?" || return 1
-   
+
    sys_update
    EXTERNAL_DATA_DIR="/mnt/data/owncloudData"
 
@@ -289,7 +286,7 @@ function remove_owncloud(){
       return 1
    fi
    yes_no $"Starting uninstaller" $"Are you sure you want to continue?" || return 1
-   
+
    if yes_no $"Datadirectory" $"Do you want to remove ownCloud's datadirectory?"; then
       choice="y"
    else
