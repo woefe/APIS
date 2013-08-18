@@ -56,7 +56,7 @@ function install_nfs(){
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 EOF
-   echo -e "$EXPORTPATH\t$(for ((i=0; i<${#CLIENT[*]}; i++)); do echo -n " ${CLIENT[$i]}(${PERMISSIONS[$i]},async)"; done)" >> /etc/exports
+   echo -e "$EXPORTPATH\t$(for ((i=0; i<${#CLIENT[*]}; i++)); do [ -n ${CLIENT[$i]} ] && echo -n " ${CLIENT[$i]}(${PERMISSIONS[$i]},async)"; done)" >> /etc/exports
 
    update-rc.d rpcbind enable
    service rpcbind start
@@ -119,7 +119,7 @@ function add_nfs_shares(){
       i=$[$i+1]
    done
 
-   echo -e "$EXPORTPATH\t$(for ((i=0; i<${#CLIENT[*]}; i++)); do echo -n " ${CLIENT[$i]}(${PERMISSIONS[$i]},async)"; done)" >> /etc/exports
+   echo -e "$EXPORTPATH\t$(for ((i=0; i<${#CLIENT[*]}; i++)); do [ -n ${CLIENT[$i]} ] && echo -n " ${CLIENT[$i]}(${PERMISSIONS[$i]},async)"; done)" >> /etc/exports
    exit_message
    return
 }

@@ -5,17 +5,16 @@ else
 fi
 
 function first_install(){
+   yes_no $"Confirmation" $"Do you really want to install Samba Server?"
    clear
    echo $"Updating the operating systems's software (might take a while)..."
-   apt-get -qq update &&
-   apt-get -qq upgrade
+   sys_update
 
    echo $"Installing samba packages..."
    apt-get -qq install samba-common samba-common-bin samba tdb-tools
 
    addgroup samba-user
-   clear
-   echo $"This setup will create samba shares that are protected by a username and password."
+   hint_msg $"This setup will create samba shares that are protected by a username and password."
    choice=$"y"
    while [ "$choice" == $"y" ]; do
       echo
@@ -106,7 +105,7 @@ EOF
 }
 
 function remove_samba(){
-   yes_no $"Starting uninstaller" $"Do you really want to remove Samba Server?" || return 1
+   yes_no $"Starting uninstaller" $"Do you really want to remove Samba Server? All shared files and directories will be deleted!" || return 1
    SAMBA_USER_GID=$(cat /etc/group | grep samba-user | cut -d ':' -f3)
    for username in $(cat /etc/passwd | grep $SAMBA_USER_GID | cut -d ':' -f1); do
       smbpasswd -x $username
@@ -114,7 +113,7 @@ function remove_samba(){
    done
    delgroup samba-user
    rm -r $DIRECTORY
-   apt-get purge samba-common samba-common-bin samba tdb-tools
+   apt-get purge samba tdb-tools
 }
 
 case $1 in 

@@ -60,6 +60,81 @@ function yes_no(){
    whiptail --title "$1" --yesno "$2" 30 80 3>&1 1>&2 2>&3
 }
 
+# When installing foo you probably have to edit some config files.
+# Here's a function to make it easier to edit those files.
+# Example/usage: ensure_key_value "cgi.fix_pathinfo" "=" "0" /etc/php5/fpm/php.ini
+function ensure_key_value(){
+   key=$1
+   separator=$2
+   value=$3
+   file=$4
+   linenumber=$(grep -n "$key$separator" $file | cut -d: -f1)
+   if [ -z $linenumber ]; then
+      linenumber=$(grep -n "$key $separator" $file | cut -d: -f1)
+      [ -z $linenumber ] && echo $"ERROR: key '$key' doesn't exist in '$file'." && return 1
+   fi
+   if [ "$(sed -n $linenumber\p $file)" != "$key$separator$value" ]; then
+      sed -i $linenumber\c\\"$key$separator$value" $file
+   fi
+   return
+}
+
+# NGINX_REQUIRED contains all names of programs installed by APIS that depend on the nginx webserver
+# If foo uses nginx, the install_foo() function should add 'foo' to NGINX_REQUIRED.
+# Example:
+#
+# function install_foo(){
+#    ...
+#    set_var_nginx_required add foo
+#    ...
+# }
+# function uninxtall_foo(){
+#    ...
+#    set_var_nginx_required remove foo
+#    ...
+# }
+function set_var_nginx_required(){
+   case $1 in
+      add)
+	local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
+	sed -i $linenumber\s/\'$/\ $2\'/ /var/lib/apis/conf
+	;;
+      remove)
+	local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
+	sed -i $linenumber\s/\ $2// /var/lib/apis/conf
+	;;
+      *)
+	echo "ERROR while setting NGINX_REQUIRED"
+   esac
+   # source file to make changes available
+   . /var/lib/apis/conf
+}
+
+# A uninstall_foo() function may need to remove complete blocks from config files.
+# This function makes it less complicated to remove blocks.
+# Usage:
+# remove_parts_from_config_files "beginning marker (e.g. comment)" "ending marker" "/path/to/config/file"
+# Example:
+# remove_parts_from_config_files '#begin_owncloud_config' '#end_owncloud_config' '/etc/nginx/sites-available/apis-ssl'
+function remove_parts_from_config_files(){
+   begin_line=$(grep -n "$1" "$3" | cut -d: -f1)
+   end_line=$(grep -n  "$2" "$3" | cut -d: -f1)
+   sed -i $begin_line,$end_line\d "$3"
+}
+
+# Use this function to apt-get update and upgrade raspbian
+function sys_update(){
+   echo $"Updating the operating systems's software (might take a while)..."
+   apt-get -qq update &&
+   apt-get -qq upgrade &&
+   apt-get -qq autoremove
+   if [ $? -ne 0 ]; then
+      echo $"Update failed."
+      echo $"Bye..."
+      return 1
+   fi
+}
+
 # ownCloud submenu
 function update_or_remove_owncloud(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --menu $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
@@ -117,13 +192,27 @@ function configure_nfs(){
    esac
 }
 
+function configure_ampache(){
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Ampache" --menu $"Remove Ampache or get latest version from github." 30 80 15 \
+      uninstall $"Uninstall Ampache Server" \
+      update $"Update Ampache Server" 3>&1 1>&2 2>&3)
+      
+   if [ "$option" == "uninstall" ];then
+      . ampache_installer.sh uninstall &&
+      sed -i 's/AMPACHE_INSTALLED.*/AMPACHE_INSTALLED=false/' /var/lib/apis/conf
+   elif [ "$option" == "update" ]; then
+      . ampache_installer.sh update
+   fi
+}
+
 function main(){
    . /var/lib/apis/conf
    choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi.\n" 30 88 15 \
       owncloud_setup $"Install/update/remove ownCloud"\
       samba_setup $"Install/remove Samba Server" \
       btsync_setup $"Install/uninstall BitTorrent Sync" \
-      nfs_setup $"Install/uninstall/configure Network File System Server" 3>&1 1>&2 2>&3)
+      nfs_setup $"Install/uninstall/configure Network File System Server" \
+      ampache_setup $"Install/upgrade/uninstall Ampache Streaming Server" 3>&1 1>&2 2>&3)
 
    case $choice in
       owncloud_setup)
@@ -134,7 +223,8 @@ function main(){
          else
             . owncloud_installer.sh install &&
             sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=true/' /var/lib/apis/conf
-            reboot_prompt $"In a few moments you can finally enjoy your ownCloud.\nThe Raspberry Pi is going to reboot now.\nAfter that open a web browser and navigate to your ownCloud instance. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
+            main
+            return
          fi
          ;;
       samba_setup)
@@ -171,9 +261,20 @@ function main(){
 	   . nfs_installer.sh install &&
 	   sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=true/' /var/lib/apis/conf
             main
-            return	   
+            return
 	fi
 	;;
+      ampache_setup)
+	if $AMPACHE_INSTALLED; then
+	   configure_ampache
+	   main
+            return
+	else
+	   . ampache_installer.sh install &&
+	   sed -i 's/AMPACHE_INSTALLED.*/AMPACHE_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
+	fi
    esac
 }
 
@@ -215,12 +316,15 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo "SAMBA_INSTALLED=false" >> /var/lib/apis/conf
    echo "BTSYNC_INSTALLED=false" >> /var/lib/apis/conf
    echo "NFS_INSTALLED=false" >> /var/lib/apis/conf
+   echo "NGINX_INSTALLED=false" >> /var/lib/apis/conf
+   echo "NGINX_REQUIRED=''" >> /var/lib/apis/conf
+   echo "AMPACHE_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
 # Updater: check if '/var/lib/apis/conf' contains all required variables
 # If you add a new component like foo_installer.sh, add a new variable (FOO_INSTALLED) to REQIURED_VARS
 if [ "$1" == "update" ]; then
-   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED"
+   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED NGINX_REQUIRED"
    for var in $REQIURED_VARS; do
       grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
    done

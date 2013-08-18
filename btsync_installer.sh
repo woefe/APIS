@@ -3,6 +3,7 @@ function install_btsync(){
    PASSWORD=""
    COMMA=""
 
+   yes_no $"Confirmation" $"Do you really want to install BitTorrent Sync?\nBy using BitTorrent Sync, you agree to their Privacy Policy and Terms.\nhttp://www.bittorrent.com/legal/privacy\nhttp://www.bittorrent.com/legal/terms-of-use" || return 1
    echo $"Installing BitTorrent Sync..."
    mkdir ./tmp && pushd ./tmp
    echo $"Downloading BitTorrent Sync..."
@@ -115,7 +116,7 @@ EOF
    update-rc.d btsync defaults
    service btsync start
    IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
-   hint_msg $"BitTorrent Sync's webinterface is now available under $IP:8888\nBy using BitTorrent Sync, you agree to their Privacy Policy and Terms.\nhttp://www.bittorrent.com/legal/privacy\nhttp://www.bittorrent.com/legal/terms-of-use"
+   hint_msg $"BitTorrent Sync's webinterface is now available under $IP:8888"
    return 0
 }
 
