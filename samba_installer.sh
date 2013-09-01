@@ -7,7 +7,6 @@ fi
 function first_install(){
    yes_no $"Confirmation" $"Do you really want to install Samba Server?"
    clear
-   echo $"Updating the operating systems's software (might take a while)..."
    sys_update
 
    echo $"Installing samba packages..."
@@ -18,7 +17,7 @@ function first_install(){
    choice=$"y"
    while [ "$choice" == $"y" ]; do
       echo
-
+      clear
       while true; do
          read -p $"Enter a username: " username &&
 	adduser --no-create-home --disabled-login --shell /bin/false --ingroup samba-user $username

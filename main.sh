@@ -32,32 +32,32 @@ TEXTDOMAINDIR=./locale
 #    echo "Answer: no"
 # fi
 function print_message(){
-   whiptail --title "$1" --msgbox "$2" 30 80
+   whiptail --title "$1" --msgbox "$2" 30 90
 }
 
 function hint_msg(){
-   whiptail --title $"HINT" --msgbox "$1" 30 80
+   whiptail --title $"HINT" --msgbox "$1" 30 90
 }
 
 function error_msg(){
-   whiptail --title $"ERROR" --msgbox "$1" 30 80
+   whiptail --title $"ERROR" --msgbox "$1" 30 90
 }
 
 function reboot_prompt(){
-   whiptail --msgbox "$1" 30 80 &&
+   whiptail --msgbox "$1" 30 90 &&
    reboot
 }
 
 function user_input(){
-   whiptail --title "$1" --inputbox "$2" 30 80 "$3" 3>&1 1>&2 2>&3
+   whiptail --title "$1" --inputbox "$2" 30 90 "$3" 3>&1 1>&2 2>&3
 }
 
 function password_box(){
-   whiptail --title "$1" --passwordbox "$2" 30 80 $3 3>&1 1>&2 2>&3
+   whiptail --title "$1" --passwordbox "$2" 30 90 $3 3>&1 1>&2 2>&3
 }
 
 function yes_no(){
-   whiptail --title "$1" --yesno "$2" 30 80 3>&1 1>&2 2>&3
+   whiptail --title "$1" --yesno "$2" 30 90 3>&1 1>&2 2>&3
 }
 
 # When installing foo you probably have to edit some config files.
@@ -137,7 +137,7 @@ function sys_update(){
 
 # ownCloud submenu
 function update_or_remove_owncloud(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --menu $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 80 15 \
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/remove ownCloud" --menu $"\nUpdate to latest version of ownCloud\nUse the update function only for updates, not for upgrades. See http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html for more details." 30 90 15 \
       update $"Update your ownCloud installation"\
       remove $"Remove ownCloud" 3>&1 1>&2 2>&3)
 
@@ -151,7 +151,7 @@ function update_or_remove_owncloud(){
 
 # Samba submenu
 function remove_or_change_samba(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Change/remove Samba" --menu $"\nUpdates for Samba are done by the system's package management.\nYou can either add more Samba shares or remove Samba." 30 80 15 \
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Change/remove Samba" --menu $"\nUpdates for Samba are done by the system's package management.\nYou can either add more Samba shares or remove Samba." 30 90 15 \
       add $"Add more shares and users" \
       remove $"Remove samba" 3>&1 1>&2 2>&3)
 
@@ -165,7 +165,7 @@ function remove_or_change_samba(){
 
 # NFS submenu
 function configure_nfs(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Configure NFS" --menu $"\nNote: Updates are not covered by APIS since the package management system manages them." 30 80 15 \
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Configure NFS" --menu $"\nNote: Updates are not covered by APIS since the package management system manages them." 30 90 15 \
       add-shares $"Add more NFS shares" \
       delete-shares $"Delete NFS shares" \
       add-clients $"Add clients to NFS shares" \
@@ -193,7 +193,7 @@ function configure_nfs(){
 }
 
 function configure_ampache(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Ampache" --menu $"Remove Ampache or get latest version from github." 30 80 15 \
+   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Ampache" --menu $"Remove Ampache or get latest version from github." 30 90 15 \
       uninstall $"Uninstall Ampache Server" \
       update $"Update Ampache Server" 3>&1 1>&2 2>&3)
       
@@ -207,7 +207,7 @@ function configure_ampache(){
 
 function main(){
    . /var/lib/apis/conf
-   choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi.\n" 30 88 15 \
+   choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi.\n" 30 90 15 \
       owncloud_setup $"Install/update/remove ownCloud"\
       samba_setup $"Install/remove Samba Server" \
       btsync_setup $"Install/uninstall BitTorrent Sync" \
@@ -294,7 +294,7 @@ if [ ! -f /var/lib/apis/conf ]; then
    mkdir /var/lib/apis
    USE_EXTERNAL_SPACE=true
    . data_to_external_disk.sh
-   whiptail --title "APIS" --yesno $"This setup can install and configure a whole bunge of different software eg. Samba, ownCloud...\nDo you want to use a external disk to store datadirectories of ownCloud and Samba on it?" 30 80
+   whiptail --title "APIS" --yesno $"This setup can install and configure a whole bunge of different software eg. Samba, ownCloud...\nDo you want to use a external disk to store datadirectories of ownCloud and Samba on it?" 30 90
    exit_status=$?
    case $exit_status in
       0)

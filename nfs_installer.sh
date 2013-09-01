@@ -30,7 +30,7 @@ function install_nfs(){
       fi
 
       while true; do
-	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 80 20 \
+	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
 	   rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
 	   ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
 	if [ $? -ne 0 ]; then
@@ -106,7 +106,7 @@ function add_nfs_shares(){
       fi
 
       while true; do
-	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 80 20 \
+	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
 	   rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
 	   ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
 	if [ $? -ne 0 ]; then
@@ -133,7 +133,7 @@ function remove_nfs_shares(){
    TAG_ITEM=$(for ((i=0; i<${#AVAILABLE_SHARES[*]}; i++)); do \
       echo -n "${AVAILABLE_SHARES[$i]} $i " ; \
    done)
-   SELECTED_SHARE=$(whiptail --title $"Remove NFS shares" --noitem --menu $"Select the NFS share which you want to delete." 30 80 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
+   SELECTED_SHARE=$(whiptail --title $"Remove NFS shares" --noitem --menu $"Select the NFS share which you want to delete." 30 90 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
    [ -z $SELECTED_SHARE ] && return 1
    yes_no $"Remove NFS shares" $"Do you really want to delete '$SELECTED_SHARE'?" || return
    linenumber=$(grep -ne "$SELECTED_SHARE[[:blank:]]" /etc/exports | cut -d: -f1)
@@ -152,7 +152,7 @@ function add_clients_to_nfs_shares(){
       echo -n " ${AVAILABLE_SHARES[$i]} $i " ;\
    done)
 
-   SELECTED_SHARE=$(whiptail --title $"Add clients to your NFS shares" --noitem --menu $"Select the NFS share to which you want to add more clients." 30 80 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
+   SELECTED_SHARE=$(whiptail --title $"Add clients to your NFS shares" --noitem --menu $"Select the NFS share to which you want to add more clients." 30 90 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
    [ -z $SELECTED_SHARE ] && return 1
    while true; do
       CLIENT=$(user_input $"Add more clients" $"Whom do you want to grant access on '$SELECTED_SHARE'? Enter only one IP address, hostname or subnet.")
@@ -170,7 +170,7 @@ function add_clients_to_nfs_shares(){
       fi
 
       while true; do
-	PERMISSIONS=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '$CLIENT' on '$SELECTED_SHARE'." 30 80 20 \
+	PERMISSIONS=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '$CLIENT' on '$SELECTED_SHARE'." 30 90 20 \
 	   rw $"'$CLIENT' can read and write files on '$SELECTED_SHARE'" 1 \
 	   ro $"'$CLIENT' can read files on '$SELECTED_SHARE'" 0 3>&1 1>&2 2>&3 )
 	if [ $? -ne 0 ]; then
@@ -197,7 +197,7 @@ function remove_clients_from_nfs_shares(){
    TAG_ITEM=$(for ((i=0; i<${#AVAILABLE_SHARES[*]}; i++)); do \
       echo -n "${AVAILABLE_SHARES[$i]} $i " ;\
    done)
-   SELECTED_SHARE=$(whiptail --title $"Remove clients from NFS shares" --noitem --menu $"Select the NFS share from which you want to delete clients." 30 80 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
+   SELECTED_SHARE=$(whiptail --title $"Remove clients from NFS shares" --noitem --menu $"Select the NFS share from which you want to delete clients." 30 90 20 $TAG_ITEM 3>&1 1>&2 2>&3 | tr -d \")
    [ -z $SELECTED_SHARE ] && return 1
    while true; do
       INSTALLED_CLIENTS=($(grep $SELECTED_SHARE[[:blank:]] /etc/exports | tr '[:blank:]' ';' | cut -d\; -f2- --output-delimiter=' '))
@@ -205,7 +205,7 @@ function remove_clients_from_nfs_shares(){
 	echo -n "${INSTALLED_CLIENTS[$i]} \"$i\" " ;\
       done)
 
-      SELECTED_CLIENT=$(whiptail --title $"Remove clients from NFS shares" --noitem --menu $"Select the client which you want to delete from '$SELECTED_SHARE'.\n   Used Syntax: 'clientname(permissions,options)'" 30 80 20 $TAG_ITEM 3>&1 1>&2 2>&3 )
+      SELECTED_CLIENT=$(whiptail --title $"Remove clients from NFS shares" --noitem --menu $"Select the client which you want to delete from '$SELECTED_SHARE'.\n   Used Syntax: 'clientname(permissions,options)'" 30 90 20 $TAG_ITEM 3>&1 1>&2 2>&3 )
       [ $? -ne 0 ] && break
       SELECTED_CLIENT=$(echo $SELECTED_CLIENT | tr -d \")
       yes_no $"Remove clients" $"Do you really want to delete '$SELECTED_CLIENT' from '$SELECTED_SHARE'?" || break
