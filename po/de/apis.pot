@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-18 23:23+0200\n"
+"POT-Creation-Date: 2013-09-01 11:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -364,7 +364,11 @@ msgstr ""
 msgid "I need root permissions."
 msgstr ""
 
-#: main.sh:295
+#: main.sh:292
+msgid "Checking for locale en_US.UTF-8..."
+msgstr ""
+
+#: main.sh:297
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -614,90 +618,86 @@ msgstr ""
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr ""
 
-#: owncloud_installer.sh:11
-msgid "Checking for locale en_US.UTF-8..."
-msgstr ""
-
-#: owncloud_installer.sh:14 owncloud_installer.sh:154
+#: owncloud_installer.sh:11 owncloud_installer.sh:153
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr ""
 
-#: owncloud_installer.sh:17 owncloud_installer.sh:157
+#: owncloud_installer.sh:14 owncloud_installer.sh:156
 msgid "Setting permissions for '$OWNCLOUD_DIR'..."
 msgstr ""
 
-#: owncloud_installer.sh:23
+#: owncloud_installer.sh:20
 msgid "Creating conf.php..."
 msgstr ""
 
-#: owncloud_installer.sh:29 owncloud_installer.sh:162
+#: owncloud_installer.sh:26 owncloud_installer.sh:161
 msgid "Cleaning up..."
 msgstr ""
 
-#: owncloud_installer.sh:105
+#: owncloud_installer.sh:102
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr ""
 
-#: owncloud_installer.sh:106 owncloud_installer.sh:109
-#: owncloud_installer.sh:152
+#: owncloud_installer.sh:103 owncloud_installer.sh:106
+#: owncloud_installer.sh:151
 msgid "Download failed"
 msgstr ""
 
-#: owncloud_installer.sh:108
+#: owncloud_installer.sh:105
 msgid "Checking download..."
 msgstr ""
 
-#: owncloud_installer.sh:121
+#: owncloud_installer.sh:118
 msgid "IP address and version"
 msgstr ""
 
-#: owncloud_installer.sh:121
+#: owncloud_installer.sh:118
 msgid ""
 "After APIS has finished, ownCloud will be available under: $SERVER_NAME/"
 "owncloud\\nThis version of ownCloud will be installed: $VERSION\\nDo you "
 "want to continue?"
 msgstr ""
 
-#: owncloud_installer.sh:132
+#: owncloud_installer.sh:129
 msgid "Almost finished"
 msgstr ""
 
-#: owncloud_installer.sh:132
+#: owncloud_installer.sh:129
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nOpen a web browser "
 "and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The "
 "advanced settings are preconfigured by this script, so don't change them!"
 msgstr ""
 
-#: owncloud_installer.sh:142
+#: owncloud_installer.sh:141
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated."
 msgstr ""
 
-#: owncloud_installer.sh:148
+#: owncloud_installer.sh:147
 msgid "Latest version is already installed."
 msgstr ""
 
-#: owncloud_installer.sh:169
+#: owncloud_installer.sh:168
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed."
 msgstr ""
 
-#: owncloud_installer.sh:172 samba_installer.sh:108
+#: owncloud_installer.sh:171 samba_installer.sh:108
 msgid "Starting uninstaller"
 msgstr ""
 
-#: owncloud_installer.sh:172
+#: owncloud_installer.sh:171
 msgid "Are you sure you want to continue?"
 msgstr ""
 
-#: owncloud_installer.sh:174
+#: owncloud_installer.sh:173
 msgid "Datadirectory"
 msgstr ""
 
-#: owncloud_installer.sh:174
+#: owncloud_installer.sh:173
 msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr ""
 

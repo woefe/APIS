@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-18 23:23+0200\n"
+"POT-Creation-Date: 2013-09-01 11:41+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -46,8 +46,7 @@ msgstr "Upgrade Ampache"
 msgid ""
 "Install latest version from github.com.\\nAre you sure that you want to "
 "upgrade Ampache?"
-msgstr ""
-"Willst du die aktuelle Version von github.com installieren?"
+msgstr "Willst du die aktuelle Version von github.com installieren?"
 
 #: btsync_installer.sh:6 samba_installer.sh:8
 msgid "Confirmation"
@@ -60,8 +59,9 @@ msgid ""
 "legal/privacy\\nhttp://www.bittorrent.com/legal/terms-of-use"
 msgstr ""
 "Willst du BitTorrent Sync tatsächlich installieren?\\nDurch die Verwendung "
-"von BitTorrent Sync, stimmst du deren Datenschutzrichtlinien und AGBs zu.\\n"
-"http://www.bittorrent.com/legal/privacy\\nhttp://www.bittorrent.com/legal/terms-of-use"
+"von BitTorrent Sync, stimmst du deren Datenschutzrichtlinien und AGBs zu."
+"\\nhttp://www.bittorrent.com/legal/privacy\\nhttp://www.bittorrent.com/legal/"
+"terms-of-use"
 
 #: btsync_installer.sh:7
 msgid "Installing BitTorrent Sync..."
@@ -117,7 +117,8 @@ msgstr "Wiederhole das Passwort für den Benutzer $users_name: "
 
 #: btsync_installer.sh:119
 msgid "BitTorrent Sync's webinterface is now available under $IP:8888"
-msgstr "Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar."
+msgstr ""
+"Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar."
 
 #: btsync_installer.sh:124
 msgid "Remove BitTorrent Sync"
@@ -147,9 +148,9 @@ msgid ""
 "\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
 "format the Drive."
 msgstr ""
-"Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Das Datenverzeichnis von "
-"ownCloud auf externen Speicher legen. Es ist möglich eine einzelne Partition "
-"oder eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
+"Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Die Datenverzeichnisse "
+"auf externen Speicher legen. Es ist möglich eine einzelne Partition oder "
+"eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
 "Datenverzeichnis verwenden.\\n3. Datenverzeichnis auf der Speicherkarte "
 "lassen\\n\\nHINWEIS: Nummer 1 formatiert die ausgewählte Festplatte/"
 "Partition, dabei gehen alle darauf gespeicherten Daten verloren."
@@ -198,7 +199,7 @@ msgid ""
 "partition with maximum size will be created"
 msgstr ""
 "Wird eine komplette 'disk' ausgewählt, werden alle darauf vorhandenen "
-"Partitionen gelöscht\\nund eine neue Partition mit der maximalen Größe "
+"Partitionen gelöscht und eine neue Partition mit der maximalen Größe "
 "erstellt."
 
 #: data_to_external_disk.sh:59
@@ -357,8 +358,8 @@ msgstr "Update/deinstalliere Ampache"
 #: main.sh:196
 msgid "Remove Ampache or get latest version from github."
 msgstr ""
-"Hier kannst du Ampache deinstallieren oder die neueste Version von "
-"github.com installieren"
+"Hier kannst du Ampache deinstallieren oder die neueste Version von github."
+"com installieren"
 
 #: main.sh:196
 msgid "Uninstall Ampache Server"
@@ -404,7 +405,11 @@ msgstr "Installiere/update/deinstalliere den Ampache Streaming Server"
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:295
+#: main.sh:292
+msgid "Checking for locale en_US.UTF-8..."
+msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
+
+#: main.sh:297
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -693,44 +698,40 @@ msgstr "Neustart empfohlen!"
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr "Erstelle /etc/nginx/nginx.conf.."
 
-#: owncloud_installer.sh:11
-msgid "Checking for locale en_US.UTF-8..."
-msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
-
-#: owncloud_installer.sh:14 owncloud_installer.sh:154
+#: owncloud_installer.sh:11 owncloud_installer.sh:153
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr "Entpacke ownCloud-Archiv..."
 
-#: owncloud_installer.sh:17 owncloud_installer.sh:157
+#: owncloud_installer.sh:14 owncloud_installer.sh:156
 msgid "Setting permissions for '$OWNCLOUD_DIR'..."
 msgstr "Setze Dateiberechtigungen für '$OWNCLOUD_DIR'..."
 
-#: owncloud_installer.sh:23
+#: owncloud_installer.sh:20
 msgid "Creating conf.php..."
 msgstr "Erstelle conf.php"
 
-#: owncloud_installer.sh:29 owncloud_installer.sh:162
+#: owncloud_installer.sh:26 owncloud_installer.sh:161
 msgid "Cleaning up..."
 msgstr "Räume auf..."
 
-#: owncloud_installer.sh:105
+#: owncloud_installer.sh:102
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr "Lade ownCloud Archiv herunter..."
 
-#: owncloud_installer.sh:106 owncloud_installer.sh:109
-#: owncloud_installer.sh:152
+#: owncloud_installer.sh:103 owncloud_installer.sh:106
+#: owncloud_installer.sh:151
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: owncloud_installer.sh:108
+#: owncloud_installer.sh:105
 msgid "Checking download..."
 msgstr "Überprüfe Download..."
 
-#: owncloud_installer.sh:121
+#: owncloud_installer.sh:118
 msgid "IP address and version"
 msgstr "IP Adresse und Version"
 
-#: owncloud_installer.sh:121
+#: owncloud_installer.sh:118
 msgid ""
 "After APIS has finished, ownCloud will be available under: $SERVER_NAME/"
 "owncloud\\nThis version of ownCloud will be installed: $VERSION\\nDo you "
@@ -740,11 +741,11 @@ msgstr ""
 "erreichbar sein: $SERVER_NAME/owncloud\\nDiese Version von ownCloud wird "
 "installiert: $VERSION\\n Willst do wirklich fortfahren?"
 
-#: owncloud_installer.sh:132
+#: owncloud_installer.sh:129
 msgid "Almost finished"
 msgstr "Beinahe fertig"
 
-#: owncloud_installer.sh:132
+#: owncloud_installer.sh:129
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nOpen a web browser "
 "and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The "
@@ -752,9 +753,10 @@ msgid ""
 msgstr ""
 "In ein paar Augenblicken kannst du deine ownCloud endlich verwenden.\\nÖffne "
 "einen Webbrowser und gehe zu '$SERVER_NAME/owncloud'! Dann lege dort einen "
-"Benutzer mit Passwort an\\nWICHTIG:Die erweiterten Einstellungen nicht bearbeiten."
+"Benutzer mit Passwort an\\nWICHTIG:Die erweiterten Einstellungen nicht "
+"bearbeiten."
 
-#: owncloud_installer.sh:142
+#: owncloud_installer.sh:141
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated."
@@ -762,11 +764,11 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden."
 
-#: owncloud_installer.sh:148
+#: owncloud_installer.sh:147
 msgid "Latest version is already installed."
 msgstr "Die neueste Version ist bereits installiert."
 
-#: owncloud_installer.sh:169
+#: owncloud_installer.sh:168
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed."
@@ -774,19 +776,19 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden."
 
-#: owncloud_installer.sh:172 samba_installer.sh:108
+#: owncloud_installer.sh:171 samba_installer.sh:108
 msgid "Starting uninstaller"
 msgstr "Starte Deinstallationsprogramm"
 
-#: owncloud_installer.sh:172
+#: owncloud_installer.sh:171
 msgid "Are you sure you want to continue?"
 msgstr "Willst du wirklich weitermachen? "
 
-#: owncloud_installer.sh:174
+#: owncloud_installer.sh:173
 msgid "Datadirectory"
 msgstr "Datenverzeichnis"
 
-#: owncloud_installer.sh:174
+#: owncloud_installer.sh:173
 msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr "Soll das Datenverzeichnis auch gelöscht werden?"
 
@@ -837,9 +839,3 @@ msgid ""
 msgstr ""
 "Bist du dir sicher, dass du den Samba Server deinstallieren willst? "
 "Freigegebene Dateien und Ordner werden gelöscht!"
-
-#~ msgid "Editing /etc/php5/fpm/php.ini..."
-#~ msgstr "Bearbeite /etc/php5/fpm/php.ini.."
-
-#~ msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
-#~ msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."

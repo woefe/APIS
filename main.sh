@@ -289,6 +289,8 @@ fi
 # Ask for external storage and write '/var/lib/apis/conf'
 # In '/var/lib/apis/conf' APIS will save which components are installed and which are not
 if [ ! -f /var/lib/apis/conf ]; then
+   echo $"Checking for locale en_US.UTF-8..."
+   grep -Eq "^# en_US.UTF-8 UTF-8$" /etc/locale.gen && sed -i -e "s/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen && locale-gen
    mkdir /var/lib/apis
    USE_EXTERNAL_SPACE=true
    . data_to_external_disk.sh

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-07 17:09+0200\n"
+"POT-Creation-Date: 2013-09-01 11:40+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -17,27 +17,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ampache_installer.sh:3
+msgid "IP address"
+msgstr "IP Adresse"
+
+#: ampache_installer.sh:3
+msgid ""
+"After APIS has finished, Ampache will be available under: $SERVER_NAME/"
+"ampache\\nDo you really want to install Ampache?"
+msgstr ""
+"Nachdem APIS Ampache fertig konfiguriert hat, wird Ampache unter folgender "
+"Adresse erreichbar sein:$SERVER_NAME/ampache\\nWillst du Ampache tatsächlich "
+"installieren?"
+
+#: ampache_installer.sh:61
+msgid "Uninstaller"
+msgstr "Deinstallationsprogramm"
+
+#: ampache_installer.sh:61
+msgid "Do you really want to uninstall Ampache?"
+msgstr "Willst du den Ampache Server wirklich deinstallieren?"
+
+#: ampache_installer.sh:78
+msgid "Upgrade Ampache"
+msgstr "Upgrade Ampache"
+
+#: ampache_installer.sh:78
+msgid ""
+"Install latest version from github.com.\\nAre you sure that you want to "
+"upgrade Ampache?"
+msgstr "Willst du die aktuelle Version von github.com installieren?"
+
+#: btsync_installer.sh:6 samba_installer.sh:8
+msgid "Confirmation"
+msgstr "Bestätigung"
+
 #: btsync_installer.sh:6
+msgid ""
+"Do you really want to install BitTorrent Sync?\\nBy using BitTorrent Sync, "
+"you agree to their Privacy Policy and Terms.\\nhttp://www.bittorrent.com/"
+"legal/privacy\\nhttp://www.bittorrent.com/legal/terms-of-use"
+msgstr ""
+"Willst du BitTorrent Sync tatsächlich installieren?\\nDurch die Verwendung "
+"von BitTorrent Sync, stimmst du deren Datenschutzrichtlinien und AGBs zu."
+"\\nhttp://www.bittorrent.com/legal/privacy\\nhttp://www.bittorrent.com/legal/"
+"terms-of-use"
+
+#: btsync_installer.sh:7
 msgid "Installing BitTorrent Sync..."
 msgstr "Installiere BitTorrent Sync..."
 
-#: btsync_installer.sh:8
+#: btsync_installer.sh:9
 msgid "Downloading BitTorrent Sync..."
 msgstr "Lade BitTorrent Sync herunter..."
 
-#: btsync_installer.sh:10
+#: btsync_installer.sh:11
 msgid "Unpacking .tar file..."
 msgstr "Entpacke Archiv..."
 
-#: btsync_installer.sh:14
+#: btsync_installer.sh:15
 msgid "Removing temporary files..."
 msgstr "Lösche temporäre Dateien"
 
-#: btsync_installer.sh:17
+#: btsync_installer.sh:18
 msgid "Create username and password"
 msgstr "Erstelle Benuter und Passwort"
 
-#: btsync_installer.sh:17
+#: btsync_installer.sh:18
 msgid ""
 "The BitTorrent Sync webinterface can be protected by a dialog that asks for "
 "username and password."
@@ -45,11 +91,11 @@ msgstr ""
 "Die Weboberfläche von BitTorrent Sync kann durch einen Passwortdialog "
 "geschützt werden."
 
-#: btsync_installer.sh:20
+#: btsync_installer.sh:21
 msgid "Username"
 msgstr "Benutzername"
 
-#: btsync_installer.sh:20
+#: btsync_installer.sh:21
 msgid ""
 "Enter a username or leave it blank, if you don't want to install a password "
 "dialog:"
@@ -57,34 +103,28 @@ msgstr ""
 "Gib einen Benutzernamen ein oder lass die Zeile leer, wenn du auf den "
 "Passwortdialog verzichten willst."
 
-#: btsync_installer.sh:27 btsync_installer.sh:32
+#: btsync_installer.sh:28 btsync_installer.sh:33
 msgid "Password"
 msgstr "Passwort"
 
-#: btsync_installer.sh:27
+#: btsync_installer.sh:28
 msgid "Enter a password for user $users_name: "
 msgstr "Passwort für den Benutzer $users_name: "
 
-#: btsync_installer.sh:32
+#: btsync_installer.sh:33
 msgid "Retype the password for user $users_name: "
 msgstr "Wiederhole das Passwort für den Benutzer $users_name: "
 
-#: btsync_installer.sh:118
-msgid ""
-"BitTorrent Sync's webinterface is now available under $IP:8888\\nBy using "
-"BitTorrent Sync, you agree to their Privacy Policy and Terms.\\nhttp://www."
-"bittorrent.com/legal/privacy\\nhttp://www.bittorrent.com/legal/terms-of-use"
+#: btsync_installer.sh:119
+msgid "BitTorrent Sync's webinterface is now available under $IP:8888"
 msgstr ""
-"Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar\\n "
-"Durch die Verwendung von BitTorrent Sync, stimmst du deren "
-"Datenschutzrichtlinien und AGBs zu.\\nhttp://www.bittorrent.com/legal/privacy"
-"\\nhttp://www.bittorrent.com/legal/terms-of-use"
+"Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar."
 
-#: btsync_installer.sh:123
+#: btsync_installer.sh:124
 msgid "Remove BitTorrent Sync"
 msgstr "Deinstalliere BitTorrent Sync"
 
-#: btsync_installer.sh:123
+#: btsync_installer.sh:124
 msgid ""
 "Are you sure that you want to uninstall BitTorrent Sync? Datadirectories "
 "won't be deleted."
@@ -108,9 +148,9 @@ msgid ""
 "\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
 "format the Drive."
 msgstr ""
-"Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Das Datenverzeichnis von "
-"ownCloud auf externen Speicher legen. Es ist möglich eine einzelne Partition "
-"oder eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
+"Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Die Datenverzeichnisse "
+"auf externen Speicher legen. Es ist möglich eine einzelne Partition oder "
+"eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
 "Datenverzeichnis verwenden.\\n3. Datenverzeichnis auf der Speicherkarte "
 "lassen\\n\\nHINWEIS: Nummer 1 formatiert die ausgewählte Festplatte/"
 "Partition, dabei gehen alle darauf gespeicherten Daten verloren."
@@ -159,7 +199,7 @@ msgid ""
 "partition with maximum size will be created"
 msgstr ""
 "Wird eine komplette 'disk' ausgewählt, werden alle darauf vorhandenen "
-"Partitionen gelöscht\\nund eine neue Partition mit der maximalen Größe "
+"Partitionen gelöscht und eine neue Partition mit der maximalen Größe "
 "erstellt."
 
 #: data_to_external_disk.sh:59
@@ -187,8 +227,8 @@ msgstr ""
 "Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten Schritt "
 "formatiert! (j/n): "
 
-#: data_to_external_disk.sh:71 samba_installer.sh:19 samba_installer.sh:20
-#: samba_installer.sh:65 samba_installer.sh:66
+#: data_to_external_disk.sh:71 samba_installer.sh:18 samba_installer.sh:19
+#: samba_installer.sh:64 samba_installer.sh:65
 msgid "y"
 msgstr "j"
 
@@ -204,27 +244,44 @@ msgstr "Daten bleiben auf der Speicherkarte"
 msgid "Unmmounted successfully."
 msgstr "Gerät erfolgreich ungemountet."
 
-#: main.sh:12
+#: main.sh:39
 msgid "HINT"
 msgstr "HINWEIS"
 
-#: main.sh:16
+#: main.sh:43
 msgid "ERROR"
 msgstr "FEHLER"
 
-#: main.sh:37 main.sh:50 main.sh:63 main.sh:92
+#: main.sh:74
+msgid "ERROR: key '$key' doesn't exist in '$file'."
+msgstr "FEHLER: Der Schlüssel '$key' existiert in der Datei '$file' nicht."
+
+#: main.sh:127 samba_installer.sh:10
+msgid "Updating the operating systems's software (might take a while)..."
+msgstr ""
+"Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
+
+#: main.sh:132
+msgid "Update failed."
+msgstr "Update fehlgeschlagen."
+
+#: main.sh:133 main.sh:284
+msgid "Bye..."
+msgstr "Beende"
+
+#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:210
 msgid "Select"
 msgstr "Auswählen"
 
-#: main.sh:37 main.sh:50 main.sh:63
+#: main.sh:140 main.sh:154 main.sh:168 main.sh:196
 msgid "Back"
 msgstr "Zurück"
 
-#: main.sh:37
+#: main.sh:140
 msgid "Update/remove ownCloud"
 msgstr "Update/deinstalliere ownCloud"
 
-#: main.sh:37
+#: main.sh:140
 msgid ""
 "\\nUpdate to latest version of ownCloud\\nUse the update function only for "
 "updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
@@ -234,19 +291,19 @@ msgstr ""
 "sollte nur für Updates, nicht aber für Upgrades verwendet werden. Mehr Infos "
 "hier: http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html"
 
-#: main.sh:37
+#: main.sh:140
 msgid "Update your ownCloud installation"
 msgstr "Update der ownCloud Installation"
 
-#: main.sh:37
+#: main.sh:140
 msgid "Remove ownCloud"
 msgstr "Deinstalliere ownCloud"
 
-#: main.sh:50
+#: main.sh:154
 msgid "Change/remove Samba"
 msgstr "Ändere/entferne Samba"
 
-#: main.sh:50
+#: main.sh:154
 msgid ""
 "\\nUpdates for Samba are done by the system's package management.\\nYou can "
 "either add more Samba shares or remove Samba."
@@ -254,19 +311,19 @@ msgstr ""
 "\\nUpdates werden von der Paketverwaltung übernommen.\\nHier kannst du "
 "entweder mehrere Samba Freigaben hinzufügen oder Samba entfernen."
 
-#: main.sh:50
+#: main.sh:154
 msgid "Add more shares and users"
 msgstr "Füge weitere Freigaben und Benutzer hinzu"
 
-#: main.sh:50
+#: main.sh:154
 msgid "Remove samba"
 msgstr "Entferne Samba"
 
-#: main.sh:63
+#: main.sh:168
 msgid "Configure NFS"
 msgstr "Konfigurieren von NFS"
 
-#: main.sh:63
+#: main.sh:168
 msgid ""
 "\\nNote: Updates are not covered by APIS since the package management system "
 "manages them."
@@ -274,31 +331,49 @@ msgstr ""
 "\\nAnmerkung: Die Updates werden nicht von APIS übernommen, da die "
 "Paketverwaltung dafür zuständig ist."
 
-#: main.sh:63
+#: main.sh:168
 msgid "Add more NFS shares"
 msgstr "Weitere NFS-Freigaben hinzufügen"
 
-#: main.sh:63
+#: main.sh:168
 msgid "Delete NFS shares"
 msgstr "Lösche NFS-Freigaben"
 
-#: main.sh:63
+#: main.sh:168
 msgid "Add clients to NFS shares"
 msgstr "Weitere Clients zu NFS-Freigaben hinzufügen"
 
-#: main.sh:63
+#: main.sh:168
 msgid "Remove clients from configuration files"
 msgstr "Entferne Clients aus den Konfigurationsdateien"
 
-#: main.sh:63
+#: main.sh:168
 msgid "Uninstall NFS server"
 msgstr "Deinstalliere den NFS server"
 
-#: main.sh:92
+#: main.sh:196
+msgid "Update/uninstall Ampache"
+msgstr "Update/deinstalliere Ampache"
+
+#: main.sh:196
+msgid "Remove Ampache or get latest version from github."
+msgstr ""
+"Hier kannst du Ampache deinstallieren oder die neueste Version von github."
+"com installieren"
+
+#: main.sh:196
+msgid "Uninstall Ampache Server"
+msgstr "Deinstalliere den Ampache server"
+
+#: main.sh:196
+msgid "Update Ampache Server"
+msgstr "Update den Ampache Server"
+
+#: main.sh:210
 msgid "Exit"
 msgstr "Beenden"
 
-#: main.sh:92
+#: main.sh:210
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
@@ -306,43 +381,35 @@ msgstr ""
 "\\nAwesome Pi Installation Script\\n\\nInstalliere Cooles Zeug auf deinem "
 "RaspberryPi.\\n"
 
-#: main.sh:92
+#: main.sh:210
 msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
-#: main.sh:92
+#: main.sh:210
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
-#: main.sh:92
+#: main.sh:210
 msgid "Install/uninstall BitTorrent Sync"
 msgstr "Installiere/Deinstalliere BitTorrent Sync"
 
-#: main.sh:92
+#: main.sh:210
 msgid "Install/uninstall/configure Network File System Server"
 msgstr "Installiere/deinstalliere/konfiguriere den Network File System Server"
 
-#: main.sh:107
-msgid ""
-"In a few moments you can finally enjoy your ownCloud.\\nThe Raspberry Pi is "
-"going to reboot now.\\nAfter that open a web browser and navigate to your "
-"ownCloud instance. Enter a username and a password. The advanced settings "
-"are preconfigured by this script, so don't change them!"
-msgstr ""
-"Viel Spaß bei der Benutzung von ownCloud.\\nNach Neustart des Raspberry Pi, "
-"ownCloud im Browser (Firefox) aufrufen und einen Benutzer mit Passwort "
-"anlegen.\\nWICHTIG:Die erweiterten Einstellungen nicht bearbeiten.\\nNoch "
-"ein kleiner Tipp: ownCloud funktioniert am besten mit Firefox"
+#: main.sh:210
+msgid "Install/upgrade/uninstall Ampache Streaming Server"
+msgstr "Installiere/update/deinstalliere den Ampache Streaming Server"
 
-#: main.sh:152
+#: main.sh:283
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:153 owncloud_installer.sh:224
-msgid "Bye..."
-msgstr "Beende"
+#: main.sh:292
+msgid "Checking for locale en_US.UTF-8..."
+msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: main.sh:161
+#: main.sh:297
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -593,19 +660,19 @@ msgstr ""
 "folgendem Befehl neu:\\nsudo service nfs-kernel-server restart\\nVersichere "
 "dich aber davor, dass keiner der Clients eine Freigabe gemountet hat."
 
-#: owncloud_installer.sh:7
+#: nginx_basic_installer.sh:2
 msgid "Installing nginx and php..."
 msgstr "Installiere nginx und php..."
 
-#: owncloud_installer.sh:9
+#: nginx_basic_installer.sh:4
 msgid "Searching for packages that are no longer needed..."
 msgstr "Nicht mehr benötigte Pakete werden gesucht..."
 
-#: owncloud_installer.sh:12
+#: nginx_basic_installer.sh:7
 msgid "SSL-Certificate"
 msgstr "SSL-Zertifikat"
 
-#: owncloud_installer.sh:12
+#: nginx_basic_installer.sh:7
 msgid ""
 "The next step will create a ssl certificate.\\nDon't leave the field 'Common "
 "Name' blank.\\nHit Enter to continue."
@@ -615,83 +682,83 @@ msgstr ""
 "Weitermachen? Enter zum Weitermachen (empfohlen); STRG+c zum Abbrechen der "
 "Installation"
 
-#: owncloud_installer.sh:22
+#: nginx_basic_installer.sh:17
 msgid "An error occurred during the last Step. Repeating"
 msgstr "Dieser Schritt ist fehlgeschlagen. Wiederhole"
 
-#: owncloud_installer.sh:30
-msgid "Creating /etc/nginx/nginx.conf..."
-msgstr "Erstelle /etc/nginx/nginx.conf.."
-
-#: owncloud_installer.sh:33
-msgid "Editing /etc/php5/fpm/php.ini..."
-msgstr "Bearbeite /etc/php5/fpm/php.ini.."
-
-#: owncloud_installer.sh:36
+#: nginx_basic_installer.sh:98
 msgid "Editing /etc/dphys-swapfile..."
 msgstr "Bearbeite /etc/dphys-swapfile..."
 
-#: owncloud_installer.sh:44
-msgid "Checking for locale en_US.UTF-8..."
-msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
+#: nginx_basic_installer.sh:118
+msgid "Reboot is recommended!"
+msgstr "Neustart empfohlen!"
 
-#: owncloud_installer.sh:50 owncloud_installer.sh:267
+#: owncloud_installer.sh:8
+msgid "Creating /etc/nginx/nginx.conf..."
+msgstr "Erstelle /etc/nginx/nginx.conf.."
+
+#: owncloud_installer.sh:11 owncloud_installer.sh:153
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr "Entpacke ownCloud-Archiv..."
 
-#: owncloud_installer.sh:55 owncloud_installer.sh:270
-msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
-msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."
+#: owncloud_installer.sh:14 owncloud_installer.sh:156
+msgid "Setting permissions for '$OWNCLOUD_DIR'..."
+msgstr "Setze Dateiberechtigungen für '$OWNCLOUD_DIR'..."
 
-#: owncloud_installer.sh:58 owncloud_installer.sh:273
-msgid "Setting permissions for '$PATH_TO_WEBSERVER'..."
-msgstr "Setze Dateiberechtigungen für '$PATH_TO_WEBSERVER'..."
-
-#: owncloud_installer.sh:65
+#: owncloud_installer.sh:20
 msgid "Creating conf.php..."
 msgstr "Erstelle conf.php"
 
-#: owncloud_installer.sh:71 owncloud_installer.sh:279
+#: owncloud_installer.sh:26 owncloud_installer.sh:161
 msgid "Cleaning up..."
 msgstr "Räume auf..."
 
-#: owncloud_installer.sh:209
+#: owncloud_installer.sh:102
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr "Lade ownCloud Archiv herunter..."
 
-#: owncloud_installer.sh:210 owncloud_installer.sh:213
+#: owncloud_installer.sh:103 owncloud_installer.sh:106
+#: owncloud_installer.sh:151
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: owncloud_installer.sh:212
+#: owncloud_installer.sh:105
 msgid "Checking download..."
 msgstr "Überprüfe Download..."
 
-#: owncloud_installer.sh:219 samba_installer.sh:9
-msgid "Updating the operating systems's software (might take a while)..."
-msgstr ""
-"Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
-
-#: owncloud_installer.sh:223
-msgid "Update failed."
-msgstr "Update fehlgeschlagen."
-
-#: owncloud_installer.sh:238
+#: owncloud_installer.sh:118
 msgid "IP address and version"
 msgstr "IP Adresse und Version"
 
-#: owncloud_installer.sh:238
+#: owncloud_installer.sh:118
 msgid ""
-"This IP will be used to set up your ownCloud: $SERVER_NAME\\nThis will be "
-"the IP you have to enter in your webbrowser after the script has finished."
-"\\nThis version of ownCloud will be installed: $VERSION\\nDo you want to "
-"continue?"
+"After APIS has finished, ownCloud will be available under: $SERVER_NAME/"
+"owncloud\\nThis version of ownCloud will be installed: $VERSION\\nDo you "
+"want to continue?"
 msgstr ""
-"Verwende folgende IP für die Konfiguration: $SERVER_NAME\\nDiese IP musst du "
-"nach Abschluss der Installation in deinen Browser eingeben.\\nDiese Version "
-"von ownCloud wird installiert: $VERSION\\n Willst do wirklich fortfahren?"
+"Nach der Installation von ownCloud, wird ownCloud unter folgender Adresse "
+"erreichbar sein: $SERVER_NAME/owncloud\\nDiese Version von ownCloud wird "
+"installiert: $VERSION\\n Willst do wirklich fortfahren?"
 
-#: owncloud_installer.sh:255
+#: owncloud_installer.sh:129
+msgid "Almost finished"
+msgstr "Beinahe fertig"
+
+#: owncloud_installer.sh:129
+#, fuzzy
+msgid ""
+"In a few moments you can finally enjoy your ownCloud.\\nOpen a web browser "
+"and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The "
+"advanced settings are preconfigured by this script, so don't change them!"
+"\\nHINT"
+msgstr ""
+"In ein paar Augenblicken kannst du deine ownCloud endlich verwenden.\\nÖffne "
+"einen Webbrowser und gehe zu '$SERVER_NAME/owncloud'! Dann lege dort einen "
+"Benutzer mit Passwort an\\nWICHTIG:Die erweiterten Einstellungen nicht "
+"bearbeiten."
+
+#: owncloud_installer.sh:141
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated."
@@ -699,11 +766,11 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden."
 
-#: owncloud_installer.sh:261
+#: owncloud_installer.sh:147
 msgid "Latest version is already installed."
 msgstr "Die neueste Version ist bereits installiert."
 
-#: owncloud_installer.sh:288
+#: owncloud_installer.sh:168
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed."
@@ -711,31 +778,31 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden."
 
-#: owncloud_installer.sh:291 samba_installer.sh:109
+#: owncloud_installer.sh:171 samba_installer.sh:108
 msgid "Starting uninstaller"
 msgstr "Starte Deinstallationsprogramm"
 
-#: owncloud_installer.sh:291
+#: owncloud_installer.sh:171
 msgid "Are you sure you want to continue?"
 msgstr "Willst du wirklich weitermachen? "
 
-#: owncloud_installer.sh:293
+#: owncloud_installer.sh:173
 msgid "Datadirectory"
 msgstr "Datenverzeichnis"
 
-#: owncloud_installer.sh:293
+#: owncloud_installer.sh:173
 msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr "Soll das Datenverzeichnis auch gelöscht werden?"
 
-#: owncloud_installer.sh:318
-msgid "Reboot is recommended!"
-msgstr "Neustart empfohlen!"
+#: samba_installer.sh:8
+msgid "Do you really want to install Samba Server?"
+msgstr "Willst du den Samba Server wirklich installieren?"
 
 #: samba_installer.sh:13
 msgid "Installing samba packages..."
 msgstr "Installiere für Samba benötigte Pakete..."
 
-#: samba_installer.sh:18
+#: samba_installer.sh:17
 msgid ""
 "This setup will create samba shares that are protected by a username and "
 "password."
@@ -743,30 +810,40 @@ msgstr ""
 "Es werden Samba Freigaben erstellt, die mit Benutzername und Passwort "
 "gesichert sind."
 
-#: samba_installer.sh:24 samba_installer.sh:70
+#: samba_installer.sh:23 samba_installer.sh:69
 msgid "Enter a username: "
 msgstr "Gib einen Benutzernamen ein: "
 
-#: samba_installer.sh:34 samba_installer.sh:80
+#: samba_installer.sh:33 samba_installer.sh:79
 msgid "Enter a name for this share: "
 msgstr "Gib einen Namen für diese Freigabe an: "
 
-#: samba_installer.sh:36 samba_installer.sh:82
+#: samba_installer.sh:35 samba_installer.sh:81
 msgid "This share already exists"
 msgstr "Diese Freigabe existiert bereits"
 
-#: samba_installer.sh:44 samba_installer.sh:90
+#: samba_installer.sh:43 samba_installer.sh:89
 msgid "Enter a short description of this share: "
 msgstr "Eine kurze Beschreibung für diese Freigabe: "
 
-#: samba_installer.sh:58 samba_installer.sh:104
+#: samba_installer.sh:57 samba_installer.sh:103
 msgid "Create more shares? (y/n)"
 msgstr "Weitere Freigaben erstellen? (j/n): "
 
-#: samba_installer.sh:64
+#: samba_installer.sh:63
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
 
-#: samba_installer.sh:109
-msgid "Do you really want to remove Samba Server?"
-msgstr "Willst du den Samba Server wirklich deinstallieren?"
+#: samba_installer.sh:108
+msgid ""
+"Do you really want to remove Samba Server? All shared files and directories "
+"will be deleted!"
+msgstr ""
+"Bist du dir sicher, dass du den Samba Server deinstallieren willst? "
+"Freigegebene Dateien und Ordner werden gelöscht!"
+
+#~ msgid "Editing /etc/php5/fpm/php.ini..."
+#~ msgstr "Bearbeite /etc/php5/fpm/php.ini.."
+
+#~ msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
+#~ msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."

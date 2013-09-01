@@ -8,9 +8,6 @@ function install_oc(){
    echo $"Creating /etc/nginx/nginx.conf..."
    create_nginx_conf_files
 
-   echo $"Checking for locale en_US.UTF-8..."
-   grep -Eq "^# en_US.UTF-8 UTF-8$" /etc/locale.gen && sed -i -e "s/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen && locale-gen
-
    echo $"Decompressing owncloud-$VERSION.tar.bz2..."
    tar -xjf /tmp/owncloud-$VERSION.tar.bz2 -C $WEBSERVER_ROOT
 
@@ -85,7 +82,7 @@ EOF
 }
 
 function create_minimal_php_conf(){
-cat > $WEBSERVER_ROOT/config/config.php << EOF
+cat > $OWNCLOUD_DIR/config/config.php << EOF
 <?php
 \$CONFIG = array (
   'datadirectory' => '$EXTERNAL_DATA_DIR',
@@ -130,6 +127,8 @@ function install_owncloud(){
    download_and_check_oc &&
    install_oc
    print_message $"Almost finished" $"In a few moments you can finally enjoy your ownCloud.\nOpen a web browser and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
+   # Create cronjob
+   echo '*/5  *  *  *  * php -f /var/www/owncloud/cron.php' | crontab -u www-data -
    return 0
 }
 
