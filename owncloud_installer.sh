@@ -194,7 +194,7 @@ function remove_owncloud(){
 
    # If any other program depends on nginx, remove owncloud from nginx config
    # else remove nginx
-   if [ -n $NGINX_REQUIRED ] ; then
+   if [ -n "$NGINX_REQUIRED" ] ; then
       remove_parts_from_config_files '#begin_owncloud_config' '#end_owncloud_config' '/etc/nginx/sites-available/apis-ssl'
       service nginx restart
    else

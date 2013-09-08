@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-01 11:40+0200\n"
+"POT-Creation-Date: 2013-09-08 12:26+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -48,7 +48,8 @@ msgid ""
 "upgrade Ampache?"
 msgstr "Willst du die aktuelle Version von github.com installieren?"
 
-#: btsync_installer.sh:6 samba_installer.sh:8
+#: btsync_installer.sh:6 samba_installer.sh:8 seafile_installer.sh:2
+#: seafile_installer.sh:100 seafile_installer.sh:131
 msgid "Confirmation"
 msgstr "Bestätigung"
 
@@ -227,8 +228,8 @@ msgstr ""
 "Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten Schritt "
 "formatiert! (j/n): "
 
-#: data_to_external_disk.sh:71 samba_installer.sh:18 samba_installer.sh:19
-#: samba_installer.sh:64 samba_installer.sh:65
+#: data_to_external_disk.sh:71 samba_installer.sh:17 samba_installer.sh:18
+#: samba_installer.sh:63 samba_installer.sh:64
 msgid "y"
 msgstr "j"
 
@@ -256,7 +257,7 @@ msgstr "FEHLER"
 msgid "ERROR: key '$key' doesn't exist in '$file'."
 msgstr "FEHLER: Der Schlüssel '$key' existiert in der Datei '$file' nicht."
 
-#: main.sh:127 samba_installer.sh:10
+#: main.sh:127
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 "Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
@@ -265,15 +266,15 @@ msgstr ""
 msgid "Update failed."
 msgstr "Update fehlgeschlagen."
 
-#: main.sh:133 main.sh:284
+#: main.sh:133 main.sh:311
 msgid "Bye..."
 msgstr "Beende"
 
-#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:210
+#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:209 main.sh:223
 msgid "Select"
 msgstr "Auswählen"
 
-#: main.sh:140 main.sh:154 main.sh:168 main.sh:196
+#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:209
 msgid "Back"
 msgstr "Zurück"
 
@@ -369,11 +370,30 @@ msgstr "Deinstalliere den Ampache server"
 msgid "Update Ampache Server"
 msgstr "Update den Ampache Server"
 
-#: main.sh:210
+#: main.sh:209
+msgid "Update/uninstall Seafile"
+msgstr "Update/deinstalliere Seafile"
+
+#: main.sh:209
+msgid "Remove Seafile or install latest version"
+msgstr ""
+"Hier kannst du Seafile deinstallieren oder auf die neueste Version "
+"aktualisieren"
+
+
+#: main.sh:209
+msgid "Uninstall Seafile Server"
+msgstr "Deinstalliere den Seafile Server"
+
+#: main.sh:209
+msgid "Update Seafile Server"
+msgstr "Update den Seafile Server"
+
+#: main.sh:223
 msgid "Exit"
 msgstr "Beenden"
 
-#: main.sh:210
+#: main.sh:223
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
@@ -381,35 +401,40 @@ msgstr ""
 "\\nAwesome Pi Installation Script\\n\\nInstalliere Cooles Zeug auf deinem "
 "RaspberryPi.\\n"
 
-#: main.sh:210
+#: main.sh:223
 msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
-#: main.sh:210
+#: main.sh:223
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
-#: main.sh:210
+#: main.sh:223
 msgid "Install/uninstall BitTorrent Sync"
 msgstr "Installiere/Deinstalliere BitTorrent Sync"
 
-#: main.sh:210
+#: main.sh:223
 msgid "Install/uninstall/configure Network File System Server"
 msgstr "Installiere/deinstalliere/konfiguriere den Network File System Server"
 
-#: main.sh:210
+#: main.sh:223
 msgid "Install/upgrade/uninstall Ampache Streaming Server"
 msgstr "Installiere/update/deinstalliere den Ampache Streaming Server"
 
-#: main.sh:283
+#: main.sh:223
+#, fuzzy
+msgid "Install/upgrade/uninstall Seafile Cloud Service"
+msgstr "Installiere/update/deinstalliere den Ampache Streaming Server"
+
+#: main.sh:310
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:292
+#: main.sh:319
 msgid "Checking for locale en_US.UTF-8..."
 msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: main.sh:297
+#: main.sh:324
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -419,11 +444,11 @@ msgstr ""
 "konfigurieren z.B. Samba, ownCloud...\\nWillst du eine externe Festplatte "
 "als Datenspeicher für ownCloud und Samba verwenden?"
 
-#: nfs_installer.sh:4
+#: nfs_installer.sh:2
 msgid "Install NFS"
 msgstr "Installiere NFS"
 
-#: nfs_installer.sh:4
+#: nfs_installer.sh:2
 msgid ""
 "WARNING: This installer may overwrite any existing NFS related configuration "
 "files. Ignore this warning if you haven't installed NFS yet.\\nDo you really "
@@ -433,11 +458,11 @@ msgstr ""
 "diese Warnung ignorieren, wenn du NFS bisher noch nicht installiert hast."
 "\\nWillst du den NFS Server wirklich installieren?"
 
-#: nfs_installer.sh:9
+#: nfs_installer.sh:7
 msgid "Choose directory"
 msgstr "Wähle ein Verzeichnis"
 
-#: nfs_installer.sh:9 nfs_installer.sh:82
+#: nfs_installer.sh:7 nfs_installer.sh:80
 msgid ""
 "Enter the path to the directory that you want to share via NFS. Hit 'return' "
 "to use the default path."
@@ -445,20 +470,20 @@ msgstr ""
 "Gib den Pfad zu einem Ordner an, den du mittls NFS freigeben willst. Du "
 "kannst auch einfach 'Enter' drücken um den Standardpfad zu verwenden"
 
-#: nfs_installer.sh:11 nfs_installer.sh:84
+#: nfs_installer.sh:9 nfs_installer.sh:82
 msgid "Directory doesn't exist"
 msgstr "Verzeichnis nicht gefunden."
 
-#: nfs_installer.sh:11 nfs_installer.sh:84
+#: nfs_installer.sh:9 nfs_installer.sh:82
 msgid "'$EXPORTPATH' doesn't exist. Do you want to create it?"
 msgstr ""
 "'$EXPORTPATH' existiert noch nicht. Soll das Verzeichnis erstellt werden?"
 
-#: nfs_installer.sh:17 nfs_installer.sh:93
+#: nfs_installer.sh:15 nfs_installer.sh:91
 msgid "Add client $[$i+1]"
 msgstr "$[$i+1]. Client hinzufügen"
 
-#: nfs_installer.sh:17 nfs_installer.sh:93
+#: nfs_installer.sh:15 nfs_installer.sh:91
 msgid ""
 "Whom do you want to grant access on this shared directory? Enter only one IP "
 "address, hostname or subnet."
@@ -466,7 +491,7 @@ msgstr ""
 "Wer soll Zugriff auf diese Freigabe erhalten? Gib jeweils nur EINE IP-"
 "Adresse, einen Hostnamen oder ein Subnet in das Feld ein!"
 
-#: nfs_installer.sh:20 nfs_installer.sh:96 nfs_installer.sh:164
+#: nfs_installer.sh:18 nfs_installer.sh:94 nfs_installer.sh:162
 msgid ""
 "No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-"
 "desktop' or whatever your computer's name is) or a subnet (e.g. "
@@ -476,60 +501,60 @@ msgstr ""
 "Hostnamen (z.B. ubuntu-desktop.fritz.box) oder ein Subnet (z.B. "
 "192.168.0.0/24) angeben."
 
-#: nfs_installer.sh:23 nfs_installer.sh:25 nfs_installer.sh:42
-#: nfs_installer.sh:99 nfs_installer.sh:101 nfs_installer.sh:118
-#: nfs_installer.sh:158 nfs_installer.sh:161 nfs_installer.sh:185
+#: nfs_installer.sh:21 nfs_installer.sh:23 nfs_installer.sh:40
+#: nfs_installer.sh:97 nfs_installer.sh:99 nfs_installer.sh:116
+#: nfs_installer.sh:156 nfs_installer.sh:159 nfs_installer.sh:183
 msgid "Add more clients"
 msgstr "Weitere Clients hinzufügen"
 
-#: nfs_installer.sh:23 nfs_installer.sh:25 nfs_installer.sh:42
-#: nfs_installer.sh:118
+#: nfs_installer.sh:21 nfs_installer.sh:23 nfs_installer.sh:40
+#: nfs_installer.sh:116
 msgid "Do you want to add more clients to '$EXPORTPATH'?"
 msgstr "Willst du noch weitere Clients zu '$EXPORTPATH' hinzufügen?"
 
-#: nfs_installer.sh:29 nfs_installer.sh:105 nfs_installer.sh:169
+#: nfs_installer.sh:27 nfs_installer.sh:103 nfs_installer.sh:167
 msgid "WARNING"
 msgstr "ACHTUNG"
 
-#: nfs_installer.sh:29 nfs_installer.sh:105
+#: nfs_installer.sh:27 nfs_installer.sh:103
 msgid ""
 "'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?"
 msgstr ""
 "'${CLIENT[$i]}' ist nicht erreichbar. Willst du '${CLIENT[$i]}' trotzdem "
 "hinzufügen?"
 
-#: nfs_installer.sh:33 nfs_installer.sh:109 nfs_installer.sh:173
+#: nfs_installer.sh:31 nfs_installer.sh:107 nfs_installer.sh:171
 msgid "Set permissions"
 msgstr "Setze Berechtigungen"
 
-#: nfs_installer.sh:33 nfs_installer.sh:109
+#: nfs_installer.sh:31 nfs_installer.sh:107
 msgid "Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'."
 msgstr "Wähle die Berechtigungen für '${CLIENT[$i]}' auf '$EXPORTPATH'. "
 
-#: nfs_installer.sh:33 nfs_installer.sh:109
+#: nfs_installer.sh:31 nfs_installer.sh:107
 msgid "'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'"
 msgstr "'${CLIENT[$i]}' kann Dateien in $EXPORTPATH lesen und schreiben"
 
-#: nfs_installer.sh:33 nfs_installer.sh:109
+#: nfs_installer.sh:31 nfs_installer.sh:107
 msgid "'${CLIENT[$i]}' can read files on '$EXPORTPATH'"
 msgstr "'${CLIENT[$i]}' kann Dateien in '$EXPORTPATH' nur lesen"
 
-#: nfs_installer.sh:37 nfs_installer.sh:113 nfs_installer.sh:177
+#: nfs_installer.sh:35 nfs_installer.sh:111 nfs_installer.sh:175
 msgid "Nothing selected"
 msgstr "Nichts ausgewählt"
 
-#: nfs_installer.sh:37 nfs_installer.sh:113 nfs_installer.sh:177
+#: nfs_installer.sh:35 nfs_installer.sh:111 nfs_installer.sh:175
 msgid "You have to select either 'read and write' or 'read only'!"
 msgstr "Du musst 'ro' oder 'rw' auswählen!"
 
-#: nfs_installer.sh:45
+#: nfs_installer.sh:43
 msgid ""
 "You can add more shares later by selecting 'nfs_setup' in the main menu."
 msgstr ""
 "Du kannst später noch weitere Freigaben hinzufügen. Wähle dazu im Hauptmenü "
 "den Eintrag 'nfs_setup.'."
 
-#: nfs_installer.sh:68
+#: nfs_installer.sh:66
 msgid ""
 "NFS server is now installed. Clients can now mount NFS shares. Command to "
 "mount NFS shares on clients:\\nsudo mount IPADDRESS_OF_YOUR_NFS_SERVER:/path/"
@@ -539,11 +564,11 @@ msgstr ""
 "folgendem Befehl mounten:\\nsudo mount IPADRESSE_DEINES_NFS_SERVER:/path/to/"
 "shared/directory /path/to/dir"
 
-#: nfs_installer.sh:74
+#: nfs_installer.sh:72
 msgid "Uninstall NFS"
 msgstr "Deinstalliere NFS"
 
-#: nfs_installer.sh:74
+#: nfs_installer.sh:72
 msgid ""
 "Do you really want to uninstall NFS server? The content of your shared "
 "directories won't be deleted."
@@ -551,15 +576,15 @@ msgstr ""
 "Bist du dir sicher, dass du den NFS Server deinstallieren willst? Der Inhalt "
 "der freigegebenen Verzeichnisse wird nicht gelöscht."
 
-#: nfs_installer.sh:82
+#: nfs_installer.sh:80
 msgid "Share a directory"
 msgstr "Teile ein Verzeichnis"
 
-#: nfs_installer.sh:87
+#: nfs_installer.sh:85
 msgid "This directory is already shared via NFS."
 msgstr "Das Verzeichnis wird bereits durch NFS freigeben"
 
-#: nfs_installer.sh:99 nfs_installer.sh:101
+#: nfs_installer.sh:97 nfs_installer.sh:99
 msgid ""
 "Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the "
 "share will not be created!"
@@ -567,31 +592,31 @@ msgstr ""
 "Willst du weitere Clients zu '$EXPORTPATH' hinzufügen? Wenn du 'Nein' "
 "wählst, wird die Freigabe nicht erstellt."
 
-#: nfs_installer.sh:130 nfs_installer.sh:148 nfs_installer.sh:194
+#: nfs_installer.sh:128 nfs_installer.sh:146 nfs_installer.sh:192
 msgid "No NFS exports available."
 msgstr "Es sind keine NFS Freigaben eingerichtet!"
 
-#: nfs_installer.sh:136 nfs_installer.sh:138
+#: nfs_installer.sh:134 nfs_installer.sh:136
 msgid "Remove NFS shares"
 msgstr "NFS Freigaben entfernen"
 
-#: nfs_installer.sh:136
+#: nfs_installer.sh:134
 msgid "Select the NFS share which you want to delete."
 msgstr "Wähle die Freigabe, die du löschen willst!"
 
-#: nfs_installer.sh:138
+#: nfs_installer.sh:136
 msgid "Do you really want to delete '$SELECTED_SHARE'?"
 msgstr "Willst du '$SELECTED_SHARE' wirklich löschen?"
 
-#: nfs_installer.sh:155
+#: nfs_installer.sh:153
 msgid "Add clients to your NFS shares"
 msgstr "Weiter Clients hinzufügen"
 
-#: nfs_installer.sh:155
+#: nfs_installer.sh:153
 msgid "Select the NFS share to which you want to add more clients."
 msgstr "Wähle die Freigabe zu der du weiter Clients hinzufügen willst!"
 
-#: nfs_installer.sh:158
+#: nfs_installer.sh:156
 msgid ""
 "Whom do you want to grant access on '$SELECTED_SHARE'? Enter only one IP "
 "address, hostname or subnet."
@@ -599,37 +624,37 @@ msgstr ""
 "Wem willst du Zugriff auf '$SELECTED_SHARE' gewähren? Gib jeweils nur EINE "
 "IP-Adresse, einen Hostnamen oder ein Subnet in das Feld ein!"
 
-#: nfs_installer.sh:161 nfs_installer.sh:185
+#: nfs_installer.sh:159 nfs_installer.sh:183
 msgid "Do you want to add more clients to '$SELECTED_SHARE'?"
 msgstr "Willst du weitere CLients zu '$SELECTED_SHARE' hinzufügen?"
 
-#: nfs_installer.sh:169
+#: nfs_installer.sh:167
 msgid "'$CLIENT' is currently not available. Add '$CLIENT' anyways?"
 msgstr ""
 "'$CLIENT' ist nicht erreichbar. Willst du '$CLIENT' trotzdem hinzufügen?"
 
-#: nfs_installer.sh:173
+#: nfs_installer.sh:171
 msgid "Select permissions for '$CLIENT' on '$SELECTED_SHARE'."
 msgstr ""
 "Wähle die Berechtigungen, die '$CLIENT' auf '$SELECTED_SHARE' haben soll."
 
-#: nfs_installer.sh:173
+#: nfs_installer.sh:171
 msgid "'$CLIENT' can read and write files on '$SELECTED_SHARE'"
 msgstr "'$CLIENT' kann Dateien in '$SELECTED_SHARE' lesen und schreiben"
 
-#: nfs_installer.sh:173
+#: nfs_installer.sh:171
 msgid "'$CLIENT' can read files on '$SELECTED_SHARE'"
 msgstr "'$CLIENT' kann Dateien in '$SELECTED_SHARE' nur lesen"
 
-#: nfs_installer.sh:200 nfs_installer.sh:208
+#: nfs_installer.sh:198 nfs_installer.sh:206
 msgid "Remove clients from NFS shares"
 msgstr "Clients aus NFS-Freigaben löschen"
 
-#: nfs_installer.sh:200
+#: nfs_installer.sh:198
 msgid "Select the NFS share from which you want to delete clients."
 msgstr "Wähle die NFS-Freigabe, von der du Clients löschen willst."
 
-#: nfs_installer.sh:208
+#: nfs_installer.sh:206
 msgid ""
 "Select the client which you want to delete from '$SELECTED_SHARE'.\\n   Used "
 "Syntax: 'clientname(permissions,options)'"
@@ -637,19 +662,19 @@ msgstr ""
 "Wähle den Client, den du von '$SELECTED_SHARE' entfernen willst.\\n   Hier "
 "verwendete Syntax: 'clientname(berechtigung,optionen)'"
 
-#: nfs_installer.sh:211 nfs_installer.sh:214
+#: nfs_installer.sh:209 nfs_installer.sh:212
 msgid "Remove clients"
 msgstr "Entferne Clients"
 
-#: nfs_installer.sh:211
+#: nfs_installer.sh:209
 msgid "Do you really want to delete '$SELECTED_CLIENT' from '$SELECTED_SHARE'?"
 msgstr "Willst du '$SELECTED_CLIENT' wirklich von '$SELECTED_SHARE' löschen?"
 
-#: nfs_installer.sh:214
+#: nfs_installer.sh:212
 msgid "Do you want to delete another client from '$SELECTED_SHARE'?"
 msgstr "Willst du noch einen Client von '$SELECTED_SHARE' löschen?"
 
-#: nfs_installer.sh:221
+#: nfs_installer.sh:219
 msgid ""
 "If you changed the configuration, you have to restart NFS by issuing "
 "following command:\\nsudo service nfs-kernel-server restart\\nBefore you "
@@ -739,19 +764,17 @@ msgid ""
 msgstr ""
 "Nach der Installation von ownCloud, wird ownCloud unter folgender Adresse "
 "erreichbar sein: $SERVER_NAME/owncloud\\nDiese Version von ownCloud wird "
-"installiert: $VERSION\\n Willst do wirklich fortfahren?"
+"installiert: $VERSION\\nWillst du wirklich fortfahren?"
 
 #: owncloud_installer.sh:129
 msgid "Almost finished"
 msgstr "Beinahe fertig"
 
 #: owncloud_installer.sh:129
-#, fuzzy
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nOpen a web browser "
 "and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The "
 "advanced settings are preconfigured by this script, so don't change them!"
-"\\nHINT"
 msgstr ""
 "In ein paar Augenblicken kannst du deine ownCloud endlich verwenden.\\nÖffne "
 "einen Webbrowser und gehe zu '$SERVER_NAME/owncloud'! Dann lege dort einen "
@@ -766,7 +789,7 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden."
 
-#: owncloud_installer.sh:147
+#: owncloud_installer.sh:147 seafile_installer.sh:97
 msgid "Latest version is already installed."
 msgstr "Die neueste Version ist bereits installiert."
 
@@ -778,7 +801,7 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden."
 
-#: owncloud_installer.sh:171 samba_installer.sh:108
+#: owncloud_installer.sh:171 samba_installer.sh:107
 msgid "Starting uninstaller"
 msgstr "Starte Deinstallationsprogramm"
 
@@ -798,11 +821,11 @@ msgstr "Soll das Datenverzeichnis auch gelöscht werden?"
 msgid "Do you really want to install Samba Server?"
 msgstr "Willst du den Samba Server wirklich installieren?"
 
-#: samba_installer.sh:13
+#: samba_installer.sh:12
 msgid "Installing samba packages..."
 msgstr "Installiere für Samba benötigte Pakete..."
 
-#: samba_installer.sh:17
+#: samba_installer.sh:16
 msgid ""
 "This setup will create samba shares that are protected by a username and "
 "password."
@@ -810,31 +833,31 @@ msgstr ""
 "Es werden Samba Freigaben erstellt, die mit Benutzername und Passwort "
 "gesichert sind."
 
-#: samba_installer.sh:23 samba_installer.sh:69
+#: samba_installer.sh:22 samba_installer.sh:68
 msgid "Enter a username: "
 msgstr "Gib einen Benutzernamen ein: "
 
-#: samba_installer.sh:33 samba_installer.sh:79
+#: samba_installer.sh:32 samba_installer.sh:78
 msgid "Enter a name for this share: "
 msgstr "Gib einen Namen für diese Freigabe an: "
 
-#: samba_installer.sh:35 samba_installer.sh:81
+#: samba_installer.sh:34 samba_installer.sh:80
 msgid "This share already exists"
 msgstr "Diese Freigabe existiert bereits"
 
-#: samba_installer.sh:43 samba_installer.sh:89
+#: samba_installer.sh:42 samba_installer.sh:88
 msgid "Enter a short description of this share: "
 msgstr "Eine kurze Beschreibung für diese Freigabe: "
 
-#: samba_installer.sh:57 samba_installer.sh:103
+#: samba_installer.sh:56 samba_installer.sh:102
 msgid "Create more shares? (y/n)"
 msgstr "Weitere Freigaben erstellen? (j/n): "
 
-#: samba_installer.sh:63
+#: samba_installer.sh:62
 msgid "Add more shares"
 msgstr "Weitere Freigaben hinzufügen"
 
-#: samba_installer.sh:108
+#: samba_installer.sh:107
 msgid ""
 "Do you really want to remove Samba Server? All shared files and directories "
 "will be deleted!"
@@ -842,8 +865,23 @@ msgstr ""
 "Bist du dir sicher, dass du den Samba Server deinstallieren willst? "
 "Freigegebene Dateien und Ordner werden gelöscht!"
 
-#~ msgid "Editing /etc/php5/fpm/php.ini..."
-#~ msgstr "Bearbeite /etc/php5/fpm/php.ini.."
+#: seafile_installer.sh:2
+msgid "Do you really want to install Seafile?"
+msgstr "Willst du Seafile wirklich installieren?"
 
-#~ msgid "Copying decompressed files to '$PATH_TO_WEBSERVER'..."
-#~ msgstr "Kopiere ownCloud-Dateien nach '$PATH_TO_WEBSERVER'..."
+#: seafile_installer.sh:57
+msgid ""
+"Seafile's setup script will be started now. You will probably need you IP "
+"address: $IP\\nTry to use the default settings as far as possible."
+msgstr ""
+"Seafile benutzt zur Installation ein eigenes Installationsscript, welches "
+"jetzt gestartet wird. Sehr wahrscheinlich wirst du die IP Adresse benötigen."
+"\\nHier ist sie: $IP\\nHINWEIS: Benutze die Voreinstellungen, wenn es geht!"
+
+#: seafile_installer.sh:100
+msgid "Do you really want to update Seafile?"
+msgstr "Willst Seafile wirklich aktualisieren?"
+
+#: seafile_installer.sh:131
+msgid "Are you sure that you want to remove seafile?"
+msgstr "Bist du dir sicher, dass du Seafile deinstallieren willst? "

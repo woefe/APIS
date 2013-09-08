@@ -64,7 +64,7 @@ function uninstall_ampache(){
    # If any other program depends on nginx, remove ampache from nginx config
    # else remove nginx
    set_var_nginx_required remove ampache
-   if $OWNCLOUD_INSTALLED; then
+   if [ -n "$NGINX_REQUIRED" ]; then
       remove_parts_from_config_files '#begin_ampache_config' '#end_ampache_config' '/etc/nginx/sites-available/apis-ssl'
       remove_parts_from_config_files '#begin_ampache_config' '#end_ampache_config' '/etc/nginx/sites-available/apis'
       service nginx restart

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 function install_nfs(){
    yes_no $"Install NFS" $"WARNING: This installer may overwrite any existing NFS related configuration files. Ignore this warning if you haven't installed NFS yet.\nDo you really want to install the NFS server?" || return 1
    apt-get install -qq nfs-kernel-server portmap
