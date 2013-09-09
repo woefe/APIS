@@ -70,7 +70,7 @@ function create_nginx_conf_files(){
    }
 
    # Optional: set long EXPIRES header on static assets
-   location ~* ^.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+   location ~* ^/owncloud/.+\.(jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
       expires 30d;
       # Optional: Don't log access to assets
       access_log off;

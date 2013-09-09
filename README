@@ -3,7 +3,7 @@ HOW TO USE:
 1. Clone this repo: git clone https://github.com/popeye123/APIS.git
 2. Change directory: cd APIS
 3. Run the script: sudo ./main.sh
-4. Update the script (optional): git pull
+4. Update the script (optional): git pull && sudo ./main.sh update
 
 
 HOW TO TRANSLATE:
@@ -33,8 +33,8 @@ HOW TO TRANSLATE:
     APIS - the easy way to install and configure Software on your Raspberry Pi
     Copyright (C) 2013  Wolfgang Popp
 
-    Hompage: http://karlsgymnasium.dyndns.org/blog
-    Email: karlsnetzwerkblog@gmail.com
+    Hompage: http://wolfgangpopp.wordpress.com
+    Email: wolfi.popp@gmail.com
 
 
 This program is free software: you can redistribute it and/or modify
