@@ -78,7 +78,7 @@ server {
    ssl_certificate_key /etc/nginx/ssl/server.key;
 
    # Deny direct access
-   location ~ ^/.+(bin|sql|data|config|\.ht|db_structure\.xml|README) {
+   location ~ ^/.+(bin/|sql|data|config|\.ht|db_structure\.xml|README) {
       deny all;
    }
 
