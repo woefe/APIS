@@ -45,7 +45,7 @@ function create_nginx_conf_files(){
 
    rewrite ^/owncloud/caldav(.*)$ /owncloud/remote.php/caldav$1 redirect;
    rewrite ^/owncloud/carddav(.*)$ /owncloud/remote.php/carddav$1 redirect;
-   rewrite ^/owncloud/webdav(.*)$ /owncloud/owncloud/remote.php/webdav$1 redirect;
+   rewrite ^/owncloud/webdav(.*)$ /owncloud/remote.php/webdav$1 redirect;
 
    # The following 2 rules are only needed with webfinger, uncomment them if you need.
    #rewrite ^/owncloud/.well-known/host-meta /owncloud/public.php?service=host-meta last;

@@ -85,15 +85,21 @@ server {
 }
 EOF
 
+   if $DATA_TO_EXTERNAL_DISK; then
+      TEMP_UPLOAD_DIR="/mnt/data/phpTmpUpload"
+   else
+      TEMP_UPLOAD_DIR="/srv/http/phpTmpUpload"
+   fi
+
    ensure_key_value "cgi.fix_pathinfo" "=" "0" /etc/php5/fpm/php.ini
    ensure_key_value "listen" "=" "127.0.0.1:7659" /etc/php5/fpm/pool.d/www.conf
-   ensure_key_value "upload_max_filesize" "=" "1000M" /etc/php5/fpm/php.ini
-   ensure_key_value "post_max_size" "=" "1100M" /etc/php5/fpm/php.ini
+   ensure_key_value "upload_max_filesize" "=" "10000M" /etc/php5/fpm/php.ini
+   ensure_key_value "post_max_size" "=" "11000M" /etc/php5/fpm/php.ini
    ensure_key_value "memory_limit" "=" "256M" /etc/php5/fpm/php.ini
-   ensure_key_value "upload_tmp_dir" "=" "/srv/http/phpTmpUpload" /etc/php5/fpm/php.ini
+   ensure_key_value "upload_tmp_dir" "=" "$TEMP_UPLOAD_DIR" /etc/php5/fpm/php.ini
 
-   mkdir -p /srv/http/phpTmpUpload
-   chown  www-data:www-data /srv/http/phpTmpUpload
+   mkdir -p $TEMP_UPLOAD_DIR
+   chown  www-data:www-data $TEMP_UPLOAD_DIR
    mkdir /var/www
    echo $"Editing /etc/dphys-swapfile..."
    cat > /etc/dphys-swapfile << EOF

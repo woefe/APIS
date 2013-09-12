@@ -34,8 +34,8 @@ function install_seafile(){
       root /home/seafile/seafile-server-1.8.1/seahub;
    }
    location /seafhttp {
-      rewrite ^/seafhttp(.*)$ $1 break;
-      proxy_pass https://127.0.0.1:8082;
+      rewrite ^/seafhttp(.*)$ \$1 break;
+      proxy_pass http://127.0.0.1:8082;
       client_max_body_size 0;
     }
    #end_seafile_config
@@ -60,8 +60,14 @@ EOF
    
    cat >> /home/seafile/seahub_settings.py << EOF
 SERVE_STATIC = False
+HTTP_SERVER_ROOT = 'https://$IP/seafhttp'
 MEDIA_URL = '/seafmedia/'
 SITE_ROOT = '/seafile/'
+EOF
+   SEAFILE_DATA_DIR=$(cat /home/seafile/ccnet/seafile.ini)
+   cat >> $SEAFILE_DATA_DIR/seafile.conf << EOF
+max_upload_size=1000
+max_download_dir_size=1000
 EOF
    
    ensure_key_value "SERVICE_URL" " = " "https://$IP/seafile" "/home/seafile/ccnet/ccnet.conf"
