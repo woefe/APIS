@@ -20,21 +20,21 @@ function install_btsync(){
    while true; do
       users_name=$(user_input $"Username" $"Enter a username or leave it blank, if you don't want to install a password dialog:")
       if [ -z $users_name ]; then
-	break
+         break
       else
-	USERNAME="      \"login\" : \"$users_name\","
+         USERNAME="      \"login\" : \"$users_name\","
       fi
 
       users_password=$(password_box $"Password" $"Enter a password for user $users_name: ")
       if [ -z $users_password ]; then
-	continue
+         continue
       fi
 
       users_password_double_check=$(password_box $"Password" $"Retype the password for user $users_name: ")
       if [ "$users_password_double_check" == "$users_password" ]; then
-	PASSWORD="      \"password\" : \"$users_password\""
-	COMMA=","
-	break
+         PASSWORD="      \"password\" : \"$users_password\""
+         COMMA=","
+         break
       fi
    done
 

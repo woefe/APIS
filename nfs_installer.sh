@@ -15,27 +15,27 @@ function install_nfs(){
       CLIENT[$i]=$(user_input $"Add client $[$i+1]" $"Whom do you want to grant access on this shared directory? Enter only one IP address, hostname or subnet.")
       exitstatus=$?
       if [ -z ${CLIENT[*]} ]; then
-	error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
-	continue
+         error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
+         continue
       elif [ -z ${CLIENT[$i]} ];then
-	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
+         yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
       elif [ $exitstatus -ne 0 ]; then
-	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
+         yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
       fi
 
       if ! echo ${CLIENT[$i]} | grep -q / ; then
-	ping -c 2 ${CLIENT[$i]} > /dev/null || yes_no $"WARNING" $"'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?" || continue
+         ping -c 2 ${CLIENT[$i]} > /dev/null || yes_no $"WARNING" $"'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?" || continue
       fi
 
       while true; do
-	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
-	   rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
-	   ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
-	if [ $? -ne 0 ]; then
-	   print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
-	else
-	   break
-	fi
+         PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
+            rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
+            ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
+         if [ $? -ne 0 ]; then
+            print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
+         else
+            break
+         fi
       done
       yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
       i=$[$i+1]
@@ -91,27 +91,27 @@ function add_nfs_shares(){
       CLIENT[$i]=$(user_input $"Add client $[$i+1]" $"Whom do you want to grant access on this shared directory? Enter only one IP address, hostname or subnet.")
       exitstatus=$?
       if [ -z "${CLIENT[*]}" ]; then
-	error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
-	continue
+         error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
+         continue
       elif [ -z ${CLIENT[$i]} ];then
-	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the share will not be created!" || return 1
+         yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the share will not be created!" || return 1
       elif [ $exitstatus -ne 0 ]; then
-	yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the share will not be created!" || return 1
+         yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'? If you select 'no', the share will not be created!" || return 1
       fi
 
       if ! echo ${CLIENT[$i]} | grep -q / ; then
-	ping -c 2 ${CLIENT[$i]} > /dev/null || yes_no $"WARNING" $"'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?" || continue
+         ping -c 2 ${CLIENT[$i]} > /dev/null || yes_no $"WARNING" $"'${CLIENT[$i]}' is currently not available. Add '${CLIENT[$i]}' anyways?" || continue
       fi
 
       while true; do
-	PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
-	   rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
-	   ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
-	if [ $? -ne 0 ]; then
-	   print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
-	else
-	   break
-	fi
+         PERMISSIONS[$i]=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '${CLIENT[$i]}' on '$EXPORTPATH'." 30 90 20 \
+            rw $"'${CLIENT[$i]}' can read and write files on '$EXPORTPATH'" 1 \
+            ro $"'${CLIENT[$i]}' can read files on '$EXPORTPATH'" 0 3>&1 1>&2 2>&3 )
+         if [ $? -ne 0 ]; then
+            print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
+         else
+            break
+         fi
       done
       yes_no $"Add more clients" $"Do you want to add more clients to '$EXPORTPATH'?" || break
       i=$[$i+1]
@@ -156,26 +156,26 @@ function add_clients_to_nfs_shares(){
       CLIENT=$(user_input $"Add more clients" $"Whom do you want to grant access on '$SELECTED_SHARE'? Enter only one IP address, hostname or subnet.")
       exitstatus=$?
       if [ $exitstatus -ne 0 ]; then
-	yes_no $"Add more clients" $"Do you want to add more clients to '$SELECTED_SHARE'?" || return 1
-	continue
+         yes_no $"Add more clients" $"Do you want to add more clients to '$SELECTED_SHARE'?" || return 1
+         continue
       elif [ -z $CLIENT ];then
-	error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
-	continue
+         error_msg $"No input. Enter a IP address (e.g. '192.168.0.5'), a hostname (e.g. 'ubuntu-desktop' or whatever your computer's name is) or a subnet (e.g. 192.168.0.0/24)."
+         continue
       fi
 
       if ! echo $CLIENT | grep -q / ; then
-	ping -c 2 $CLIENT > /dev/null || yes_no $"WARNING" $"'$CLIENT' is currently not available. Add '$CLIENT' anyways?" || continue
+         ping -c 2 $CLIENT > /dev/null || yes_no $"WARNING" $"'$CLIENT' is currently not available. Add '$CLIENT' anyways?" || continue
       fi
 
       while true; do
-	PERMISSIONS=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '$CLIENT' on '$SELECTED_SHARE'." 30 90 20 \
-	   rw $"'$CLIENT' can read and write files on '$SELECTED_SHARE'" 1 \
-	   ro $"'$CLIENT' can read files on '$SELECTED_SHARE'" 0 3>&1 1>&2 2>&3 )
-	if [ $? -ne 0 ]; then
-	   print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
-	else
-	   break
-	fi
+         PERMISSIONS=$(whiptail --title $"Set permissions" --radiolist $"Select permissions for '$CLIENT' on '$SELECTED_SHARE'." 30 90 20 \
+            rw $"'$CLIENT' can read and write files on '$SELECTED_SHARE'" 1 \
+            ro $"'$CLIENT' can read files on '$SELECTED_SHARE'" 0 3>&1 1>&2 2>&3 )
+         if [ $? -ne 0 ]; then
+            print_message $"Nothing selected" $"You have to select either 'read and write' or 'read only'!"
+         else
+            break
+         fi
       done
 
       linenumber=$(grep -ne "$SELECTED_SHARE[[:blank:]]" /etc/exports | cut -d: -f1)
@@ -200,7 +200,7 @@ function remove_clients_from_nfs_shares(){
    while true; do
       INSTALLED_CLIENTS=($(grep $SELECTED_SHARE[[:blank:]] /etc/exports | tr '[:blank:]' ';' | cut -d\; -f2- --output-delimiter=' '))
       TAG_ITEM=$(for ((i=0; i<${#INSTALLED_CLIENTS[*]}; i++)); do \
-	echo -n "${INSTALLED_CLIENTS[$i]} \"$i\" " ;\
+         echo -n "${INSTALLED_CLIENTS[$i]} \"$i\" " ;\
       done)
 
       SELECTED_CLIENT=$(whiptail --title $"Remove clients from NFS shares" --noitem --menu $"Select the client which you want to delete from '$SELECTED_SHARE'.\n   Used Syntax: 'clientname(permissions,options)'" 30 90 20 $TAG_ITEM 3>&1 1>&2 2>&3 )

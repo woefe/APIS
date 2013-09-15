@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 12:26+0200\n"
+"POT-Creation-Date: 2013-09-08 12:37+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -379,7 +379,6 @@ msgid "Remove Seafile or install latest version"
 msgstr ""
 "Hier kannst du Seafile deinstallieren oder auf die neueste Version "
 "aktualisieren"
-
 
 #: main.sh:209
 msgid "Uninstall Seafile Server"
@@ -871,7 +870,7 @@ msgstr "Willst du Seafile wirklich installieren?"
 
 #: seafile_installer.sh:57
 msgid ""
-"Seafile's setup script will be started now. You will probably need you IP "
+"Seafile's setup script will be started now. You will probably need your IP "
 "address: $IP\\nTry to use the default settings as far as possible."
 msgstr ""
 "Seafile benutzt zur Installation ein eigenes Installationsscript, welches "

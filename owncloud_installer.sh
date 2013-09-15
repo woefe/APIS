@@ -59,13 +59,13 @@ function create_nginx_conf_files(){
    location /owncloud {
       try_files \$uri \$uri/ index.php;
       location ~ ^(.+?\.php)(/.*)?$ {
-	try_files \$1 = 404;
+         try_files \$1 = 404;
 
-	include fastcgi_params;
-	fastcgi_param SCRIPT_FILENAME \$document_root\$1;
-	fastcgi_param PATH_INFO \$2;
-	fastcgi_param HTTPS on;
-	fastcgi_pass 127.0.0.1:7659;
+         include fastcgi_params;
+         fastcgi_param SCRIPT_FILENAME \$document_root\$1;
+         fastcgi_param PATH_INFO \$2;
+         fastcgi_param HTTPS on;
+         fastcgi_pass 127.0.0.1:7659;
       }
    }
 

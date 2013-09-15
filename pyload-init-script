@@ -1,0 +1,75 @@
+#!/bin/sh 
+
+### BEGIN INIT INFO
+# Provides:          pyload
+# Required-Start:    $syslog $local_fs $network $remote_fs
+# Required-Stop:     $syslog $local_fs $network $remote_fs
+# Should-Start:      $remote_fs $named
+# Should-Stop:       $remote_fs $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts pyload daemon
+# Description:       This script runs the pyload service
+### END INIT INFO
+
+# Starts and stops the pyload daemon.
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+DAEMON=/usr/bin/pyLoadCore
+
+. /lib/lsb/init-functions
+
+start() {
+    log_daemon_msg "Starting pyLoad server"
+
+    sudo -u pyload -H bash -l -c "$DAEMON --daemon"
+
+    if [ $? != 0 ]; then
+        log_end_msg 1
+        exit 1
+    else
+        log_end_msg 0
+    fi
+}
+
+stop() {
+    log_daemon_msg "Stoping pyLoad server"
+
+    sudo -u pyload -H bash -l -c "$DAEMON -q"
+
+    if [ $? != 0 ]; then
+        log_end_msg 1
+#        exit 1
+    else
+        log_end_msg 0
+    fi
+}
+
+case "$1" in
+    start)
+            start
+        ;;
+
+    stop)
+            stop
+        ;;
+
+    force-reload)
+           stop
+           sleep 5
+           start
+        ;;
+
+    restart)
+            stop
+            sleep 2
+            start
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0

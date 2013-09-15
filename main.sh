@@ -11,6 +11,9 @@
 TEXTDOMAIN=apis
 TEXTDOMAINDIR=./locale
 
+# $IP contains your IP address
+IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+
 # Some functions to make whiptail esier to use
 # How to use these functions in foo_installer.sh:
 #
@@ -88,7 +91,7 @@ function ensure_key_value(){
 #    set_var_nginx_required add foo
 #    ...
 # }
-# function uninxtall_foo(){
+# function uninstall_foo(){
 #    ...
 #    set_var_nginx_required remove foo
 #    ...
@@ -96,15 +99,15 @@ function ensure_key_value(){
 function set_var_nginx_required(){
    case $1 in
       add)
-	local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
-	sed -i $linenumber\s/\'$/\ $2\'/ /var/lib/apis/conf
-	;;
+         local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
+         sed -i $linenumber\s/\'$/\ $2\'/ /var/lib/apis/conf
+         ;;
       remove)
-	local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
-	sed -i $linenumber\s/\ $2// /var/lib/apis/conf
-	;;
+         local linenumber=$(grep -n "NGINX_REQUIRED" /var/lib/apis/conf | cut -d: -f1)
+         sed -i $linenumber\s/\ $2// /var/lib/apis/conf
+         ;;
       *)
-	echo "ERROR while setting NGINX_REQUIRED"
+         echo "ERROR while setting NGINX_REQUIRED"
    esac
    # source file to make changes available
    . /var/lib/apis/conf
@@ -174,29 +177,30 @@ function configure_nfs(){
 
    case $option in
       uninstall)
-	. nfs_installer.sh uninstall &&
-	sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=false/' /var/lib/apis/conf
-	;;
+         . nfs_installer.sh uninstall &&
+         sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=false/' /var/lib/apis/conf
+         ;;
       add-clients)
-	. nfs_installer.sh add-clients
-	;;
+         . nfs_installer.sh add-clients
+         ;;
       add-shares)
-	. nfs_installer.sh add-shares
-	;;
+         . nfs_installer.sh add-shares
+         ;;
       delete-shares)
-	. nfs_installer.sh delete-shares
-	;;
+         . nfs_installer.sh delete-shares
+         ;;
       delete-clients)
-	. nfs_installer.sh delete-clients
-	;;
+         . nfs_installer.sh delete-clients
+         ;;
    esac
 }
 
+# Ampache submenu
 function configure_ampache(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Ampache" --menu $"Remove Ampache or get latest version from github." 30 90 15 \
       uninstall $"Uninstall Ampache Server" \
       update $"Update Ampache Server" 3>&1 1>&2 2>&3)
-      
+
    if [ "$option" == "uninstall" ];then
       . ampache_installer.sh uninstall &&
       sed -i 's/AMPACHE_INSTALLED.*/AMPACHE_INSTALLED=false/' /var/lib/apis/conf
@@ -205,11 +209,12 @@ function configure_ampache(){
    fi
 }
 
+# Seafile submenu
 function configure_seafile(){
    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Seafile" --menu $"Remove Seafile or install latest version" 30 90 15 \
       uninstall $"Uninstall Seafile Server" \
       upgrade $"Update Seafile Server" 3>&1 1>&2 2>&3)
-      
+
    if [ "$option" == "uninstall" ];then
       . seafile_installer.sh uninstall &&
       sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=false/' /var/lib/apis/conf
@@ -226,7 +231,8 @@ function main(){
       btsync_setup $"Install/uninstall BitTorrent Sync" \
       nfs_setup $"Install/uninstall/configure Network File System Server" \
       ampache_setup $"Install/upgrade/uninstall Ampache Streaming Server" \
-      seafile_setup $"Install/upgrade/uninstall Seafile Cloud Service" 3>&1 1>&2 2>&3)
+      seafile_setup $"Install/upgrade/uninstall Seafile Cloud Service" \
+      pyload_setup $"Install/uninstall pyLoad download manager" 3>&1 1>&2 2>&3)
 
    case $choice in
       owncloud_setup)
@@ -254,54 +260,63 @@ function main(){
          fi
          ;;
       btsync_setup)
-	if $BTSYNC_INSTALLED; then
-	   . btsync_installer.sh uninstall &&
-	   sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=false/' /var/lib/apis/conf
-	   main
-            return
-	else
-	   . btsync_installer.sh install &&
-	   sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=true/' /var/lib/apis/conf
+         if $BTSYNC_INSTALLED; then
+            . btsync_installer.sh uninstall &&
+            sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=false/' /var/lib/apis/conf
             main
-            return	   
-	fi
-	;;
+            return
+         else
+            . btsync_installer.sh install &&
+            sed -i 's/BTSYNC_INSTALLED.*/BTSYNC_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
+         fi
+         ;;
       nfs_setup)
-	if $NFS_INSTALLED; then
-	   configure_nfs
-	   main
-            return
-	else
-	   . nfs_installer.sh install &&
-	   sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=true/' /var/lib/apis/conf
+         if $NFS_INSTALLED; then
+            configure_nfs
             main
             return
-	fi
-	;;
+         else
+            . nfs_installer.sh install &&
+            sed -i 's/NFS_INSTALLED.*/NFS_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
+         fi
+         ;;
       ampache_setup)
-	if $AMPACHE_INSTALLED; then
-	   configure_ampache
-	   main
-            return
-	else
-	   . ampache_installer.sh install &&
-	   sed -i 's/AMPACHE_INSTALLED.*/AMPACHE_INSTALLED=true/' /var/lib/apis/conf
+         if $AMPACHE_INSTALLED; then
+            configure_ampache
             main
             return
-	fi
-	;;
+         else
+            . ampache_installer.sh install &&
+            sed -i 's/AMPACHE_INSTALLED.*/AMPACHE_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
+         fi
+         ;;
       seafile_setup)
-	if $SEAFILE_INSTALLED; then
-	   configure_seafile
-	   main
-            return
-	else
-	   . seafile_installer.sh install &&
-	   sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=true/' /var/lib/apis/conf
+         if $SEAFILE_INSTALLED; then
+            configure_seafile
             main
             return
-	fi
-	;;
+         else
+            . seafile_installer.sh install &&
+            sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
+         fi
+         ;;
+      pyload_setup)
+         if $PYLOAD_INSTALLED; then
+            . pyload_installer.sh uninstall &&
+            sed -i 's/PYLOAD_INSTALLED.*/PYLOAD_INSTALLED=false/' /var/lib/apis/conf
+         else
+            . pyload_installer.sh install &&
+            sed -i 's/PYLOAD_INSTALLED.*/PYLOAD_INSTALLED=true/' /var/lib/apis/conf
+         fi
+         ;;
    esac
 }
 
@@ -349,12 +364,13 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo "NGINX_REQUIRED=''" >> /var/lib/apis/conf
    echo "AMPACHE_INSTALLED=false" >> /var/lib/apis/conf
    echo "SEAFILE_INSTALLED=false" >> /var/lib/apis/conf
+   echo "PYLOAD_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
 # Updater: check if '/var/lib/apis/conf' contains all required variables
 # If you add a new component like foo_installer.sh, add a new variable (FOO_INSTALLED) to REQIURED_VARS
 if [ "$1" == "update" ]; then
-   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED NGINX_REQUIRED SEAFILE_INSTALLED"
+   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED NGINX_REQUIRED SEAFILE_INSTALLED PYLOAD_INSTALLED"
    for var in $REQIURED_VARS; do
       grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
    done

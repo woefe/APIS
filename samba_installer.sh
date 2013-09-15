@@ -20,8 +20,8 @@ function first_install(){
       clear
       while true; do
          read -p $"Enter a username: " username &&
-	adduser --no-create-home --disabled-login --shell /bin/false --ingroup samba-user $username
-	break
+         adduser --no-create-home --disabled-login --shell /bin/false --ingroup samba-user $username
+         break
       done
 
       while true; do
@@ -40,7 +40,7 @@ function first_install(){
       mkdir -p $path &&
       chown -R $username:samba-user $path
       read -p $"Enter a short description of this share: " comment &&
-      cat >> /etc/samba/smb.conf << EOF &&
+      cat >> /etc/samba/smb.conf << EOF
 [$name]
 comment = $comment
 path = $path

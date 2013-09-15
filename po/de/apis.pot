@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 12:37+0200\n"
+"POT-Creation-Date: 2013-09-15 14:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,9 @@ msgid ""
 "upgrade Ampache?"
 msgstr ""
 
-#: btsync_installer.sh:6 samba_installer.sh:8 seafile_installer.sh:2
-#: seafile_installer.sh:100 seafile_installer.sh:131
+#: btsync_installer.sh:6 pyload_installer.sh:116 pyload_installer.sh:156
+#: samba_installer.sh:8 seafile_installer.sh:2 seafile_installer.sh:105
+#: seafile_installer.sh:136
 msgid "Confirmation"
 msgstr ""
 
@@ -216,180 +217,184 @@ msgstr ""
 msgid "Unmmounted successfully."
 msgstr ""
 
-#: main.sh:39
+#: main.sh:42
 msgid "HINT"
 msgstr ""
 
-#: main.sh:43
+#: main.sh:46
 msgid "ERROR"
 msgstr ""
 
-#: main.sh:74
+#: main.sh:77
 msgid "ERROR: key '$key' doesn't exist in '$file'."
 msgstr ""
 
-#: main.sh:127
+#: main.sh:130
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 
-#: main.sh:132
+#: main.sh:135
 msgid "Update failed."
 msgstr ""
 
-#: main.sh:133 main.sh:311
+#: main.sh:136 main.sh:326
 msgid "Bye..."
 msgstr ""
 
-#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:209 main.sh:223
+#: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214 main.sh:228
 msgid "Select"
 msgstr ""
 
-#: main.sh:140 main.sh:154 main.sh:168 main.sh:196 main.sh:209
+#: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214
 msgid "Back"
 msgstr ""
 
-#: main.sh:140
+#: main.sh:143
 msgid "Update/remove ownCloud"
 msgstr ""
 
-#: main.sh:140
+#: main.sh:143
 msgid ""
 "\\nUpdate to latest version of ownCloud\\nUse the update function only for "
 "updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
 "admin_manual/maintenance/update.html for more details."
 msgstr ""
 
-#: main.sh:140
+#: main.sh:143
 msgid "Update your ownCloud installation"
 msgstr ""
 
-#: main.sh:140
+#: main.sh:143
 msgid "Remove ownCloud"
 msgstr ""
 
-#: main.sh:154
+#: main.sh:157
 msgid "Change/remove Samba"
 msgstr ""
 
-#: main.sh:154
+#: main.sh:157
 msgid ""
 "\\nUpdates for Samba are done by the system's package management.\\nYou can "
 "either add more Samba shares or remove Samba."
 msgstr ""
 
-#: main.sh:154
+#: main.sh:157
 msgid "Add more shares and users"
 msgstr ""
 
-#: main.sh:154
+#: main.sh:157
 msgid "Remove samba"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Configure NFS"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid ""
 "\\nNote: Updates are not covered by APIS since the package management system "
 "manages them."
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Add more NFS shares"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Delete NFS shares"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Add clients to NFS shares"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Remove clients from configuration files"
 msgstr ""
 
-#: main.sh:168
+#: main.sh:171
 msgid "Uninstall NFS server"
 msgstr ""
 
-#: main.sh:196
+#: main.sh:200
 msgid "Update/uninstall Ampache"
 msgstr ""
 
-#: main.sh:196
+#: main.sh:200
 msgid "Remove Ampache or get latest version from github."
 msgstr ""
 
-#: main.sh:196
+#: main.sh:200
 msgid "Uninstall Ampache Server"
 msgstr ""
 
-#: main.sh:196
+#: main.sh:200
 msgid "Update Ampache Server"
 msgstr ""
 
-#: main.sh:209
+#: main.sh:214
 msgid "Update/uninstall Seafile"
 msgstr ""
 
-#: main.sh:209
+#: main.sh:214
 msgid "Remove Seafile or install latest version"
 msgstr ""
 
-#: main.sh:209
+#: main.sh:214
 msgid "Uninstall Seafile Server"
 msgstr ""
 
-#: main.sh:209
+#: main.sh:214
 msgid "Update Seafile Server"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Exit"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/update/remove ownCloud"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/remove Samba Server"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/uninstall BitTorrent Sync"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/uninstall/configure Network File System Server"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/upgrade/uninstall Ampache Streaming Server"
 msgstr ""
 
-#: main.sh:223
+#: main.sh:228
 msgid "Install/upgrade/uninstall Seafile Cloud Service"
 msgstr ""
 
-#: main.sh:310
+#: main.sh:228
+msgid "Install/uninstall pyLoad download manager"
+msgstr ""
+
+#: main.sh:325
 msgid "I need root permissions."
 msgstr ""
 
-#: main.sh:319
+#: main.sh:334
 msgid "Checking for locale en_US.UTF-8..."
 msgstr ""
 
-#: main.sh:324
+#: main.sh:339
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud...\\nDo you want to use a external disk to store "
@@ -627,11 +632,11 @@ msgstr ""
 msgid "An error occurred during the last Step. Repeating"
 msgstr ""
 
-#: nginx_basic_installer.sh:98
+#: nginx_basic_installer.sh:104
 msgid "Editing /etc/dphys-swapfile..."
 msgstr ""
 
-#: nginx_basic_installer.sh:118
+#: nginx_basic_installer.sh:124
 msgid "Reboot is recommended!"
 msgstr ""
 
@@ -696,7 +701,7 @@ msgid ""
 "thus can't be updated."
 msgstr ""
 
-#: owncloud_installer.sh:147 seafile_installer.sh:97
+#: owncloud_installer.sh:147 seafile_installer.sh:102
 msgid "Latest version is already installed."
 msgstr ""
 
@@ -722,6 +727,52 @@ msgstr ""
 msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr ""
 
+#: pyload_installer.sh:85
+msgid "Installing Samba..."
+msgstr ""
+
+#: pyload_installer.sh:87
+msgid ""
+"APIS will create samba shares that are protected by a username and password."
+msgstr ""
+
+#: pyload_installer.sh:90 samba_installer.sh:22 samba_installer.sh:68
+msgid "Enter a username: "
+msgstr ""
+
+#: pyload_installer.sh:116
+msgid "Do you really want to install pyLoad?"
+msgstr ""
+
+#: pyload_installer.sh:140
+msgid "Set up pyLoad user"
+msgstr ""
+
+#: pyload_installer.sh:140
+msgid ""
+"PyLoads webinterface is protected by a password dialog. Create a new user "
+"with pyLoad's user management, that will be started now. Hit enter to "
+"continue!"
+msgstr ""
+
+#: pyload_installer.sh:147
+msgid "Create a Samba share"
+msgstr ""
+
+#: pyload_installer.sh:147
+msgid ""
+"All downloaded files will be stored locally on your Raspberry Pi. Do want "
+"APIS to create a Samba (Windows) share to easily access your downloads?"
+msgstr ""
+
+#: pyload_installer.sh:151
+msgid "PyLoad's webinterface is now available: $IP:8910"
+msgstr ""
+
+#: pyload_installer.sh:156
+msgid "Do you really want to uninstall pyLoad download manager"
+msgstr ""
+
 #: samba_installer.sh:8
 msgid "Do you really want to install Samba Server?"
 msgstr ""
@@ -734,10 +785,6 @@ msgstr ""
 msgid ""
 "This setup will create samba shares that are protected by a username and "
 "password."
-msgstr ""
-
-#: samba_installer.sh:22 samba_installer.sh:68
-msgid "Enter a username: "
 msgstr ""
 
 #: samba_installer.sh:32 samba_installer.sh:78
@@ -770,16 +817,16 @@ msgstr ""
 msgid "Do you really want to install Seafile?"
 msgstr ""
 
-#: seafile_installer.sh:57
+#: seafile_installer.sh:56
 msgid ""
 "Seafile's setup script will be started now. You will probably need your IP "
 "address: $IP\\nTry to use the default settings as far as possible."
 msgstr ""
 
-#: seafile_installer.sh:100
+#: seafile_installer.sh:105
 msgid "Do you really want to update Seafile?"
 msgstr ""
 
-#: seafile_installer.sh:131
+#: seafile_installer.sh:136
 msgid "Are you sure that you want to remove seafile?"
 msgstr ""

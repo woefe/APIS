@@ -16,13 +16,13 @@ function install_nginx(){
 
       echo $"An error occurred during the last Step. Repeating"
       for i in 1 2 3; do
-	sleep 1 && echo -n "."
+         sleep 1 && echo -n "."
       done
       echo
       sleep 1
    done
    popd
-   
+
    cat > /etc/nginx/nginx.conf << EOF
 user www-data;
 worker_processes 1;

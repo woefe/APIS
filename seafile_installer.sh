@@ -52,8 +52,7 @@ EOF
    rm seafile-server_$VERSION\_$ARCH.tar.gz
    chown -R seafile:seafile seafile-server-$VERSION
    popd
-   
-   IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+
    hint_msg $"Seafile's setup script will be started now. You will probably need your IP address: $IP\nTry to use the default settings as far as possible."
    clear
    sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$VERSION/setup-seafile.sh"
@@ -69,7 +68,7 @@ EOF
 max_upload_size=1000
 max_download_dir_size=1000
 EOF
-   
+
    ensure_key_value "SERVICE_URL" " = " "https://$IP/seafile" "/home/seafile/ccnet/ccnet.conf"
    cp seafile-init-script /etc/init.d/seafile
    chmod +x /etc/init.d/seafile
@@ -85,11 +84,11 @@ function get_upgrade_type(){
 
    if [ ${INSTALLED_VERSION:2:1} -ne ${LATEST_VERSION:2:1} ]; then
       if [ $[${INSTALLED_VERSION:2:1}+1] -eq ${LATEST_VERSION:2:1} ]; then 
-	echo continuous
-	return
+         echo continuous
+         return
       else
-	echo noncontinuous
-	return
+         echo noncontinuous
+         return
       fi
    fi
    [ ${INSTALLED_VERSION:4:1} -ne ${LATEST_VERSION:4:1} ] && echo minor
@@ -118,16 +117,16 @@ function upgrade_seafile(){
 
    case $(get_upgrade_type "$INSTALLED_VERSION" "$LATEST_VERSION") in
       minor)
-	sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/minor-upgrade.sh"
-	;;
+         sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/minor-upgrade.sh"
+         ;;
       continuous)
-	sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/upgrade_${INSTALLED_VERSION:0:3}_${LATEST_VERSION:0:3}.sh"
-	;;
+         sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/upgrade_${INSTALLED_VERSION:0:3}_${LATEST_VERSION:0:3}.sh"
+         ;;
       noncontinuous)
-	for i in $(seq ${INSTALLED_VERSION:2:1} $[${LATEST_VERSION:2:1}-1]); do
-	   sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/upgrade_1.${i}_1.$[$i+1].sh"
-	done
-	;;
+         for i in $(seq ${INSTALLED_VERSION:2:1} $[${LATEST_VERSION:2:1}-1]); do
+            sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/upgrade/upgrade_1.${i}_1.$[$i+1].sh"
+         done
+         ;;
    esac
    ensure_key_value "APP_VERSION" "=" "$LATEST_VERSION" /etc/init.d/seafile
    service seafile start
