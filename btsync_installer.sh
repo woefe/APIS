@@ -48,10 +48,10 @@ function install_btsync(){
    where binary is located.
    otherwise user-defined directory will be used
    */
-   "storage_path" : "/opt/btsync",
+   "storage_path" : "/home/btsync/sync",
 
    // location of pid file
-   "pid_file" : "/run/btsync.pid",
+   "pid_file" : "/home/btsync/btsync.pid",
 
    "check_for_updates" : true,
    "use_upnp" : true,                              // use UPnP for port mapping
@@ -111,11 +111,11 @@ $PASSWORD
 }
 EOF
 
+   adduser btsync --system --group --shell /bin/sh
    cp btsync-init-script /etc/init.d/btsync
    chmod 755 /etc/init.d/btsync
    update-rc.d btsync defaults
    service btsync start
-   IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
    hint_msg $"BitTorrent Sync's webinterface is now available under $IP:8888"
    return 0
 }

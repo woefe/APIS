@@ -15,7 +15,7 @@ DESC="BitTorrent Sync"
 NAME=btsync
 DAEMON=/usr/bin/btsync
 DAEMON_ARGS="--config /etc/btsync.conf"
-PIDFILE=/run/$NAME.pid
+PIDFILE=/home/btsync/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Exit if the package is not installed
@@ -38,9 +38,9 @@ do_start()
         #   0 if daemon has been started
         #   1 if daemon was already running
         #   2 if daemon could not be started
-        start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
+        start-stop-daemon --start --chuid btsync:btsync --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
                 || return 1
-        start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \
+        start-stop-daemon --start --chuid btsync:btsync --quiet --pidfile $PIDFILE --exec $DAEMON -- \
                 $DAEMON_ARGS \
                 || return 2
 }
