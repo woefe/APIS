@@ -132,7 +132,7 @@ function install_pyload(){
    rm pyload-cli-v0.4.9-all.deb
    adduser pyload --system --group --shell /bin/sh
    if $DATA_TO_EXTERNAL_DISK; then
-      CONFDIR=/mnt/data/pyload
+      CONFDIR=$EXTERNAL_DATA_DIR/pyload
    else
       CONFDIR=/home/pyload/pyload-conf
    fi
@@ -143,12 +143,12 @@ function install_pyload(){
    cp pyload-init-script /etc/init.d/pyload
    update-rc.d pyload defaults
    service pyload start
-   
+
    if yes_no $"Create a Samba share" $"All downloaded files will be stored locally on your Raspberry Pi. Do want APIS to create a Samba (Windows) share to easily access your downloads?"; then
       create_smb_share
    fi
-   
-   hint_msg $"PyLoad's webinterface is now available: $IP:8910"
+
+   hint_msg $"PyLoad's webinterface is now available: $IP:8910\nStart/stop/restart pyLoad with the webinterface or following command:\n   sudo service pyload start/stop/restart"
    return 0
 }
 

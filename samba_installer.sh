@@ -1,5 +1,5 @@
 if $DATA_TO_EXTERNAL_DISK; then
-   DIRECTORY=/mnt/data/samba
+   DIRECTORY=$EXTERNAL_DATA_DIR/samba
 else
    DIRECTORY=/srv/samba
 fi

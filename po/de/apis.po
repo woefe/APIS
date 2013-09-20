@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-15 14:23+0200\n"
+"POT-Creation-Date: 2013-09-20 15:52+0200\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -138,121 +138,117 @@ msgstr ""
 msgid "Editing /etc/fstab"
 msgstr "Bearbeite /etc/fstab"
 
-#: data_to_external_disk.sh:13
-msgid "|  Storage   |"
-msgstr "|  Speicher  |"
+#: data_to_external_disk.sh:17
+msgid "Enter path"
+msgstr "Pfad eingeben"
 
-#: data_to_external_disk.sh:15
-msgid ""
-"You have got three options here:\\n1. Move datadirectories to external "
-"Storage (HDD, USB; you can select a single partition or an entire disk)\\n2. "
-"Enter the datadirectory manually\\n3. Leave the datadirectory on the SD Card"
-"\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
-"format the Drive."
+#: data_to_external_disk.sh:17
+msgid "Enter the path to the datadirectory of your choice:"
 msgstr ""
-"Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Die Datenverzeichnisse "
-"auf externen Speicher legen. Es ist möglich eine einzelne Partition oder "
-"eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
-"Datenverzeichnis verwenden.\\n3. Datenverzeichnis auf der Speicherkarte "
-"lassen\\n\\nHINWEIS: Nummer 1 formatiert die ausgewählte Festplatte/"
-"Partition, dabei gehen alle darauf gespeicherten Daten verloren."
+"Gib den vollständigen Verzeichnispfad an, den du für die Datenverzeichnisse "
+"benutzen willst: "
 
-#: data_to_external_disk.sh:16
-msgid "What's your choice? (1/2/3): "
-msgstr "Für was hast du dich entschieden? (1/2/3): "
+#: data_to_external_disk.sh:23 main.sh:46
+msgid "ERROR"
+msgstr "FEHLER"
 
-#: data_to_external_disk.sh:24
-msgid "Enter the path of your choice: "
-msgstr "Vollständigen Verzeichnispfad eingeben: "
+#: data_to_external_disk.sh:23
+msgid "Directory doesn't exist! Try again?"
+msgstr "Verzeichnis nicht gefunden! Erneut versuchen"
 
-#: data_to_external_disk.sh:26
-msgid "Path doesn't exist."
-msgstr "Verzeichnis nicht gefunden."
+#: data_to_external_disk.sh:31
+msgid "Connect device"
+msgstr "Speichermedium anschließen"
 
-#: data_to_external_disk.sh:27
-msgid "Try again? (y/n): "
-msgstr "Erneut versuchen? (j/n): "
-
-#: data_to_external_disk.sh:28
-msgid "n"
-msgstr "n"
-
-#: data_to_external_disk.sh:36
-msgid "If you haven't connected the USB device yet, do it now."
+#: data_to_external_disk.sh:31
+msgid "If you haven't connected the USB device yet, connect it now!"
 msgstr ""
 "Schließe jetzt, falls noch nicht geschehen, den USB-Stick bzw. die "
 "Festplatte an"
 
-#: data_to_external_disk.sh:37
-msgid "Hit Enter to continue"
-msgstr "Enter zum Weitermachen"
+#: data_to_external_disk.sh:44
+msgid "Available devices and partitions"
+msgstr "Vorhandene Speichergeräte und Partitionen"
 
-#: data_to_external_disk.sh:39
-msgid "Available devices and partitions:"
-msgstr "Folgende Speichergeräte und Partitionen sind vorhanden:"
-
-#: data_to_external_disk.sh:49
-msgid "mounted on '$mountpoint'\\t"
-msgstr "gemountet als '$mountpoint'\\t"
-
-#: data_to_external_disk.sh:58
+#: data_to_external_disk.sh:44
 msgid ""
-"If you select an entire disk, all partitions will be deleted and one single "
-"partition with maximum size will be created"
+"The list shows following information of connected devices:\\nNUMBER, NAME, "
+"SIZE, TYPE, MOUNTPOINT, MODLENAME, REMOVABLE\\nIf you select an entire disk, "
+"all partitions will be deleted and one single partition with maximum size "
+"will be created. Choose a partition or a disk (1-$length):"
 msgstr ""
-"Wird eine komplette 'disk' ausgewählt, werden alle darauf vorhandenen "
-"Partitionen gelöscht und eine neue Partition mit der maximalen Größe "
-"erstellt."
+"Die Liste zeigt folgende Informationen der angeschlossenen Geräte:\\nNUMMER, "
+"NAME, GRÖßE, ART, MOUNTPOINT, MODELLBEZEICHUNG, EXTERN\\nWenn du eine "
+"komplette 'disk' auswählst, werden alle darauf vorhandenen Partitionen "
+"gelöscht und eine neue Partition mit der maximalen Größe erstellt. Wähle "
+"eine Partition oder ein komplettes Gerät (1-$length): "
 
-#: data_to_external_disk.sh:59
-msgid "Choose a partition or a disk (1-$length): "
-msgstr "Wähle eine Partition oder ein komplettes Gerät (1-$length): "
+#: data_to_external_disk.sh:52 nfs_installer.sh:27 nfs_installer.sh:103
+#: nfs_installer.sh:167
+msgid "WARNING"
+msgstr "ACHTUNG"
 
-#: data_to_external_disk.sh:63
-msgid "Your choice is invalid."
-msgstr "Falsche Angabe."
-
-#: data_to_external_disk.sh:67
-msgid "         |    WARNING   |"
-msgstr "         |    ACHTUNG   |"
-
-#: data_to_external_disk.sh:69
-msgid "Formating the disk/partition will erase all data stored on the it."
+#: data_to_external_disk.sh:52
+msgid ""
+"Formating the disk/partition will erase all data stored on the it! The disk "
+"will be formated now. Are you sure you want to continue?"
 msgstr ""
 "Beim Formatieren der Partition/Festplatte gehen alle darauf gespeicherten "
-"Daten verloren."
+"Daten verloren. Die Festplatte wird im nächsten Schritt formatiert. Bist du "
+"dir ganz sicher, dass du fortfahren willst?"
 
-#: data_to_external_disk.sh:70
-msgid ""
-"The disk will be formated now. Are you sure you want to continue? (y/n): "
-msgstr ""
-"Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten Schritt "
-"formatiert! (j/n): "
-
-#: data_to_external_disk.sh:71 samba_installer.sh:17 samba_installer.sh:18
-#: samba_installer.sh:63 samba_installer.sh:64
-msgid "y"
-msgstr "j"
-
-#: data_to_external_disk.sh:80 data_to_external_disk.sh:94
+#: data_to_external_disk.sh:62 data_to_external_disk.sh:80
 msgid "The device is still mounted, trying umount..."
 msgstr "Noch gemountet, versuche umount..."
 
-#: data_to_external_disk.sh:81 data_to_external_disk.sh:95
+#: data_to_external_disk.sh:65 data_to_external_disk.sh:83
 msgid "Datadirectories will remain on the SD Card"
 msgstr "Daten bleiben auf der Speicherkarte"
 
-#: data_to_external_disk.sh:82 data_to_external_disk.sh:96
+#: data_to_external_disk.sh:68 data_to_external_disk.sh:86
 msgid "Unmmounted successfully."
 msgstr "Gerät erfolgreich ungemountet."
+
+#: data_to_external_disk.sh:96
+msgid "Setup complete. The device is mounted on '/mnt/data'"
+msgstr "Einrichtung abgeschlossen. Das Gerät wird auf '/mnt/data' gemountet"
+
+#: data_to_external_disk.sh:102 main.sh:143 main.sh:157 main.sh:171
+#: main.sh:200 main.sh:214 main.sh:228
+msgid "Select"
+msgstr "Auswählen"
+
+#: data_to_external_disk.sh:102 main.sh:228
+msgid "Exit"
+msgstr "Beenden"
+
+#: data_to_external_disk.sh:102
+msgid "Storage setup"
+msgstr "Speichermedium einrichten"
+
+#: data_to_external_disk.sh:102
+msgid ""
+"IMPOTRANT: If you choose the first option, this script will erase and format "
+"the disk/partition. Choose one of the following three options:"
+msgstr ""
+"HINWEIS: Nummer 1 formatiert die ausgewählte Festplatte/Partition, dabei "
+"gehen alle darauf gespeicherten Daten verloren. Wähle eine der drei Optionen:"
+
+#: data_to_external_disk.sh:102
+msgid "Move datadirectories to external Storage"
+msgstr "Verschiebe Daten auf externen Speicher"
+
+#: data_to_external_disk.sh:102
+msgid "Enter the datadirectory manually"
+msgstr "Gib das Datenverzeichnis manuell an"
+
+#: data_to_external_disk.sh:102
+msgid "Leave the datadirectory on the SD Card"
+msgstr "Daten auf der Speicherkarte lassen"
 
 #: main.sh:42
 msgid "HINT"
 msgstr "HINWEIS"
-
-#: main.sh:46
-msgid "ERROR"
-msgstr "FEHLER"
 
 #: main.sh:77
 msgid "ERROR: key '$key' doesn't exist in '$file'."
@@ -270,10 +266,6 @@ msgstr "Update fehlgeschlagen."
 #: main.sh:136 main.sh:326
 msgid "Bye..."
 msgstr "Beende"
-
-#: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214 main.sh:228
-msgid "Select"
-msgstr "Auswählen"
 
 #: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214
 msgid "Back"
@@ -390,10 +382,6 @@ msgid "Update Seafile Server"
 msgstr "Update den Seafile Server"
 
 #: main.sh:228
-msgid "Exit"
-msgstr "Beenden"
-
-#: main.sh:228
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
@@ -437,15 +425,15 @@ msgstr "Das Script benötigt root Berechtigungen"
 msgid "Checking for locale en_US.UTF-8..."
 msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: main.sh:339
+#: main.sh:338
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
-"Samba, ownCloud...\\nDo you want to use a external disk to store "
-"datadirectories of ownCloud and Samba on it?"
+"Samba, ownCloud, ... Do you want to use a external disk to store "
+"datadirectories of ownCloud, Samba, ... on it?"
 msgstr ""
 "Dieser Setup kann verschiedene Softwarekomponenten installieren und "
 "konfigurieren z.B. Samba, ownCloud...\\nWillst du eine externe Festplatte "
-"als Datenspeicher für ownCloud und Samba verwenden?"
+"als Datenspeicher für ownCloud, Samba, ... verwenden?"
 
 #: nfs_installer.sh:2
 msgid "Install NFS"
@@ -514,10 +502,6 @@ msgstr "Weitere Clients hinzufügen"
 #: nfs_installer.sh:116
 msgid "Do you want to add more clients to '$EXPORTPATH'?"
 msgstr "Willst du noch weitere Clients zu '$EXPORTPATH' hinzufügen?"
-
-#: nfs_installer.sh:27 nfs_installer.sh:103 nfs_installer.sh:167
-msgid "WARNING"
-msgstr "ACHTUNG"
 
 #: nfs_installer.sh:27 nfs_installer.sh:103
 msgid ""
@@ -714,11 +698,11 @@ msgstr ""
 msgid "An error occurred during the last Step. Repeating"
 msgstr "Dieser Schritt ist fehlgeschlagen. Wiederhole"
 
-#: nginx_basic_installer.sh:104
+#: nginx_basic_installer.sh:106
 msgid "Editing /etc/dphys-swapfile..."
 msgstr "Bearbeite /etc/dphys-swapfile..."
 
-#: nginx_basic_installer.sh:124
+#: nginx_basic_installer.sh:126
 msgid "Reboot is recommended!"
 msgstr "Neustart empfohlen!"
 
@@ -841,7 +825,7 @@ msgstr "Willst du den pyLoad Server wirklich deinstallieren?"
 
 #: pyload_installer.sh:140
 msgid "Set up pyLoad user"
-msgstr ""
+msgstr "PyLoad Benuter anlegen"
 
 #: pyload_installer.sh:140
 msgid ""
@@ -849,6 +833,9 @@ msgid ""
 "with pyLoad's user management, that will be started now. Hit enter to "
 "continue!"
 msgstr ""
+"Die Weboberfläche von pyLoad wird durch einen Passwortdialog geschützt. Lege "
+"jetzt mit der Benutzerverwaltung von pyLoad, die gleich gestartet wird, "
+"einen neuen Beutzer an. Drücke Enter zum Weitermachen!"
 
 #: pyload_installer.sh:147
 msgid "Create a Samba share"
@@ -859,11 +846,19 @@ msgid ""
 "All downloaded files will be stored locally on your Raspberry Pi. Do want "
 "APIS to create a Samba (Windows) share to easily access your downloads?"
 msgstr ""
+"Alle Downloads werden auf dem Raspberry gespeichert. APIS kann eine Samba "
+"Freigabe (auch bekannt als Windows Freigabe) erstellen, damit du an die "
+"Downloads leichter dran kommst."
 
 #: pyload_installer.sh:151
-msgid "PyLoad's webinterface is now available: $IP:8910"
+msgid ""
+"PyLoad's webinterface is now available: $IP:8910\\nStart/stop/restart pyLoad "
+"with the webinterface or following command:\\n   sudo service pyload start/"
+"stop/restart"
 msgstr ""
-"Die Weboberfläche von pyLoad ist nun unter $IP:8910 erreichbar."
+"Die Weboberfläche von pyLoad ist jetzt unter $IP:8910 erreichbar. Zum "
+"Starten/Stoppen/Neustarten von pyLoad kannst du entweder die Weboberfläche "
+"oder folgenden Befehl verwenden: sudo service pyload start/stop/restart"
 
 #: pyload_installer.sh:156
 msgid "Do you really want to uninstall pyLoad download manager"
@@ -884,6 +879,11 @@ msgid ""
 msgstr ""
 "Es werden Samba Freigaben erstellt, die mit Benutzername und Passwort "
 "gesichert sind."
+
+#: samba_installer.sh:17 samba_installer.sh:18 samba_installer.sh:63
+#: samba_installer.sh:64
+msgid "y"
+msgstr "j"
 
 #: samba_installer.sh:32 samba_installer.sh:78
 msgid "Enter a name for this share: "
@@ -920,7 +920,9 @@ msgstr "Willst du Seafile wirklich installieren?"
 #: seafile_installer.sh:56
 msgid ""
 "Seafile's setup script will be started now. You will probably need your IP "
-"address: $IP\\nTry to use the default settings as far as possible."
+"address. Your IP address is: $IP\\nTry to use the default settings as far as "
+"possible!\\nIf you are using an external HDD you might want to change "
+"Seafile's datadirectory to '/mnt/data/seafile'"
 msgstr ""
 "Seafile benutzt zur Installation ein eigenes Installationsscript, welches "
 "jetzt gestartet wird. Sehr wahrscheinlich wirst du die IP Adresse benötigen."
@@ -933,3 +935,64 @@ msgstr "Willst Seafile wirklich aktualisieren?"
 #: seafile_installer.sh:136
 msgid "Are you sure that you want to remove seafile?"
 msgstr "Bist du dir sicher, dass du Seafile deinstallieren willst? "
+
+#~ msgid "|  Storage   |"
+#~ msgstr "|  Speicher  |"
+
+#~ msgid ""
+#~ "You have got three options here:\\n1. Move datadirectories to external "
+#~ "Storage (HDD, USB; you can select a single partition or an entire "
+#~ "disk)\\n2. Enter the datadirectory manually\\n3. Leave the datadirectory "
+#~ "on the SD Card\\n\\nIMPOTRANT: If you choose the first option, this "
+#~ "script will erase and format the Drive."
+#~ msgstr ""
+#~ "Jetzt gibt es drei verschiedene Möglichkeiten\\n1. Die Datenverzeichnisse "
+#~ "auf externen Speicher legen. Es ist möglich eine einzelne Partition oder "
+#~ "eine gesamte Festplatte auszuwählen.\\n2. Manuell eingegeben Pfad als "
+#~ "Datenverzeichnis verwenden.\\n3. Datenverzeichnis auf der Speicherkarte "
+#~ "lassen\\n\\nHINWEIS: Nummer 1 formatiert die ausgewählte Festplatte/"
+#~ "Partition, dabei gehen alle darauf gespeicherten Daten verloren."
+
+#~ msgid "What's your choice? (1/2/3): "
+#~ msgstr "Für was hast du dich entschieden? (1/2/3): "
+
+#~ msgid "Path doesn't exist."
+#~ msgstr "Verzeichnis nicht gefunden."
+
+#~ msgid "Try again? (y/n): "
+#~ msgstr "Erneut versuchen? (j/n): "
+
+#~ msgid "n"
+#~ msgstr "n"
+
+#~ msgid "Hit Enter to continue"
+#~ msgstr "Enter zum Weitermachen"
+
+#~ msgid "mounted on '$mountpoint'\\t"
+#~ msgstr "gemountet als '$mountpoint'\\t"
+
+#~ msgid ""
+#~ "If you select an entire disk, all partitions will be deleted and one "
+#~ "single partition with maximum size will be created"
+#~ msgstr ""
+#~ "Wird eine komplette 'disk' ausgewählt, werden alle darauf vorhandenen "
+#~ "Partitionen gelöscht und eine neue Partition mit der maximalen Größe "
+#~ "erstellt."
+
+#~ msgid "Choose a partition or a disk (1-$length): "
+#~ msgstr "Wähle eine Partition oder ein komplettes Gerät (1-$length): "
+
+#~ msgid "Your choice is invalid."
+#~ msgstr "Falsche Angabe."
+
+#~ msgid "         |    WARNING   |"
+#~ msgstr "         |    ACHTUNG   |"
+
+#~ msgid ""
+#~ "The disk will be formated now. Are you sure you want to continue? (y/n): "
+#~ msgstr ""
+#~ "Bist du dir ganz sicher? Die Partition/Festplatte wird im nächsten "
+#~ "Schritt formatiert! (j/n): "
+
+#~ msgid "PyLoad's webinterface is now available: $IP:8910"
+#~ msgstr "Die Weboberfläche von pyLoad ist nun unter $IP:8910 erreichbar."

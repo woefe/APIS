@@ -1,7 +1,7 @@
 function install_seafile(){
    yes_no $"Confirmation" $"Do you really want to install Seafile?" || return 1
    sys_update
-   local VERSION=1.8.1
+   local VERSION=1.8.5
 
    if ! $NGINX_INSTALLED; then
       . nginx_basic_installer.sh install
@@ -53,7 +53,7 @@ EOF
    chown -R seafile:seafile seafile-server-$VERSION
    popd
 
-   hint_msg $"Seafile's setup script will be started now. You will probably need your IP address: $IP\nTry to use the default settings as far as possible."
+   hint_msg $"Seafile's setup script will be started now. You will probably need your IP address. Your IP address is: $IP\nTry to use the default settings as far as possible!\nIf you are using an external HDD you might want to change Seafile's datadirectory to '/mnt/data/seafile'"
    clear
    sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$VERSION/setup-seafile.sh"
    
@@ -97,7 +97,7 @@ function get_upgrade_type(){
 function upgrade_seafile(){
    local INSTALLED_VERSION=$(grep -E "^APP_VERSION=" /etc/init.d/seafile | grep -Eo [0-9].[0-9].[0-9])
    # missing: get latest version from the internet
-   local LATEST_VERSION=1.8.1
+   local LATEST_VERSION=1.8.5
    if [ $INSTALLED_VERSION ==  $LATEST_VERSION ]; then
       error_msg $"Latest version is already installed."
       return 1

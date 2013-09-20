@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-15 14:23+0200\n"
+"POT-Creation-Date: 2013-09-20 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,105 +124,102 @@ msgstr ""
 msgid "Editing /etc/fstab"
 msgstr ""
 
-#: data_to_external_disk.sh:13
-msgid "|  Storage   |"
+#: data_to_external_disk.sh:17
+msgid "Enter path"
 msgstr ""
 
-#: data_to_external_disk.sh:15
+#: data_to_external_disk.sh:17
+msgid "Enter the path to the datadirectory of your choice:"
+msgstr ""
+
+#: data_to_external_disk.sh:23 main.sh:46
+msgid "ERROR"
+msgstr ""
+
+#: data_to_external_disk.sh:23
+msgid "Directory doesn't exist! Try again?"
+msgstr ""
+
+#: data_to_external_disk.sh:31
+msgid "Connect device"
+msgstr ""
+
+#: data_to_external_disk.sh:31
+msgid "If you haven't connected the USB device yet, connect it now!"
+msgstr ""
+
+#: data_to_external_disk.sh:44
+msgid "Available devices and partitions"
+msgstr ""
+
+#: data_to_external_disk.sh:44
 msgid ""
-"You have got three options here:\\n1. Move datadirectories to external "
-"Storage (HDD, USB; you can select a single partition or an entire disk)\\n2. "
-"Enter the datadirectory manually\\n3. Leave the datadirectory on the SD Card"
-"\\n\\nIMPOTRANT: If you choose the first option, this script will erase and "
-"format the Drive."
+"The list shows following information of connected devices:\\nNUMBER, NAME, "
+"SIZE, TYPE, MOUNTPOINT, MODLENAME, REMOVABLE\\nIf you select an entire disk, "
+"all partitions will be deleted and one single partition with maximum size "
+"will be created. Choose a partition or a disk (1-$length):"
 msgstr ""
 
-#: data_to_external_disk.sh:16
-msgid "What's your choice? (1/2/3): "
+#: data_to_external_disk.sh:52 nfs_installer.sh:27 nfs_installer.sh:103
+#: nfs_installer.sh:167
+msgid "WARNING"
 msgstr ""
 
-#: data_to_external_disk.sh:24
-msgid "Enter the path of your choice: "
-msgstr ""
-
-#: data_to_external_disk.sh:26
-msgid "Path doesn't exist."
-msgstr ""
-
-#: data_to_external_disk.sh:27
-msgid "Try again? (y/n): "
-msgstr ""
-
-#: data_to_external_disk.sh:28
-msgid "n"
-msgstr ""
-
-#: data_to_external_disk.sh:36
-msgid "If you haven't connected the USB device yet, do it now."
-msgstr ""
-
-#: data_to_external_disk.sh:37
-msgid "Hit Enter to continue"
-msgstr ""
-
-#: data_to_external_disk.sh:39
-msgid "Available devices and partitions:"
-msgstr ""
-
-#: data_to_external_disk.sh:49
-msgid "mounted on '$mountpoint'\\t"
-msgstr ""
-
-#: data_to_external_disk.sh:58
+#: data_to_external_disk.sh:52
 msgid ""
-"If you select an entire disk, all partitions will be deleted and one single "
-"partition with maximum size will be created"
+"Formating the disk/partition will erase all data stored on the it! The disk "
+"will be formated now. Are you sure you want to continue?"
 msgstr ""
 
-#: data_to_external_disk.sh:59
-msgid "Choose a partition or a disk (1-$length): "
-msgstr ""
-
-#: data_to_external_disk.sh:63
-msgid "Your choice is invalid."
-msgstr ""
-
-#: data_to_external_disk.sh:67
-msgid "         |    WARNING   |"
-msgstr ""
-
-#: data_to_external_disk.sh:69
-msgid "Formating the disk/partition will erase all data stored on the it."
-msgstr ""
-
-#: data_to_external_disk.sh:70
-msgid ""
-"The disk will be formated now. Are you sure you want to continue? (y/n): "
-msgstr ""
-
-#: data_to_external_disk.sh:71 samba_installer.sh:17 samba_installer.sh:18
-#: samba_installer.sh:63 samba_installer.sh:64
-msgid "y"
-msgstr ""
-
-#: data_to_external_disk.sh:80 data_to_external_disk.sh:94
+#: data_to_external_disk.sh:62 data_to_external_disk.sh:80
 msgid "The device is still mounted, trying umount..."
 msgstr ""
 
-#: data_to_external_disk.sh:81 data_to_external_disk.sh:95
+#: data_to_external_disk.sh:65 data_to_external_disk.sh:83
 msgid "Datadirectories will remain on the SD Card"
 msgstr ""
 
-#: data_to_external_disk.sh:82 data_to_external_disk.sh:96
+#: data_to_external_disk.sh:68 data_to_external_disk.sh:86
 msgid "Unmmounted successfully."
+msgstr ""
+
+#: data_to_external_disk.sh:96
+msgid "Setup complete. The device is mounted on '/mnt/data'"
+msgstr ""
+
+#: data_to_external_disk.sh:102 main.sh:143 main.sh:157 main.sh:171
+#: main.sh:200 main.sh:214 main.sh:228
+msgid "Select"
+msgstr ""
+
+#: data_to_external_disk.sh:102 main.sh:228
+msgid "Exit"
+msgstr ""
+
+#: data_to_external_disk.sh:102
+msgid "Storage setup"
+msgstr ""
+
+#: data_to_external_disk.sh:102
+msgid ""
+"IMPOTRANT: If you choose the first option, this script will erase and format "
+"the disk/partition. Choose one of the following three options:"
+msgstr ""
+
+#: data_to_external_disk.sh:102
+msgid "Move datadirectories to external Storage"
+msgstr ""
+
+#: data_to_external_disk.sh:102
+msgid "Enter the datadirectory manually"
+msgstr ""
+
+#: data_to_external_disk.sh:102
+msgid "Leave the datadirectory on the SD Card"
 msgstr ""
 
 #: main.sh:42
 msgid "HINT"
-msgstr ""
-
-#: main.sh:46
-msgid "ERROR"
 msgstr ""
 
 #: main.sh:77
@@ -239,10 +236,6 @@ msgstr ""
 
 #: main.sh:136 main.sh:326
 msgid "Bye..."
-msgstr ""
-
-#: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214 main.sh:228
-msgid "Select"
 msgstr ""
 
 #: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214
@@ -349,10 +342,6 @@ msgid "Update Seafile Server"
 msgstr ""
 
 #: main.sh:228
-msgid "Exit"
-msgstr ""
-
-#: main.sh:228
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
@@ -394,11 +383,11 @@ msgstr ""
 msgid "Checking for locale en_US.UTF-8..."
 msgstr ""
 
-#: main.sh:339
+#: main.sh:338
 msgid ""
 "This setup can install and configure a whole bunge of different software eg. "
-"Samba, ownCloud...\\nDo you want to use a external disk to store "
-"datadirectories of ownCloud and Samba on it?"
+"Samba, ownCloud, ... Do you want to use a external disk to store "
+"datadirectories of ownCloud, Samba, ... on it?"
 msgstr ""
 
 #: nfs_installer.sh:2
@@ -456,10 +445,6 @@ msgstr ""
 #: nfs_installer.sh:21 nfs_installer.sh:23 nfs_installer.sh:40
 #: nfs_installer.sh:116
 msgid "Do you want to add more clients to '$EXPORTPATH'?"
-msgstr ""
-
-#: nfs_installer.sh:27 nfs_installer.sh:103 nfs_installer.sh:167
-msgid "WARNING"
 msgstr ""
 
 #: nfs_installer.sh:27 nfs_installer.sh:103
@@ -632,11 +617,11 @@ msgstr ""
 msgid "An error occurred during the last Step. Repeating"
 msgstr ""
 
-#: nginx_basic_installer.sh:104
+#: nginx_basic_installer.sh:106
 msgid "Editing /etc/dphys-swapfile..."
 msgstr ""
 
-#: nginx_basic_installer.sh:124
+#: nginx_basic_installer.sh:126
 msgid "Reboot is recommended!"
 msgstr ""
 
@@ -766,7 +751,10 @@ msgid ""
 msgstr ""
 
 #: pyload_installer.sh:151
-msgid "PyLoad's webinterface is now available: $IP:8910"
+msgid ""
+"PyLoad's webinterface is now available: $IP:8910\\nStart/stop/restart pyLoad "
+"with the webinterface or following command:\\n   sudo service pyload start/"
+"stop/restart"
 msgstr ""
 
 #: pyload_installer.sh:156
@@ -785,6 +773,11 @@ msgstr ""
 msgid ""
 "This setup will create samba shares that are protected by a username and "
 "password."
+msgstr ""
+
+#: samba_installer.sh:17 samba_installer.sh:18 samba_installer.sh:63
+#: samba_installer.sh:64
+msgid "y"
 msgstr ""
 
 #: samba_installer.sh:32 samba_installer.sh:78
@@ -820,7 +813,9 @@ msgstr ""
 #: seafile_installer.sh:56
 msgid ""
 "Seafile's setup script will be started now. You will probably need your IP "
-"address: $IP\\nTry to use the default settings as far as possible."
+"address. Your IP address is: $IP\\nTry to use the default settings as far as "
+"possible!\\nIf you are using an external HDD you might want to change "
+"Seafile's datadirectory to '/mnt/data/seafile'"
 msgstr ""
 
 #: seafile_installer.sh:105

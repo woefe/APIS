@@ -19,8 +19,8 @@ function install_oc(){
    if $DATA_TO_EXTERNAL_DISK; then
       echo $"Creating conf.php..."
       create_minimal_php_conf
-      mkdir  $EXTERNAL_DATA_DIR
-      chown -R  www-data:www-data $EXTERNAL_DATA_DIR
+      mkdir  $OC_DATA_DIR
+      chown -R  www-data:www-data $OC_DATA_DIR
    fi
 
    echo $"Cleaning up..."
@@ -85,7 +85,7 @@ function create_minimal_php_conf(){
 cat > $OWNCLOUD_DIR/config/config.php << EOF
 <?php
 \$CONFIG = array (
-  'datadirectory' => '$EXTERNAL_DATA_DIR',
+  'datadirectory' => '$OC_DATA_DIR',
   'dbtype' => 'sqlite3',
   'installed' => false,
 );
@@ -122,7 +122,7 @@ function install_owncloud(){
       . nginx_basic_installer.sh install
    fi
 
-   EXTERNAL_DATA_DIR="/mnt/data/owncloudData"
+   OC_DATA_DIR=$EXTERNAL_DATA_DIR/owncloudData
 
    download_and_check_oc &&
    install_oc

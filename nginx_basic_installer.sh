@@ -86,9 +86,11 @@ server {
 EOF
 
    if $DATA_TO_EXTERNAL_DISK; then
-      TEMP_UPLOAD_DIR="/mnt/data/phpTmpUpload"
+      TEMP_UPLOAD_DIR="$EXTERNAL_DATA_DIR/phpTmpUpload"
+      SWAPFILE_PATH="$EXTERNAL_DATA_DIR/swap"
    else
       TEMP_UPLOAD_DIR="/srv/http/phpTmpUpload"
+      SWAPFILE_PATH="/var/swap"
    fi
 
    ensure_key_value "cgi.fix_pathinfo" "=" "0" /etc/php5/fpm/php.ini
@@ -104,7 +106,7 @@ EOF
    echo $"Editing /etc/dphys-swapfile..."
    cat > /etc/dphys-swapfile << EOF
 CONF_SWAPSIZE=768
-
+CONF_SWAPFILE=$SWAPFILE_PATH
 EOF
    dphys-swapfile setup
    dphys-swapfile swapon

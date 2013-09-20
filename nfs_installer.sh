@@ -3,7 +3,7 @@ function install_nfs(){
    apt-get install -qq nfs-kernel-server portmap
 
    EXPORTPATH=/srv/nfs
-   $DATA_TO_EXTERNAL_DISK && EXPORTPATH=/mnt/data/nfs
+   $DATA_TO_EXTERNAL_DISK && EXPORTPATH="$EXTERNAL_DATA_DIR/nfs"
    EXPORTPATH=$(user_input $"Choose directory" $"Enter the path to the directory that you want to share via NFS. Hit 'return' to use the default path." "$EXPORTPATH") || return 1
    if [ ! -d $EXPORTPATH ]; then
       yes_no $"Directory doesn't exist" $"'$EXPORTPATH' doesn't exist. Do you want to create it?" || return 1
@@ -76,7 +76,7 @@ function uninstall_nfs(){
 
 function add_nfs_shares(){
    EXPORTPATH=/srv/nfs
-   $DATA_TO_EXTERNAL_DISK && EXPORTPATH=/mnt/data/nfs
+   $DATA_TO_EXTERNAL_DISK && EXPORTPATH="$EXTERNAL_DATA_DIR/nfs"
    EXPORTPATH=$(user_input $"Share a directory" $"Enter the path to the directory that you want to share via NFS. Hit 'return' to use the default path." "$EXPORTPATH") || return 1
    if [ ! -d $EXPORTPATH ]; then
       yes_no $"Directory doesn't exist" $"'$EXPORTPATH' doesn't exist. Do you want to create it?" || return 1

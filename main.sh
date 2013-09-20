@@ -334,21 +334,23 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo $"Checking for locale en_US.UTF-8..."
    grep -Eq "^# en_US.UTF-8 UTF-8$" /etc/locale.gen && sed -i -e "s/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen && locale-gen
    mkdir /var/lib/apis
-   USE_EXTERNAL_SPACE=true
-   . data_to_external_disk.sh
-   whiptail --title "APIS" --yesno $"This setup can install and configure a whole bunge of different software eg. Samba, ownCloud...\nDo you want to use a external disk to store datadirectories of ownCloud and Samba on it?" 30 90
+   DATA_TO_EXTERNAL_DISK=true
+   yes_no "APIS" $"This setup can install and configure a whole bunge of different software eg. Samba, ownCloud, ... Do you want to use a external disk to store datadirectories of ownCloud, Samba, ... on it?"
    exit_status=$?
    case $exit_status in
       0)
-         data_to_external_disk
-         if $USE_EXTERNAL_SPACE;then
+         . data_to_external_disk.sh
+         if $DATA_TO_EXTERNAL_DISK;then
             echo "DATA_TO_EXTERNAL_DISK=true" > /var/lib/apis/conf
+            echo "EXTERNAL_DATA_DIR=\"$EXTERNAL_DATA_DIR\"" >> /var/lib/apis/conf
          else
             echo "DATA_TO_EXTERNAL_DISK=false" > /var/lib/apis/conf
+            echo "EXTERNAL_DATA_DIR=''" >> /var/lib/apis/conf
          fi
          ;;
       1)
          echo "DATA_TO_EXTERNAL_DISK=false" > /var/lib/apis/conf
+         echo "EXTERNAL_DATA_DIR=''" >> /var/lib/apis/conf
          ;;
       *)
          exit
@@ -370,7 +372,7 @@ fi
 # Updater: check if '/var/lib/apis/conf' contains all required variables
 # If you add a new component like foo_installer.sh, add a new variable (FOO_INSTALLED) to REQIURED_VARS
 if [ "$1" == "update" ]; then
-   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED NGINX_REQUIRED SEAFILE_INSTALLED PYLOAD_INSTALLED"
+   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED SEAFILE_INSTALLED PYLOAD_INSTALLED"
    for var in $REQIURED_VARS; do
       grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
    done
