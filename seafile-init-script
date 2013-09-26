@@ -13,7 +13,7 @@
 # Description:       Seafile synchronization and collaboration
 ### END INIT INFO
 
-APP_VERSION="1.8.1"
+APP_VERSION=""
 APP_ROOT="/home/seafile/seafile-server-$APP_VERSION"
 SEAFILE_PID="/home/seafile/seafile-data/pids/seaf-server.pid"
 SEAHUB_PID="$APP_ROOT/runtime/seahub.pid"

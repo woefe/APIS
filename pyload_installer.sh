@@ -25,7 +25,7 @@ permission - "Permissions":
         str user : "Username" = pyload
         str file : "Filemode for Downloads" = 0664
         bool change_group : "Change group of running process" = False
-        str folder : "Folder Permission mode" = 0755
+        str folder : "Folder Permission mode" = 0775
         bool change_user : "Change user of running process" = False
 
 general - "General":
