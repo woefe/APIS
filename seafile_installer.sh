@@ -10,6 +10,8 @@ function install_seafile(){
    fi
    apt-get -qq install python2.7 python-setuptools python-simplejson python-imaging python-flup sqlite3
    set_var_nginx_required add seafile
+   
+   # create nginx config
    sed -i $\d /etc/nginx/sites-available/apis-ssl
    cat >> /etc/nginx/sites-available/apis-ssl << EOF
    #begin_seafile_config
@@ -33,7 +35,7 @@ function install_seafile(){
 
    location /seafmedia {
       rewrite ^/seafmedia(.*)$ /media\$1 break;
-      root /home/seafile/seafile-server-1.8.1/seahub;
+      root /home/seafile/seafile-server-$LATEST_VERSION/seahub;
    }
    location /seafhttp {
       rewrite ^/seafhttp(.*)$ \$1 break;
@@ -44,6 +46,7 @@ function install_seafile(){
 
 }
 EOF
+   # create seafile user
    adduser seafile --system --group --shell /bin/sh
    pushd /home/seafile
 
@@ -131,6 +134,8 @@ function upgrade_seafile(){
          ;;
    esac
    ensure_key_value "APP_VERSION" "=" "$LATEST_VERSION" /etc/init.d/seafile
+   sed -i s@root\ /home/seafile/seafile-server.*@root\ /home/seafile/seafile-server-$LATEST_VERSION/seahub\;@ /etc/nginx/sites-available/apis-ssl
+   service nginx restart
    service seafile start
 }
 
