@@ -13,6 +13,10 @@ TEXTDOMAINDIR=./locale
 
 # $IP contains your IP address
 IP=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+if [ "$IP" == "" ]; then
+   echo -e $"Something is wrong with your network config!\nCould not retrieve your IP Address..."
+   exit 1
+fi
 
 # Some functions to make whiptail esier to use
 # How to use these functions in foo_installer.sh:
