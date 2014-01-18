@@ -88,7 +88,7 @@ function create_smb_share(){
    clear
    while true; do
       read -p $"Enter a username: " username &&
-      adduser --no-create-home --disabled-login --shell /bin/false --ingroup pyload $username
+      adduser --no-create-home --disabled-login --shell /bin/false --ingroup pyload $username &&
       break
    done
    while true; do

@@ -214,19 +214,20 @@ function configure_ampache(){
 }
 
 # Seafile submenu
-function configure_seafile(){
-   option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Seafile" --menu $"Remove Seafile or install latest version" 30 90 15 \
-      uninstall $"Uninstall Seafile Server" \
-      upgrade $"Update Seafile Server" 3>&1 1>&2 2>&3)
+# function configure_seafile(){
+#    option=$(whiptail --ok-button $"Select" --cancel-button $"Back" --title $"Update/uninstall Seafile" --menu $"Remove Seafile or install latest version" 30 90 15 \
+#       uninstall $"Uninstall Seafile Server" \
+#       upgrade $"Update Seafile Server" 3>&1 1>&2 2>&3)
+#
+#    if [ "$option" == "uninstall" ];then
+#       . seafile_installer.sh uninstall &&
+#       sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=false/' /var/lib/apis/conf
+#    elif [ "$option" == "upgrade" ]; then
+#       . seafile_installer.sh upgrade
+#    fi
+# }
 
-   if [ "$option" == "uninstall" ];then
-      . seafile_installer.sh uninstall &&
-      sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=false/' /var/lib/apis/conf
-   elif [ "$option" == "upgrade" ]; then
-      . seafile_installer.sh upgrade
-   fi
-}
-
+# add this line below to enable seafile again: seafile_setup $"Install/upgrade/uninstall Seafile Cloud Service" \
 function main(){
    . /var/lib/apis/conf
    choice=$(whiptail --ok-button $"Select" --cancel-button $"Exit" --title "APIS" --menu $"\nAwesome Pi Installation Script\n\nInstall some cool stuff on your Raspberry Pi.\n" 30 90 15 \
@@ -235,7 +236,6 @@ function main(){
       btsync_setup $"Install/uninstall BitTorrent Sync" \
       nfs_setup $"Install/uninstall/configure Network File System Server" \
       ampache_setup $"Install/upgrade/uninstall Ampache Streaming Server" \
-      seafile_setup $"Install/upgrade/uninstall Seafile Cloud Service" \
       pyload_setup $"Install/uninstall pyLoad download manager" 3>&1 1>&2 2>&3)
 
    case $choice in
@@ -300,25 +300,29 @@ function main(){
             return
          fi
          ;;
-      seafile_setup)
-         if $SEAFILE_INSTALLED; then
-            configure_seafile
-            main
-            return
-         else
-            . seafile_installer.sh install &&
-            sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=true/' /var/lib/apis/conf
-            main
-            return
-         fi
-         ;;
+#       seafile_setup)
+#          if $SEAFILE_INSTALLED; then
+#             configure_seafile
+#             main
+#             return
+#          else
+#             . seafile_installer.sh install &&
+#             sed -i 's/SEAFILE_INSTALLED.*/SEAFILE_INSTALLED=true/' /var/lib/apis/conf
+#             main
+#             return
+#          fi
+#          ;;
       pyload_setup)
          if $PYLOAD_INSTALLED; then
             . pyload_installer.sh uninstall &&
             sed -i 's/PYLOAD_INSTALLED.*/PYLOAD_INSTALLED=false/' /var/lib/apis/conf
+            main
+            return
          else
             . pyload_installer.sh install &&
             sed -i 's/PYLOAD_INSTALLED.*/PYLOAD_INSTALLED=true/' /var/lib/apis/conf
+            main
+            return
          fi
          ;;
    esac
@@ -369,14 +373,14 @@ if [ ! -f /var/lib/apis/conf ]; then
    echo "NGINX_INSTALLED=false" >> /var/lib/apis/conf
    echo "NGINX_REQUIRED=''" >> /var/lib/apis/conf
    echo "AMPACHE_INSTALLED=false" >> /var/lib/apis/conf
-   echo "SEAFILE_INSTALLED=false" >> /var/lib/apis/conf
+   #echo "SEAFILE_INSTALLED=false" >> /var/lib/apis/conf
    echo "PYLOAD_INSTALLED=false" >> /var/lib/apis/conf
 fi
 
 # Updater: check if '/var/lib/apis/conf' contains all required variables
 # If you add a new component like foo_installer.sh, add a new variable (FOO_INSTALLED) to REQIURED_VARS
 if [ "$1" == "update" ]; then
-   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED SEAFILE_INSTALLED PYLOAD_INSTALLED"
+   REQIURED_VARS="DATA_TO_EXTERNAL_DISK OWNCLOUD_INSTALLED SAMBA_INSTALLED BTSYNC_INSTALLED NFS_INSTALLED NGINX_INSTALLED AMPACHE_INSTALLED  PYLOAD_INSTALLED" #SEAFILE_INSTALLED
    for var in $REQIURED_VARS; do
       grep -q $var /var/lib/apis/conf || echo "$var=false" >> /var/lib/apis/conf
    done

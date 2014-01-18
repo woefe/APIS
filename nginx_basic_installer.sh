@@ -1,6 +1,6 @@
 function install_nginx(){
    echo $"Installing nginx and php..."
-   apt-get -qq install nginx php5 php5-common php5-cgi php5-gd mysql-server php5-mysql php-xml-parser php5-intl sqlite php5-sqlite curl libcurl3 php5-curl php-pear php-apc php5-fpm memcached php5-memcache smbclient openssl ssl-cert varnish dphys-swapfile
+   apt-get -qq install nginx php5 php5-common php5-cgi php5-gd mysql-server php5-mysql php-xml-parser php5-intl sqlite php5-sqlite curl php5-imagick libcurl3 php5-curl php-pear php-apc php5-mcrypt php5-fpm memcached php5-memcache smbclient openssl ssl-cert varnish dphys-swapfile
    echo $"Searching for packages that are no longer needed..."
    apt-get -qq autoremove
 

@@ -1,6 +1,5 @@
 function install_ampache(){
-   SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
-   yes_no $"IP address" $"After APIS has finished, Ampache will be available under: $SERVER_NAME/ampache\nDo you really want to install Ampache?" || return 1
+   yes_no $"IP address" $"After APIS has finished, Ampache will be available under: $IP/ampache\nDo you really want to install Ampache?" || return 1
    #echo "CREATE DATABASE ampacheBase; GRANT ALL ON ampacheBase.* TO ampacheUser@localhost IDENTIFIED BY 'password'" | mysql -u root -p
    sys_update
    if ! $NGINX_INSTALLED; then
@@ -54,6 +53,7 @@ EOF
    # See main.sh for details on set_var_nginx_required
    set_var_nginx_required add ampache
    service nginx restart
+   hint_msg $"It is highly recommended to run 'mysql_secure_installation' from the terminal after APIS has finished!"
    return
 }
 
@@ -84,7 +84,7 @@ function upgrade_ampache(){
    cp /var/www/ampache.old/config/ampache.cfg.php /var/www/ampache/config/ampache.cfg.php
    chown -R www-data:www-data /var/www/ampache
    rm -r master.tar.gz ampache /var/www/ampache.old
-   
+
 }
 case $1 in
    update)

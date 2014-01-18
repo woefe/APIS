@@ -1,5 +1,5 @@
-# missing: get latest version from the internet
-LATEST_VERSION=2.0.2
+# TODO get latest version from the internet
+LATEST_VERSION=2.1.3
 
 function install_seafile(){
    yes_no $"Confirmation" $"Do you really want to install Seafile?" || return 1
@@ -10,7 +10,7 @@ function install_seafile(){
    fi
    apt-get -qq install python2.7 python-setuptools python-simplejson python-imaging python-flup sqlite3
    set_var_nginx_required add seafile
-   
+
    # create nginx config
    sed -i $\d /etc/nginx/sites-available/apis-ssl
    cat >> /etc/nginx/sites-available/apis-ssl << EOF
@@ -89,7 +89,7 @@ function get_upgrade_type(){
    local LATEST_VERSION="$2"
 
    if [ ${INSTALLED_VERSION:2:1} -ne ${LATEST_VERSION:2:1} ]; then
-      if [ $[${INSTALLED_VERSION:2:1}+1] -eq ${LATEST_VERSION:2:1} ]; then 
+      if [ $[${INSTALLED_VERSION:2:1}+1] -eq ${LATEST_VERSION:2:1} ]; then
          echo continuous
          return
       else

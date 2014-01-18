@@ -20,7 +20,7 @@ function first_install(){
       clear
       while true; do
          read -p $"Enter a username: " username &&
-         adduser --no-create-home --disabled-login --shell /bin/false --ingroup samba-user $username
+         adduser --no-create-home --disabled-login --shell /bin/false --ingroup samba-user $username &&
          break
       done
 
@@ -28,8 +28,8 @@ function first_install(){
          smbpasswd -a $username && break
       done
 
-      while true; do 
-         read -p $"Enter a name for this share: " name 
+      while true; do
+         read -p $"Enter a name for this share: " name
          if grep -q "\[$name\]" /etc/samba/smb.conf; then
             echo $"This share already exists"
          else
@@ -74,8 +74,8 @@ function add_more_shares(){
          smbpasswd -a $username && break
       done
 
-      while true; do 
-         read -p $"Enter a name for this share: " name 
+      while true; do
+         read -p $"Enter a name for this share: " name
          if grep -q "\[$name\]" /etc/samba/smb.conf; then
             echo $"This share already exists"
          else
@@ -115,7 +115,7 @@ function remove_samba(){
    apt-get purge samba tdb-tools
 }
 
-case $1 in 
+case $1 in
    install)
       first_install
       ;;
