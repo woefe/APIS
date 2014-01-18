@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-20 15:52+0200\n"
+"POT-Creation-Date: 2014-01-18 23:11+0100\n"
 "PO-Revision-Date: 2013-06-18 15:50+0200\n"
 "Last-Translator: Wolfgang Popp <wolfi.popp@gmail.de>\n"
 "Language-Team: German\n"
@@ -17,18 +17,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ampache_installer.sh:3
+#: ampache_installer.sh:2
 msgid "IP address"
 msgstr "IP Adresse"
 
-#: ampache_installer.sh:3
+#: ampache_installer.sh:2
 msgid ""
-"After APIS has finished, Ampache will be available under: $SERVER_NAME/"
-"ampache\\nDo you really want to install Ampache?"
+"After APIS has finished, Ampache will be available under: $IP/ampache\\nDo "
+"you really want to install Ampache?"
 msgstr ""
 "Nachdem APIS Ampache fertig konfiguriert hat, wird Ampache unter folgender "
-"Adresse erreichbar sein:$SERVER_NAME/ampache\\nWillst du Ampache tatsächlich "
+"Adresse erreichbar sein:$IP/ampache\\nWillst du Ampache tatsächlich "
 "installieren?"
+
+#: ampache_installer.sh:56
+msgid ""
+"It is highly recommended to run 'mysql_secure_installation' from the "
+"terminal after APIS has finished!"
+msgstr ""
+"Es wird dringend empfohlen nach der Installation den Befehl "
+"'mysql_secure_installation' auszuführen"
 
 #: ampache_installer.sh:61
 msgid "Uninstaller"
@@ -49,8 +57,8 @@ msgid ""
 msgstr "Willst du die aktuelle Version von github.com installieren?"
 
 #: btsync_installer.sh:6 pyload_installer.sh:116 pyload_installer.sh:156
-#: samba_installer.sh:8 seafile_installer.sh:2 seafile_installer.sh:105
-#: seafile_installer.sh:136
+#: samba_installer.sh:8 seafile_installer.sh:5 seafile_installer.sh:110
+#: seafile_installer.sh:143
 msgid "Confirmation"
 msgstr "Bestätigung"
 
@@ -73,31 +81,31 @@ msgstr "Installiere BitTorrent Sync..."
 msgid "Downloading BitTorrent Sync..."
 msgstr "Lade BitTorrent Sync herunter..."
 
-#: btsync_installer.sh:11
+#: btsync_installer.sh:12
 msgid "Unpacking .tar file..."
 msgstr "Entpacke Archiv..."
 
-#: btsync_installer.sh:15
+#: btsync_installer.sh:16
 msgid "Removing temporary files..."
 msgstr "Lösche temporäre Dateien"
 
-#: btsync_installer.sh:18
+#: btsync_installer.sh:19
 msgid "Create username and password"
 msgstr "Erstelle Benuter und Passwort"
 
-#: btsync_installer.sh:18
+#: btsync_installer.sh:19
 msgid ""
-"The BitTorrent Sync webinterface can be protected by a dialog that asks for "
-"username and password."
+"The webinterface of BitTorrent Sync can be protected by a dialog that asks "
+"for username and password."
 msgstr ""
 "Die Weboberfläche von BitTorrent Sync kann durch einen Passwortdialog "
 "geschützt werden."
 
-#: btsync_installer.sh:21
+#: btsync_installer.sh:22
 msgid "Username"
 msgstr "Benutzername"
 
-#: btsync_installer.sh:21
+#: btsync_installer.sh:22
 msgid ""
 "Enter a username or leave it blank, if you don't want to install a password "
 "dialog:"
@@ -105,28 +113,28 @@ msgstr ""
 "Gib einen Benutzernamen ein oder lass die Zeile leer, wenn du auf den "
 "Passwortdialog verzichten willst."
 
-#: btsync_installer.sh:28 btsync_installer.sh:33
+#: btsync_installer.sh:29 btsync_installer.sh:34
 msgid "Password"
 msgstr "Passwort"
 
-#: btsync_installer.sh:28
+#: btsync_installer.sh:29
 msgid "Enter a password for user $users_name: "
 msgstr "Passwort für den Benutzer $users_name: "
 
-#: btsync_installer.sh:33
+#: btsync_installer.sh:34
 msgid "Retype the password for user $users_name: "
 msgstr "Wiederhole das Passwort für den Benutzer $users_name: "
 
-#: btsync_installer.sh:119
+#: btsync_installer.sh:122
 msgid "BitTorrent Sync's webinterface is now available under $IP:8888"
 msgstr ""
 "Die Weboberfläche von BitTorrent Sync ist nun unter $IP:8888 erreichbar."
 
-#: btsync_installer.sh:124
+#: btsync_installer.sh:127
 msgid "Remove BitTorrent Sync"
 msgstr "Deinstalliere BitTorrent Sync"
 
-#: btsync_installer.sh:124
+#: btsync_installer.sh:127
 msgid ""
 "Are you sure that you want to uninstall BitTorrent Sync? Datadirectories "
 "won't be deleted."
@@ -148,7 +156,7 @@ msgstr ""
 "Gib den vollständigen Verzeichnispfad an, den du für die Datenverzeichnisse "
 "benutzen willst: "
 
-#: data_to_external_disk.sh:23 main.sh:46
+#: data_to_external_disk.sh:23 main.sh:50
 msgid "ERROR"
 msgstr "FEHLER"
 
@@ -213,12 +221,12 @@ msgstr "Gerät erfolgreich ungemountet."
 msgid "Setup complete. The device is mounted on '/mnt/data'"
 msgstr "Einrichtung abgeschlossen. Das Gerät wird auf '/mnt/data' gemountet"
 
-#: data_to_external_disk.sh:102 main.sh:143 main.sh:157 main.sh:171
-#: main.sh:200 main.sh:214 main.sh:228
+#: data_to_external_disk.sh:102 main.sh:147 main.sh:161 main.sh:175
+#: main.sh:204 main.sh:233
 msgid "Select"
 msgstr "Auswählen"
 
-#: data_to_external_disk.sh:102 main.sh:228
+#: data_to_external_disk.sh:102 main.sh:233
 msgid "Exit"
 msgstr "Beenden"
 
@@ -246,36 +254,43 @@ msgstr "Gib das Datenverzeichnis manuell an"
 msgid "Leave the datadirectory on the SD Card"
 msgstr "Daten auf der Speicherkarte lassen"
 
-#: main.sh:42
+#: main.sh:17
+msgid ""
+"Something is wrong with your network config!\\nCould not retrieve your IP "
+"Address..."
+msgstr ""
+"Das Netzwerk ist nicht richtig konfiguriert!\\nKeine IP Adresse vorhandenen"
+
+#: main.sh:46
 msgid "HINT"
 msgstr "HINWEIS"
 
-#: main.sh:77
+#: main.sh:81
 msgid "ERROR: key '$key' doesn't exist in '$file'."
 msgstr "FEHLER: Der Schlüssel '$key' existiert in der Datei '$file' nicht."
 
-#: main.sh:130
+#: main.sh:134
 msgid "Updating the operating systems's software (might take a while)..."
 msgstr ""
 "Aktualisiere die Software des Betriebsystems (kann einige Minuten dauern)..."
 
-#: main.sh:135
+#: main.sh:139
 msgid "Update failed."
 msgstr "Update fehlgeschlagen."
 
-#: main.sh:136 main.sh:326
+#: main.sh:140 main.sh:334
 msgid "Bye..."
 msgstr "Beende"
 
-#: main.sh:143 main.sh:157 main.sh:171 main.sh:200 main.sh:214
+#: main.sh:147 main.sh:161 main.sh:175 main.sh:204
 msgid "Back"
 msgstr "Zurück"
 
-#: main.sh:143
+#: main.sh:147
 msgid "Update/remove ownCloud"
 msgstr "Update/deinstalliere ownCloud"
 
-#: main.sh:143
+#: main.sh:147
 msgid ""
 "\\nUpdate to latest version of ownCloud\\nUse the update function only for "
 "updates, not for upgrades. See http://doc.owncloud.org/server/5.0/"
@@ -285,19 +300,19 @@ msgstr ""
 "sollte nur für Updates, nicht aber für Upgrades verwendet werden. Mehr Infos "
 "hier: http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html"
 
-#: main.sh:143
+#: main.sh:147
 msgid "Update your ownCloud installation"
 msgstr "Update der ownCloud Installation"
 
-#: main.sh:143
+#: main.sh:147
 msgid "Remove ownCloud"
 msgstr "Deinstalliere ownCloud"
 
-#: main.sh:157
+#: main.sh:161
 msgid "Change/remove Samba"
 msgstr "Ändere/entferne Samba"
 
-#: main.sh:157
+#: main.sh:161
 msgid ""
 "\\nUpdates for Samba are done by the system's package management.\\nYou can "
 "either add more Samba shares or remove Samba."
@@ -305,19 +320,19 @@ msgstr ""
 "\\nUpdates werden von der Paketverwaltung übernommen.\\nHier kannst du "
 "entweder mehrere Samba Freigaben hinzufügen oder Samba entfernen."
 
-#: main.sh:157
+#: main.sh:161
 msgid "Add more shares and users"
 msgstr "Füge weitere Freigaben und Benutzer hinzu"
 
-#: main.sh:157
+#: main.sh:161
 msgid "Remove samba"
 msgstr "Entferne Samba"
 
-#: main.sh:171
+#: main.sh:175
 msgid "Configure NFS"
 msgstr "Konfigurieren von NFS"
 
-#: main.sh:171
+#: main.sh:175
 msgid ""
 "\\nNote: Updates are not covered by APIS since the package management system "
 "manages them."
@@ -325,63 +340,45 @@ msgstr ""
 "\\nAnmerkung: Die Updates werden nicht von APIS übernommen, da die "
 "Paketverwaltung dafür zuständig ist."
 
-#: main.sh:171
+#: main.sh:175
 msgid "Add more NFS shares"
 msgstr "Weitere NFS-Freigaben hinzufügen"
 
-#: main.sh:171
+#: main.sh:175
 msgid "Delete NFS shares"
 msgstr "Lösche NFS-Freigaben"
 
-#: main.sh:171
+#: main.sh:175
 msgid "Add clients to NFS shares"
 msgstr "Weitere Clients zu NFS-Freigaben hinzufügen"
 
-#: main.sh:171
+#: main.sh:175
 msgid "Remove clients from configuration files"
 msgstr "Entferne Clients aus den Konfigurationsdateien"
 
-#: main.sh:171
+#: main.sh:175
 msgid "Uninstall NFS server"
 msgstr "Deinstalliere den NFS server"
 
-#: main.sh:200
+#: main.sh:204
 msgid "Update/uninstall Ampache"
 msgstr "Update/deinstalliere Ampache"
 
-#: main.sh:200
+#: main.sh:204
 msgid "Remove Ampache or get latest version from github."
 msgstr ""
 "Hier kannst du Ampache deinstallieren oder die neueste Version von github."
 "com installieren"
 
-#: main.sh:200
+#: main.sh:204
 msgid "Uninstall Ampache Server"
 msgstr "Deinstalliere den Ampache server"
 
-#: main.sh:200
+#: main.sh:204
 msgid "Update Ampache Server"
 msgstr "Update den Ampache Server"
 
-#: main.sh:214
-msgid "Update/uninstall Seafile"
-msgstr "Update/deinstalliere Seafile"
-
-#: main.sh:214
-msgid "Remove Seafile or install latest version"
-msgstr ""
-"Hier kannst du Seafile deinstallieren oder auf die neueste Version "
-"aktualisieren"
-
-#: main.sh:214
-msgid "Uninstall Seafile Server"
-msgstr "Deinstalliere den Seafile Server"
-
-#: main.sh:214
-msgid "Update Seafile Server"
-msgstr "Update den Seafile Server"
-
-#: main.sh:228
+#: main.sh:233
 msgid ""
 "\\nAwesome Pi Installation Script\\n\\nInstall some cool stuff on your "
 "Raspberry Pi.\\n"
@@ -389,45 +386,41 @@ msgstr ""
 "\\nAwesome Pi Installation Script\\n\\nInstalliere Cooles Zeug auf deinem "
 "RaspberryPi.\\n"
 
-#: main.sh:228
+#: main.sh:233
 msgid "Install/update/remove ownCloud"
 msgstr "Installiere/aktualisiere/entferne ownCloud"
 
-#: main.sh:228
+#: main.sh:233
 msgid "Install/remove Samba Server"
 msgstr "(De)installiere Samba"
 
-#: main.sh:228
+#: main.sh:233
 msgid "Install/uninstall BitTorrent Sync"
 msgstr "Installiere/Deinstalliere BitTorrent Sync"
 
-#: main.sh:228
+#: main.sh:233
 msgid "Install/uninstall/configure Network File System Server"
 msgstr "Installiere/deinstalliere/konfiguriere den Network File System Server"
 
-#: main.sh:228
+#: main.sh:233
 msgid "Install/upgrade/uninstall Ampache Streaming Server"
 msgstr "Installiere/update/deinstalliere den Ampache Streaming Server"
 
-#: main.sh:228
-msgid "Install/upgrade/uninstall Seafile Cloud Service"
-msgstr "Installiere/update/deinstalliere den Seafile Cloud Dienst"
-
-#: main.sh:228
+#: main.sh:233
 msgid "Install/uninstall pyLoad download manager"
 msgstr "Installiere/deinstalliere pyLoad Downloadmanager"
 
-#: main.sh:325
+#: main.sh:333
 msgid "I need root permissions."
 msgstr "Das Script benötigt root Berechtigungen"
 
-#: main.sh:334
+#: main.sh:342
 msgid "Checking for locale en_US.UTF-8..."
 msgstr "Überprüfe, ob en_US.UTF-8 existiert..."
 
-#: main.sh:338
+#: main.sh:346
 msgid ""
-"This setup can install and configure a whole bunge of different software eg. "
+"APIS can install and configure a whole bunge of different software eg. "
 "Samba, ownCloud, ... Do you want to use a external disk to store "
 "datadirectories of ownCloud, Samba, ... on it?"
 msgstr ""
@@ -686,23 +679,29 @@ msgstr "SSL-Zertifikat"
 
 #: nginx_basic_installer.sh:7
 msgid ""
-"The next step will create a ssl certificate.\\nDon't leave the field 'Common "
-"Name' blank.\\nHit Enter to continue."
+"The next step will create a ssl certificate. You will have to enter some "
+"information for the certificate. The only really important field is 'Common "
+"Name', where you have to enter your IP address.\\nYour IP address is: $IP."
+"\\nHit Enter to continue."
 msgstr ""
-"Beginn der SSL-Zertifikat-Erzeugung...\\nBeim nächsten Schritt ist es sehr "
-"wichtig beim Feld 'Common Name' etwas einzutragen.\\nBereit zum "
-"Weitermachen? Enter zum Weitermachen (empfohlen); STRG+c zum Abbrechen der "
-"Installation"
+"Im nächsten Schritt wird ein SSL Zertifikat erstellt. Es werden dafür ein paar "
+"Informationen benötigt. Das einzig wichtige Feld ist 'Common Name'. Dort muss "
+"die IP Adresse eingegeben werden.\\nDeine IP Adresse ist: $IP.\\nZum "
+"Weitermachen Enter drücken "
 
-#: nginx_basic_installer.sh:17
+#: nginx_basic_installer.sh:13
+msgid "You forgot your IP address? Here it is again: $IP"
+msgstr "Hast du deine IP schon wieder vergessen? Hier ist sie nochmal: $IP"
+
+#: nginx_basic_installer.sh:21
 msgid "An error occurred during the last Step. Repeating"
 msgstr "Dieser Schritt ist fehlgeschlagen. Wiederhole"
 
-#: nginx_basic_installer.sh:106
+#: nginx_basic_installer.sh:114
 msgid "Editing /etc/dphys-swapfile..."
 msgstr "Bearbeite /etc/dphys-swapfile..."
 
-#: nginx_basic_installer.sh:126
+#: nginx_basic_installer.sh:134
 msgid "Reboot is recommended!"
 msgstr "Neustart empfohlen!"
 
@@ -710,11 +709,11 @@ msgstr "Neustart empfohlen!"
 msgid "Creating /etc/nginx/nginx.conf..."
 msgstr "Erstelle /etc/nginx/nginx.conf.."
 
-#: owncloud_installer.sh:11 owncloud_installer.sh:153
+#: owncloud_installer.sh:11 owncloud_installer.sh:162
 msgid "Decompressing owncloud-$VERSION.tar.bz2..."
 msgstr "Entpacke ownCloud-Archiv..."
 
-#: owncloud_installer.sh:14 owncloud_installer.sh:156
+#: owncloud_installer.sh:14 owncloud_installer.sh:165
 msgid "Setting permissions for '$OWNCLOUD_DIR'..."
 msgstr "Setze Dateiberechtigungen für '$OWNCLOUD_DIR'..."
 
@@ -722,7 +721,7 @@ msgstr "Setze Dateiberechtigungen für '$OWNCLOUD_DIR'..."
 msgid "Creating conf.php..."
 msgstr "Erstelle conf.php"
 
-#: owncloud_installer.sh:26 owncloud_installer.sh:161
+#: owncloud_installer.sh:26 owncloud_installer.sh:170
 msgid "Cleaning up..."
 msgstr "Räume auf..."
 
@@ -730,45 +729,49 @@ msgstr "Räume auf..."
 msgid "Downloading owncloud-$VERSION.tar.bz2..."
 msgstr "Lade ownCloud Archiv herunter..."
 
-#: owncloud_installer.sh:103 owncloud_installer.sh:106
-#: owncloud_installer.sh:151
+#: owncloud_installer.sh:105 owncloud_installer.sh:112
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: owncloud_installer.sh:105
+#: owncloud_installer.sh:109
 msgid "Checking download..."
 msgstr "Überprüfe Download..."
 
-#: owncloud_installer.sh:118
+#: owncloud_installer.sh:124
+msgid "Getting latest version..."
+msgstr "Suche nach aktueller Version..."
+
+#: owncloud_installer.sh:127
 msgid "IP address and version"
 msgstr "IP Adresse und Version"
 
-#: owncloud_installer.sh:118
+#: owncloud_installer.sh:127
 msgid ""
-"After APIS has finished, ownCloud will be available under: $SERVER_NAME/"
+"After APIS has finished, ownCloud will be available under: $IP/"
 "owncloud\\nThis version of ownCloud will be installed: $VERSION\\nDo you "
 "want to continue?"
 msgstr ""
 "Nach der Installation von ownCloud, wird ownCloud unter folgender Adresse "
-"erreichbar sein: $SERVER_NAME/owncloud\\nDiese Version von ownCloud wird "
+"erreichbar sein: $IP/owncloud\\nDiese Version von ownCloud wird "
 "installiert: $VERSION\\nWillst du wirklich fortfahren?"
 
-#: owncloud_installer.sh:129
+#: owncloud_installer.sh:138
 msgid "Almost finished"
 msgstr "Beinahe fertig"
 
-#: owncloud_installer.sh:129
+#: owncloud_installer.sh:138
 msgid ""
 "In a few moments you can finally enjoy your ownCloud.\\nOpen a web browser "
-"and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The "
-"advanced settings are preconfigured by this script, so don't change them!"
+"and navigate to $IP/owncloud. You will see the installation page of "
+"ownCloud, which asks for a username and a password.\\n\\nIMPORTANT: do not "
+"change the advanced settings, because APIS already did that for you!"
 msgstr ""
 "In ein paar Augenblicken kannst du deine ownCloud endlich verwenden.\\nÖffne "
-"einen Webbrowser und gehe zu '$SERVER_NAME/owncloud'! Dann lege dort einen "
+"einen Webbrowser und gehe zu '$IP/owncloud'! Dann lege dort einen "
 "Benutzer mit Passwort an\\nWICHTIG:Die erweiterten Einstellungen nicht "
 "bearbeiten."
 
-#: owncloud_installer.sh:141
+#: owncloud_installer.sh:150
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be updated."
@@ -776,11 +779,11 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert und kann deshalb nicht aktualisiert werden."
 
-#: owncloud_installer.sh:147 seafile_installer.sh:102
+#: owncloud_installer.sh:156 seafile_installer.sh:107
 msgid "Latest version is already installed."
 msgstr "Die neueste Version ist bereits installiert."
 
-#: owncloud_installer.sh:168
+#: owncloud_installer.sh:177
 msgid ""
 "ownCloud is not installed properly or wasn't installed by this script and "
 "thus can't be removed."
@@ -788,19 +791,19 @@ msgstr ""
 "ownCloud ist nicht installiert oder wurde nicht mit diesem Script "
 "installiert, kann also auch nicht entfernt werden."
 
-#: owncloud_installer.sh:171 samba_installer.sh:107
+#: owncloud_installer.sh:180 samba_installer.sh:107
 msgid "Starting uninstaller"
 msgstr "Starte Deinstallationsprogramm"
 
-#: owncloud_installer.sh:171
+#: owncloud_installer.sh:180
 msgid "Are you sure you want to continue?"
 msgstr "Willst du wirklich weitermachen? "
 
-#: owncloud_installer.sh:173
+#: owncloud_installer.sh:182
 msgid "Datadirectory"
 msgstr "Datenverzeichnis"
 
-#: owncloud_installer.sh:173
+#: owncloud_installer.sh:182
 msgid "Do you want to remove ownCloud's datadirectory?"
 msgstr "Soll das Datenverzeichnis auch gelöscht werden?"
 
@@ -829,13 +832,13 @@ msgstr "PyLoad Benuter anlegen"
 
 #: pyload_installer.sh:140
 msgid ""
-"PyLoads webinterface is protected by a password dialog. Create a new user "
-"with pyLoad's user management, that will be started now. Hit enter to "
-"continue!"
+"PyLoad's webinterface is protected by a password dialog. You have to create "
+"a new user with pyLoad's user management, which will be started now. Hit "
+"enter to continue!"
 msgstr ""
 "Die Weboberfläche von pyLoad wird durch einen Passwortdialog geschützt. Lege "
 "jetzt mit der Benutzerverwaltung von pyLoad, die gleich gestartet wird, "
-"einen neuen Beutzer an. Drücke Enter zum Weitermachen!"
+"einen neuen Beutzer an! Drücke Enter zum Weitermachen!"
 
 #: pyload_installer.sh:147
 msgid "Create a Samba share"
@@ -852,9 +855,9 @@ msgstr ""
 
 #: pyload_installer.sh:151
 msgid ""
-"PyLoad's webinterface is now available: $IP:8910\\nStart/stop/restart pyLoad "
-"with the webinterface or following command:\\n   sudo service pyload start/"
-"stop/restart"
+"PyLoad's webinterface is now available: $IP:8910\\nYou can start/stop/"
+"restart pyLoad via the webinterface or via following command:\\n   sudo "
+"service pyload start/stop/restart"
 msgstr ""
 "Die Weboberfläche von pyLoad ist jetzt unter $IP:8910 erreichbar. Zum "
 "Starten/Stoppen/Neustarten von pyLoad kannst du entweder die Weboberfläche "
@@ -913,28 +916,56 @@ msgstr ""
 "Bist du dir sicher, dass du den Samba Server deinstallieren willst? "
 "Freigegebene Dateien und Ordner werden gelöscht!"
 
-#: seafile_installer.sh:2
-msgid "Do you really want to install Seafile?"
-msgstr "Willst du Seafile wirklich installieren?"
+# #: seafile_installer.sh:5
+# msgid "Do you really want to install Seafile?"
+# msgstr "Willst du Seafile wirklich installieren?"
+#
+# #: seafile_installer.sh:61
+# #, fuzzy
+# msgid ""
+# "Seafile's setup script will be started now. You will need your IP address or "
+# "your hostname. Your IP address is: $IP\\nYou may want to write down your IP "
+# "adress. Try to use the default settings as far as possible!\\nIf you are "
+# "using an external HDD you might want to change Seafile's datadirectory to '/"
+# "mnt/data/seafile'"
+# msgstr ""
+# "Seafile benutzt zur Installation ein eigenes Installationsscript, welches "
+# "jetzt gestartet wird. Sehr wahrscheinlich wirst du die IP Adresse benötigen."
+# "\\nHier ist sie: $IP\\nHINWEIS: Benutze die Voreinstellungen, wenn es geht!"
+#
+# #: seafile_installer.sh:110
+# msgid "Do you really want to update Seafile?"
+# msgstr "Willst Seafile wirklich aktualisieren?"
+#
+# #: seafile_installer.sh:143
+# msgid "Are you sure that you want to remove seafile?"
+# msgstr "Bist du dir sicher, dass du Seafile deinstallieren willst? "
 
-#: seafile_installer.sh:56
-msgid ""
-"Seafile's setup script will be started now. You will probably need your IP "
-"address. Your IP address is: $IP\\nTry to use the default settings as far as "
-"possible!\\nIf you are using an external HDD you might want to change "
-"Seafile's datadirectory to '/mnt/data/seafile'"
-msgstr ""
-"Seafile benutzt zur Installation ein eigenes Installationsscript, welches "
-"jetzt gestartet wird. Sehr wahrscheinlich wirst du die IP Adresse benötigen."
-"\\nHier ist sie: $IP\\nHINWEIS: Benutze die Voreinstellungen, wenn es geht!"
+#~ msgid "Update/uninstall Seafile"
+#~ msgstr "Update/deinstalliere Seafile"
 
-#: seafile_installer.sh:105
-msgid "Do you really want to update Seafile?"
-msgstr "Willst Seafile wirklich aktualisieren?"
+#~ msgid "Remove Seafile or install latest version"
+#~ msgstr ""
+#~ "Hier kannst du Seafile deinstallieren oder auf die neueste Version "
+#~ "aktualisieren"
 
-#: seafile_installer.sh:136
-msgid "Are you sure that you want to remove seafile?"
-msgstr "Bist du dir sicher, dass du Seafile deinstallieren willst? "
+#~ msgid "Uninstall Seafile Server"
+#~ msgstr "Deinstalliere den Seafile Server"
+
+#~ msgid "Update Seafile Server"
+#~ msgstr "Update den Seafile Server"
+
+#~ msgid "Install/upgrade/uninstall Seafile Cloud Service"
+#~ msgstr "Installiere/update/deinstalliere den Seafile Cloud Dienst"
+
+#~ msgid ""
+#~ "The next step will create a ssl certificate.\\nDon't leave the field "
+#~ "'Common Name' blank.\\nHit Enter to continue."
+#~ msgstr ""
+#~ "Beginn der SSL-Zertifikat-Erzeugung...\\nBeim nächsten Schritt ist es "
+#~ "sehr wichtig beim Feld 'Common Name' etwas einzutragen.\\nBereit zum "
+#~ "Weitermachen? Enter zum Weitermachen (empfohlen); STRG+c zum Abbrechen "
+#~ "der Installation"
 
 #~ msgid "|  Storage   |"
 #~ msgstr "|  Speicher  |"

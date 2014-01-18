@@ -1,6 +1,5 @@
 WEBSERVER_ROOT="/var/www"
 OWNCLOUD_DIR="$WEBSERVER_ROOT/owncloud"
-SERVER_NAME=""
 VERSION=""
 STARTPATH=$PWD
 
@@ -123,8 +122,7 @@ function get_latest_version(){
 function install_owncloud(){
    echo $"Getting latest version..."
    VERSION=$(get_latest_version)
-   SERVER_NAME=$IP
-   yes_no $"IP address and version" $"After APIS has finished, ownCloud will be available under: $SERVER_NAME/owncloud\nThis version of ownCloud will be installed: $VERSION\nDo you want to continue?" || return 1
+   yes_no $"IP address and version" $"After APIS has finished, ownCloud will be available under: $IP/owncloud\nThis version of ownCloud will be installed: $VERSION\nDo you want to continue?" || return 1
 
    sys_update
    if ! $NGINX_INSTALLED; then
@@ -135,7 +133,7 @@ function install_owncloud(){
 
    download_and_check_oc &&
    install_oc
-   print_message $"Almost finished" $"In a few moments you can finally enjoy your ownCloud.\nOpen a web browser and navigate to $SERVER_NAME/owncloud. You will see the installation page of ownCloud, which asks for a username and a password.\n\nIMPORTANT: do not change the advanced settings, because APIS already did that for you!"
+   print_message $"Almost finished" $"In a few moments you can finally enjoy your ownCloud.\nOpen a web browser and navigate to $IP/owncloud. You will see the installation page of ownCloud, which asks for a username and a password.\n\nIMPORTANT: do not change the advanced settings, because APIS already did that for you!"
    # Create cronjob
    echo '*/5  *  *  *  * php -f /var/www/owncloud/cron.php' | crontab -u www-data -
    return 0
