@@ -4,11 +4,15 @@ function install_nginx(){
    echo $"Searching for packages that are no longer needed..."
    apt-get -qq autoremove
 
-   print_message $"SSL-Certificate" $"The next step will create a ssl certificate.\nDon't leave the field 'Common Name' blank.\nHit Enter to continue."
-   clear
+   print_message $"SSL-Certificate" $"The next step will create a ssl certificate. You will have to enter some information for the certificate. The only really important field is 'Common Name', where you have to enter your IP address.\nYour IP address is: $IP.\nHit Enter to continue."
    mkdir -p /etc/nginx/ssl && pushd /etc/nginx/ssl
+   clear
    while true; do
       rm -f *
+      echo
+      echo $"You forgot your IP address? Here it is again: $IP"
+      echo
+      echo
       openssl req $@ -new -x509 -days 365 -nodes -out server.crt -keyout server.key &&
       chmod 600 server.crt &&
       chmod 600 server.key &&
@@ -53,6 +57,10 @@ http {
    fastcgi_buffers 64 4K;
    include /etc/nginx/conf.d/*.conf;
    include /etc/nginx/sites-enabled/*;
+
+   upstream php-handler {
+      server 127.0.0.1:7659;
+   }
 }
 EOF
 
@@ -60,7 +68,7 @@ EOF
 server {
    listen 80;
    # Deny direct access
-   location ~ ^/.+(bin|sql|data|config|\.ht|db_structure\.xml|README) {
+   location ~ ^/[a-zA-Z0-9].*/(bin|sql|data|config|\.ht|db_structure\.xml|README) {
       deny all;
    }
 
@@ -78,7 +86,7 @@ server {
    ssl_certificate_key /etc/nginx/ssl/server.key;
 
    # Deny direct access
-   location ~ ^/.+(bin/|sql|data|config|\.ht|db_structure\.xml|README) {
+   location ~ ^/[a-zA-Z0-9].*/(bin|sql|data|config|\.ht|db_structure\.xml|README) {
       deny all;
    }
 
@@ -127,7 +135,7 @@ function uninstall_nginx(){
    sed -i 's/NGINX_INSTALLED.*/NGINX_INSTALLED=false/' /var/lib/apis/conf
 }
 
-case $1 in 
+case $1 in
    install)
       install_nginx
       ;;

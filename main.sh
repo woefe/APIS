@@ -25,13 +25,13 @@ fi
 # hint_msg "your text"
 # error_msg "your text"
 # reboot_prompt "your text"
-# 
+#
 # user_input and password_box write the user's input to stdout.
 # This makes it easy to write the user's input to a variable, like:
 # var=$(user_input "title" "your text" "some preset text (optional)")
 # var2=$(password_box "title" "your text" "some preset text (optional)")
 #
-# yes_no will return a zero exitstatus if the question was answered with 'yes' 
+# yes_no will return a zero exitstatus if the question was answered with 'yes'
 # and will return a nonzero exitstatus if the answer was 'no'; example:
 # if yes_no "title" "your question"; then
 #    echo "Answer: yes"
@@ -151,7 +151,7 @@ function update_or_remove_owncloud(){
    if [ "$option" == "update" ]; then
       . owncloud_installer.sh  update
    elif [ "$option" == "remove" ]; then
-      . owncloud_installer.sh remove && 
+      . owncloud_installer.sh remove &&
       sed -i 's/OWNCLOUD_INSTALLED.*/OWNCLOUD_INSTALLED=false/' /var/lib/apis/conf
    fi
 }
@@ -339,7 +339,7 @@ if [ ! -f /var/lib/apis/conf ]; then
    grep -Eq "^# en_US.UTF-8 UTF-8$" /etc/locale.gen && sed -i -e "s/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen && locale-gen
    mkdir /var/lib/apis
    DATA_TO_EXTERNAL_DISK=true
-   yes_no "APIS" $"This setup can install and configure a whole bunge of different software eg. Samba, ownCloud, ... Do you want to use a external disk to store datadirectories of ownCloud, Samba, ... on it?"
+   yes_no "APIS" $"APIS can install and configure a whole bunge of different software eg. Samba, ownCloud, ... Do you want to use a external disk to store datadirectories of ownCloud, Samba, ... on it?"
    exit_status=$?
    case $exit_status in
       0)
@@ -360,7 +360,7 @@ if [ ! -f /var/lib/apis/conf ]; then
          exit
          ;;
    esac
-   # If you add a new component like foo_installer.sh, add a variable here. 
+   # If you add a new component like foo_installer.sh, add a variable here.
    # E.g: echo "FOO_INSTALLED=false" >> /var/lib/apis/conf
    echo "OWNCLOUD_INSTALLED=false" >> /var/lib/apis/conf
    echo "SAMBA_INSTALLED=false" >> /var/lib/apis/conf

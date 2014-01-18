@@ -7,7 +7,8 @@ function install_btsync(){
    echo $"Installing BitTorrent Sync..."
    mkdir ./tmp && pushd ./tmp
    echo $"Downloading BitTorrent Sync..."
-   wget -q http://btsync.s3-website-us-east-1.amazonaws.com/btsync_arm.tar.gz
+   #http://btsync.s3-website-us-east-1.amazonaws.com/btsync_arm.tar.gz
+   wget -q -O btsync_arm.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-arm/track/stable
    echo $"Unpacking .tar file..."
    tar -xf btsync_arm.tar.gz
    cp btsync /usr/bin/
@@ -15,7 +16,7 @@ function install_btsync(){
    echo $"Removing temporary files..."
    rm -r ./tmp
 
-   print_message $"Create username and password" $"The BitTorrent Sync webinterface can be protected by a dialog that asks for username and password."
+   print_message $"Create username and password" $"The webinterface of BitTorrent Sync can be protected by a dialog that asks for username and password."
 
    while true; do
       users_name=$(user_input $"Username" $"Enter a username or leave it blank, if you don't want to install a password dialog:")
@@ -64,7 +65,7 @@ function install_btsync(){
    "upload_limit" : 0,
 
    /* remove "listen" field to disable WebUI
-   remove "login" and "password" fields to disable credentials check 
+   remove "login" and "password" fields to disable credentials check
    */
    "webui" :
    {
@@ -91,12 +92,12 @@ $PASSWORD
 
 	//  use relay server when direct connection fails
 	"use_relay_server" : true,
-	"use_tracker" : true, 
+	"use_tracker" : true,
 	"use_dht" : false,
 	"search_lan" : true,
 	//  enable sync trash to store files deleted on remote devices
 	"use_sync_trash" : true,
-	//  specify hosts to attempt connection without additional search     
+	//  specify hosts to attempt connection without additional search
 	"known_hosts" :
 	[
 	   "192.168.1.2:44444"
@@ -112,6 +113,8 @@ $PASSWORD
 EOF
 
    adduser btsync --system --group --shell /bin/sh
+   mkdir /home/btsync/sync
+   chown -R btsync:btsync /home/btsync
    cp btsync-init-script /etc/init.d/btsync
    chmod 755 /etc/init.d/btsync
    update-rc.d btsync defaults
@@ -133,7 +136,7 @@ function uninstall_btsync(){
    return 1
 }
 
-case $1 in 
+case $1 in
    install)
       install_btsync
       ;;

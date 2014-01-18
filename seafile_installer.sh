@@ -1,5 +1,5 @@
 # missing: get latest version from the internet
-LATEST_VERSION=1.8.5
+LATEST_VERSION=2.0.2
 
 function install_seafile(){
    yes_no $"Confirmation" $"Do you really want to install Seafile?" || return 1
@@ -58,7 +58,7 @@ EOF
    chown -R seafile:seafile seafile-server-$LATEST_VERSION
    popd
 
-   hint_msg $"Seafile's setup script will be started now. You will probably need your IP address. Your IP address is: $IP\nTry to use the default settings as far as possible!\nIf you are using an external HDD you might want to change Seafile's datadirectory to '/mnt/data/seafile'"
+   hint_msg $"Seafile's setup script will be started now. You will need your IP address or your hostname. Your IP address is: $IP\nYou may want to write down your IP adress. Try to use the default settings as far as possible!\nIf you are using an external HDD you might want to change Seafile's datadirectory to '/mnt/data/seafile'"
    clear
    sudo -u seafile -H bash -l -c "/home/seafile/seafile-server-$LATEST_VERSION/setup-seafile.sh"
 

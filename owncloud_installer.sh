@@ -43,18 +43,18 @@ function create_nginx_conf_files(){
       access_log off;
    }
 
-   rewrite ^/owncloud/caldav(.*)$ /owncloud/remote.php/caldav$1 redirect;
-   rewrite ^/owncloud/carddav(.*)$ /owncloud/remote.php/carddav$1 redirect;
-   rewrite ^/owncloud/webdav(.*)$ /owncloud/remote.php/webdav$1 redirect;
+   rewrite ^/owncloud/caldav(.*)$ /owncloud/remote.php/caldav\$1 redirect;
+   rewrite ^/owncloud/carddav(.*)$ /owncloud/remote.php/carddav\$1 redirect;
+   rewrite ^/owncloud/webdav(.*)$ /owncloud/remote.php/webdav\$1 redirect;
 
    # The following 2 rules are only needed with webfinger, uncomment them if you need.
-   #rewrite ^/owncloud/.well-known/host-meta /owncloud/public.php?service=host-meta last;
-   #rewrite ^/owncloud/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
+   rewrite ^/owncloud/.well-known/host-meta /owncloud/public.php?service=host-meta last;
+   rewrite ^/owncloud/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
 
-   #rewrite ^/owncloud/.well-known/carddav /owncloud/remote.php/carddav/ redirect;
-   #rewrite ^/owncloud/.well-known/caldav /owncloud/remote.php/caldav/ redirect;
+   rewrite ^/owncloud/.well-known/carddav /owncloud/remote.php/carddav/ redirect;
+   rewrite ^/owncloud/.well-known/caldav /owncloud/remote.php/caldav/ redirect;
 
-   #rewrite ^(/owncloud/core/doc/[^\/]+/)$ \$1/index.html redirect;
+   rewrite ^(/owncloud/core/doc/[^\/]+/)$ \$1/index.html redirect;
 
    location /owncloud {
       try_files \$uri \$uri/ index.php;
@@ -65,7 +65,7 @@ function create_nginx_conf_files(){
          fastcgi_param SCRIPT_FILENAME \$document_root\$1;
          fastcgi_param PATH_INFO \$2;
          fastcgi_param HTTPS on;
-         fastcgi_pass 127.0.0.1:7659;
+         fastcgi_pass php-handler;
       }
    }
 
@@ -100,21 +100,30 @@ function download_and_check_oc(){
    # Download ownCloud archive
    pushd /tmp
    echo $"Downloading owncloud-$VERSION.tar.bz2..."
-   wget -q $OWNCLOUD_URL || (echo $"Download failed" && return 1)
+   wget -q $OWNCLOUD_URL
+   if [ $? -ne 0 ]; then
+      error_msg $"Download failed"
+      return 1
+   fi
    wget -qO - $OWNCLOUD_CHECKSUM_URL | sed s/-/owncloud-$VERSION.tar.bz2/g > owncloud.md5
    echo -n $"Checking download..."
-   md5sum -c owncloud.md5 || (error_msg $"Download failed"; return 1)
+   md5sum -c owncloud.md5
+   if [ $? -ne 0 ]; then
+      error_msg $"Download failed"
+      return 1
+   fi
    popd
 }
 
-# Get latest version from ownCloud's xml updater. This URI is from check() in ownCloud's code ('owncloudroot'/lib/updater.php)
+# Get latest version from ownCloud's xml updater. This URI is from check() in ownCloud's code ('owncloudroot'/lib/private/updater.php)
 function get_latest_version(){
-   wget -qO - http://apps.owncloud.com/updater.php?version=5x00x10x1375797810.1234x1375797810.3456xstablex | grep versionstring | grep -Eo "[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}"
+   wget -qO - http://apps.owncloud.com/updater.php?version=5x00x10x1375797810.1234x1375797810.3456xstablex | grep versionstring | grep -Eo "[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}([a-z]?)"
 }
 
 function install_owncloud(){
+   echo $"Getting latest version..."
    VERSION=$(get_latest_version)
-   SERVER_NAME=$(ifconfig | grep -Eo "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -Ev "127.0.0.1|255|.255" | head -n1)
+   SERVER_NAME=$IP
    yes_no $"IP address and version" $"After APIS has finished, ownCloud will be available under: $SERVER_NAME/owncloud\nThis version of ownCloud will be installed: $VERSION\nDo you want to continue?" || return 1
 
    sys_update
@@ -126,14 +135,14 @@ function install_owncloud(){
 
    download_and_check_oc &&
    install_oc
-   print_message $"Almost finished" $"In a few moments you can finally enjoy your ownCloud.\nOpen a web browser and navigate to $SERVER_NAME/owncloud. Enter a username and a password. The advanced settings are preconfigured by this script, so don't change them!"
+   print_message $"Almost finished" $"In a few moments you can finally enjoy your ownCloud.\nOpen a web browser and navigate to $SERVER_NAME/owncloud. You will see the installation page of ownCloud, which asks for a username and a password.\n\nIMPORTANT: do not change the advanced settings, because APIS already did that for you!"
    # Create cronjob
    echo '*/5  *  *  *  * php -f /var/www/owncloud/cron.php' | crontab -u www-data -
    return 0
 }
 
 function get_installed_version(){
-   grep getVersionString -1 $OWNCLOUD_DIR/lib/util.php | sed -n 3p | tr -d "return\ \'\;\t"
+   grep VersionString $OWNCLOUD_DIR/version.php | tr -d " \'\;" | cut -d'=' -f2
 }
 
 function update_owncloud(){
@@ -148,7 +157,7 @@ function update_owncloud(){
       return 1
    fi
    sys_update
-   download_and_check_oc || (error_msg $"Download failed"; return 1)
+   download_and_check_oc || return 1
 
    echo $"Decompressing owncloud-$VERSION.tar.bz2..."
    tar -xjf /tmp/owncloud-$VERSION.tar.bz2 -C $WEBSERVER_ROOT

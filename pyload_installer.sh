@@ -3,7 +3,7 @@ DIRECTORY=$1
 mkdir -p $DIRECTORY
 echo -n $DIRECTORY > /usr/share/pyload/module/config/configdir
 cat > $DIRECTORY/pyload.conf << EOF
-version: 1 
+version: 1
 
 remote - "Remote":
         bool nolocalauth : "No authentication on local connections" = True
@@ -45,7 +45,7 @@ ssl - "SSL":
 webinterface - "Webinterface":
         str template : "Template" = default
         bool activated : "Activated" = True
-        str prefix : "Path Prefix" = 
+        str prefix : "Path Prefix" =
         builtin;threaded;fastcgi;lightweight server : "Server" = builtin
         ip host : "IP" = 0.0.0.0
         bool https : "Use HTTPS" = False
@@ -94,11 +94,11 @@ function create_smb_share(){
    while true; do
       smbpasswd -a $username && break
    done
-   
+
    cat >> /etc/samba/smb.conf << EOF
 #begin_pyload_config
 [pyLoadDownloads]
-comment = pyLoad Downloads 
+comment = pyLoad Downloads
 path = $CONFDIR/Downloads
 available = yes
 browsable = yes
@@ -122,7 +122,7 @@ function install_pyload(){
    apt-get -qq install python-crypto python-pycurl python-imaging python-beaker tesseract-ocr tesseract-ocr-eng gocr zip unzip rhino python-openssl python-django
    apt-get -qq remove unrar*
    mkdir unrar_builddir && pushd unrar_builddir
-   apt-get -qq build-dep unrar-nonfree 
+   apt-get -qq build-dep unrar-nonfree
    apt-get -qq source -b unrar-nonfree
    dpkg -i unrar*.deb
    popd
@@ -137,7 +137,7 @@ function install_pyload(){
       CONFDIR=/home/pyload/pyload-conf
    fi
    create_pyload_conf $CONFDIR
-   print_message $"Set up pyLoad user" $"PyLoads webinterface is protected by a password dialog. Create a new user with pyLoad's user management, that will be started now. Hit enter to continue!"
+   print_message $"Set up pyLoad user" $"PyLoad's webinterface is protected by a password dialog. You have to create a new user with pyLoad's user management, which will be started now. Hit enter to continue!"
    clear
    sudo -u pyload pyLoadCore --user
    cp pyload-init-script /etc/init.d/pyload
@@ -148,7 +148,7 @@ function install_pyload(){
       create_smb_share
    fi
 
-   hint_msg $"PyLoad's webinterface is now available: $IP:8910\nStart/stop/restart pyLoad with the webinterface or following command:\n   sudo service pyload start/stop/restart"
+   hint_msg $"PyLoad's webinterface is now available: $IP:8910\nYou can start/stop/restart pyLoad via the webinterface or via following command:\n   sudo service pyload start/stop/restart"
    return 0
 }
 
