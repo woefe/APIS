@@ -1,9 +1,9 @@
 This project is not actively maintained any more!
 
-This project started with the intention to provide an easy way to install ownCloud
-on the Raspberry Pi. When I started this project owncloud was not in the official
-repos of Raspbian but for quite some time now ownCloud can be installed from the rasbian
-repos.
+This project started with the intention to provide an easy way to install
+ownCloud on the Raspberry Pi. When I started this project owncloud was 
+not in the official repos of Raspbian but for quite some time now ownCloud
+can be installed from the rasbian repos.
 
 
 HOW TO USE:
